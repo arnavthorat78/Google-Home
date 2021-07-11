@@ -10,6 +10,7 @@ const response = document.querySelector(".response");
 const music = document.querySelector(".music");
 const smallButton = document.querySelector(".smallButton");
 const time = document.querySelector(".time");
+const collage = document.querySelector(".collageContainer");
 
 // HTML instructions page (leave closed if possible!)
 const instructions = `
@@ -118,7 +119,7 @@ const smartReact = (command) => {
 		.trim()
 		.toLowerCase();
 
-	if (command.includes("hello")) {
+	if (command.includes("hello") || command.includes("hi")) {
 		// If the command includes 'hello'
 		res("Hello!", 5000);
 	} else if (command.includes("music") || command.includes("audio")) {
@@ -167,10 +168,32 @@ const smartReact = (command) => {
 		smallButton.style.visibility = "visible";
 
 		smallButton.addEventListener("click", removeTime);
+	} else if (
+		command.includes("picture") ||
+		command.includes("photo") ||
+		command.includes("collage")
+	) {
+		// If the user requested the collage
+		res("The collage is below!", 5000);
+		const collageHTML = `<a class="collageDownload" href="Collage.png" download>\n<img class="collage" src="Collage.png" alt="Collage" draggable="false" />\n</a>`;
+
+		const removeCollage = () => {
+			collage.innerHTML = "";
+			smallButton.style.visibility = "hidden";
+			smallButton.innerHTML = "";
+
+			smallButton.removeEventListener("click", removeCollage);
+		};
+
+		collage.innerHTML = collageHTML;
+		smallButton.innerHTML = "Remove Collage";
+		smallButton.style.visibility = "visible";
+
+		smallButton.addEventListener("click", removeCollage);
 	} else {
 		// If the computer cannot find the command
 		res(
-			"<strong>Sorry, but this command could not be identified. Try searching it instead.</strong>",
+			"<strong>Sorry, but this command could not be identified. Try searching it instead, or see if you have made any spelling mistakes.</strong>",
 			10000
 		);
 	}

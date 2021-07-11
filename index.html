@@ -31,7 +31,7 @@
 				type="text"
 				id="command"
 				name="command"
-				onfocus="this.value=''"
+				onClick="this.setSelectionRange(0, this.value.length)"
 				placeholder="Command..."
 			/>
 
@@ -54,10 +54,12 @@
 
 		<div class="responseContainer">
 			<p class="response"></p>
+
 			<div class="musicContainer">
 				<div class="music"></div>
 			</div>
 			<p class="time"></p>
+			<div class="collageContainer"></div>
 
 			<button class="smallButton"></button>
 		</div>
