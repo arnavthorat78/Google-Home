@@ -5,6 +5,8 @@ const google = document.querySelector(".google");
 const response = document.querySelector(".response");
 const smartNote = document.querySelector(".smartNote");
 
+const music = document.querySelector(".music");
+const removeMusic = document.querySelector(".removeMusic");
 const time = document.querySelector(".time");
 
 const instructions = `
@@ -54,6 +56,8 @@ const instructions = `
     <strong>This website does not support Internet Explorer.</strong>
 `;
 
+removeMusic.style.visibility = "hidden";
+
 let instructionsDisplayed = false;
 const toggleRedirectInstructions = () => {
 	if (!instructionsDisplayed) {
@@ -84,10 +88,20 @@ const smartReact = (command) => {
 		.trim()
 		.toLowerCase();
 
-	if (command == "hello") {
+	if (command.includes("hello")) {
 		res("Hello!", 5000);
-	}
-	if (command == "time" || command == "clock") {
+	} else if (command.includes("music") || command.includes("audio")) {
+		res("The music is below.", 5000);
+		const audioHTML = `<audio controls>\n<source src="Over-the-Horizon.mp3" type="audio/mpeg" />\nSorry, but your browser does not support audio.\n</audio>`;
+
+		music.innerHTML = audioHTML;
+		removeMusic.style.visibility = "visible";
+
+		removeMusic.addEventListener("click", () => {
+			music.innerHTML = "";
+			removeMusic.style.visibility = "hidden";
+		});
+	} else if (command.includes("time") || command.includes("clock")) {
 		res("The time will be displayed below.", 5000);
 
 		const tick = () => {
@@ -99,7 +113,7 @@ const smartReact = (command) => {
 			)} : ${dateFns.format(now, "ss")} ${dateFns.format(now, "A")}`;
 		};
 
-		alert("To remove the time, double-click on the time.");
+		alert("To remove the time, double-click on it.");
 
 		const interval = setInterval(tick, 1000);
 
