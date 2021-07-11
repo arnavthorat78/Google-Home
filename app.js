@@ -19,13 +19,9 @@ google.addEventListener("submit", (e) => {
 	e.preventDefault();
 
 	let userCommand = google.command.value;
+	let parameters = google.params.value;
 
-	if (userCommand.toLowerCase() == "hello") {
-		response.innerHTML = "Hello!";
-		setTimeout(() => {
-			response.innerHTML = "";
-		}, 5000);
-	} else {
+	if (parameters == "Search") {
 		open(
 			`https://www.google.com/search?q=${encodeURIComponent(
 				userCommand
@@ -34,6 +30,18 @@ google.addEventListener("submit", (e) => {
 		);
 
 		response.innerHTML = `Opened <i>${userCommand}</i>.`;
+		setTimeout(() => {
+			response.innerHTML = "";
+		}, 5000);
+	} else if (parameters == "URL") {
+		open(userCommand, "_blank");
+
+		response.innerHTML = `Opened <i>${userCommand}</i>.`;
+		setTimeout(() => {
+			response.innerHTML = "";
+		}, 5000);
+	} else if (userCommand.toLowerCase() == "hello") {
+		response.innerHTML = "Hello!";
 		setTimeout(() => {
 			response.innerHTML = "";
 		}, 5000);

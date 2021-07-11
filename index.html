@@ -16,7 +16,20 @@
 
 		<h3>Start Searching!</h3>
 		<form class="google">
-			<input id="command" name="command" placeholder="Command..." />
+			<input type="text" id="command" name="command" placeholder="Command..." />
+
+			<label for="search">Search</label><br />
+			<input
+				type="radio"
+				class="params"
+				id="search"
+				name="params"
+				value="Search"
+				checked="checked"
+			/>
+			<label for="url">URL</label><br />
+			<input type="radio" class="params" id="url" name="params" value="URL" />
+
 			<button class="submitCommand" type="submit">Submit</button>
 		</form>
 
