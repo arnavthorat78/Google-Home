@@ -23,13 +23,25 @@ const res = (text, ms) => {
 
 const smartReact = (command) => {
 	command = command
-		.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "")
+		.replace(/[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/g, "")
 		.replace(/\s{2,}/g, " ")
 		.trim()
 		.toLowerCase();
 
-	if (command == "hello") {
-		res("Hello!", 5000);
+	let randNum = Math.random();
+	let number;
+	if (randNum <= 0.5) {
+		number = 0;
+	} else {
+		number = 1;
+	}
+
+	if (command == "hello" || "hi") {
+		if (number == 0) {
+			res("Hello!", 5000);
+		} else {
+			res("How you doing?", 5000);
+		}
 	}
 };
 
@@ -42,25 +54,26 @@ google.addEventListener("submit", (e) => {
 	let parameters = google.params.value;
 
 	if (parameters == "Search") {
-		open(
-			`https://www.google.com/search?q=${encodeURIComponent(
-				userCommand
-			)}&oq=Google&aqs=chrome..69i57j35i39l2j69i60l5.1335j0j1&sourceid=chrome&ie=UTF-8`,
-			"_blank"
-		);
+		open(`https://www.google.com/search?q=${encodeURIComponent(userCommand)}`, "_blank");
 
-		res(`Opened <i>${userCommand}</i>.`, 5000);
+		response.innerHTML = `Opened <i>${userCommand}</i>.`;
+		setTimeout(() => {
+			response.innerHTML = "";
+		}, 5000);
 	} else if (parameters == "URL") {
 		open(userCommand, "_blank");
 
-		res(`Opened <i>${userCommand}</i>.`, 5000);
+		response.innerHTML = `Opened <i>${userCommand}</i>.`;
+		setTimeout(() => {
+			response.innerHTML = "";
+		}, 5000);
 	} else if (parameters == "Smart") {
 		smartNote.innerHTML =
-			"Please note that some characters may interfere with the response of the computer.";
+			"Please note that the backslash character (\\) may interfere with the response of the computer.";
 		smartReact(userCommand);
 
 		setTimeout(() => {
 			smartNote.innerHTML = "";
-		}, 5000);
+		}, 2500);
 	}
 });

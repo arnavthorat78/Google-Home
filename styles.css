@@ -68,3 +68,7 @@ option {
 	font-size: 20px;
 	color: #ff0000;
 }
+
+.smartNote {
+	font-size: 1.25vh;
+}
