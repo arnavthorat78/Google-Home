@@ -4,11 +4,17 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" href="Google.png" />
 		<link rel="stylesheet" href="styles.css" />
 		<title>Google Home</title>
 	</head>
 	<body>
 		<h1>Google Home</h1>
+
+		<img src="Google.png" alt="Google" draggable="false" />
+		<br />
+		<span class="credits">Credits: <i>https://gauger.io/fonticon/</i></span>
+
 		<p>
 			This website can be used for doing all of the things Google Home can do - on your
 			computer!
@@ -38,7 +44,10 @@
 
 		<i class="smartNote"></i>
 
-		<p class="response"></p>
+		<div class="responseContainer">
+			<p class="response"></p>
+			<p class="time"></p>
+		</div>
 
 		<h3>Permissions</h3>
 
@@ -48,20 +57,9 @@
 
 		<button class="toggleSteps">Allow Redirects</button>
 
-		<div class="steps">
-			<span>
-				To do this, preform the following steps (these steps are made for Google Chrome
-				only):
-			</span>
-			<ul>
-				<span>1. Navigate to the button next to the URL (site information).</span>
-				<br />
-				<span>2. On the bottom, click <i>Site Settings</i>.</span>
-				<br />
-				<span>3. Scroll to <i>Pop-ups and redirects</i> and click <i>Allow</i>.</span>
-			</ul>
-		</div>
+		<div class="steps"></div>
 
+		<script src="http://cdn.date-fns.org/v1.9.0/date_fns.min.js"></script>
 		<script src="app.js"></script>
 	</body>
 </html>
