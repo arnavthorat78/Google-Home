@@ -13,7 +13,7 @@
 
 		<img src="Google.png" alt="Google" draggable="false" />
 		<br />
-		<span class="credits">Credits: <i>https://gauger.io/fonticon/</i></span>
+		<!-- <span class="credits">Credits: <i>https://gauger.io/fonticon/</i></span> -->
 
 		<p>
 			This website can be used for doing all of the things Google Home can do - on your
@@ -22,8 +22,18 @@
 
 		<h3>Start Searching!</h3>
 
+		<img src="Search.png" alt="Search" draggable="false" />
+		<br />
+		<!-- <span class="credits">Credits: <i>https://gauger.io/fonticon/</i></span> -->
+
 		<form class="google">
-			<input type="text" id="command" name="command" placeholder="Command..." />
+			<input
+				type="text"
+				id="command"
+				name="command"
+				onfocus="this.value=''"
+				placeholder="Command..."
+			/>
 
 			<label for="search">Search</label><br />
 			<input
@@ -42,8 +52,6 @@
 			<button class="submitCommand" type="submit">Submit</button>
 		</form>
 
-		<i class="smartNote"></i>
-
 		<div class="responseContainer">
 			<p class="response"></p>
 			<div class="musicContainer">
@@ -54,6 +62,10 @@
 		</div>
 
 		<h3>Permissions</h3>
+
+		<img src="Security.png" alt="Security" draggable="false" />
+		<br />
+		<!-- <span class="credits">Credits: <i>https://gauger.io/fonticon/</i></span> -->
 
 		<strong class="important">
 			Please note that you may have to change the webpage settings for the features to work.

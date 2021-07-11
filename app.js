@@ -1,14 +1,17 @@
+// Getting the steps' DOM elements
 const toggleSteps = document.querySelector(".toggleSteps");
 const steps = document.querySelector(".steps");
 
+// Getting the command section
 const google = document.querySelector(".google");
 const response = document.querySelector(".response");
-const smartNote = document.querySelector(".smartNote");
 
+// Getting special command response sections
 const music = document.querySelector(".music");
 const removeMusic = document.querySelector(".removeMusic");
 const time = document.querySelector(".time");
 
+// HTML instructions page (leave closed if possible!)
 const instructions = `
     <span> To do this, preform the following steps depending on your browser: </span>
     <br /><br />
@@ -56,24 +59,42 @@ const instructions = `
     <strong>This website does not support Internet Explorer.</strong>
 `;
 
+// Leave the remove music button hidden as default
 removeMusic.style.visibility = "hidden";
 
+// Setting the instructions displayed default as hidden (false)
 let instructionsDisplayed = false;
+
+/**
+ * Toggles the redirect instructions.
+ *
+ * This is to be used for the onclick, taking in no parameters. However, it must have the instructions variable available.
+ */
 const toggleRedirectInstructions = () => {
 	if (!instructionsDisplayed) {
+		// If the instructions aren't displayed...
 		instructionsDisplayed = true;
 		steps.innerHTML = instructions;
+		// Scroll to the bottom (instructions)
 		window.scroll({
 			top: innerHeight,
 			left: 0,
 			behavior: "smooth",
 		});
 	} else {
+		// If the instructions are displayed...
 		instructionsDisplayed = false;
 		steps.innerHTML = "";
 	}
 };
 
+/**
+ * This method is to be used for responding to search queries, URL commands, and also smart commands.
+ * This method must have the response variable available, which is the DOM element for placing the text for the user to read.
+ *
+ * @param {string} text The text to display
+ * @param {number} ms The number of milliseconds to wait for until the text disappears
+ */
 const res = (text, ms) => {
 	response.innerHTML = text;
 	setTimeout(() => {
@@ -81,16 +102,27 @@ const res = (text, ms) => {
 	}, ms);
 };
 
+/**
+ * The brower's built-in reaction to a user's command. This can react to simple greetings, music, time, and also, if the command is not identified, will throw a simple readable error to the user.
+ *
+ * Uses RegExp to validify the string. It uses the following methods to make the command as broad as possible. `replace()` (2 times), `trim()`, and `toLowerCase()`.
+ * It also uses `includes()` in the conditions for the most broad usage possible.
+ *
+ * @param {string} command The user's command
+ */
 const smartReact = (command) => {
+	// Removing punctuation, extra spaces, trimming the string, and making the string lowercase
 	command = command
-		.replace(/[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/g, "")
+		.replace(/[!"#$%&'()*+,-.\\/:;<=>?@[\]^_`{|}~]/g, "")
 		.replace(/\s{2,}/g, " ")
 		.trim()
 		.toLowerCase();
 
 	if (command.includes("hello")) {
+		// If the command includes 'hello'
 		res("Hello!", 5000);
 	} else if (command.includes("music") || command.includes("audio")) {
+		// If the user requested audio/music
 		res("The music is below.", 5000);
 		const audioHTML = `<audio controls>\n<source src="Over-the-Horizon.mp3" type="audio/mpeg" />\nSorry, but your browser does not support audio.\n</audio>`;
 
@@ -102,6 +134,7 @@ const smartReact = (command) => {
 			removeMusic.style.visibility = "hidden";
 		});
 	} else if (command.includes("time") || command.includes("clock")) {
+		// If the user requested the live time
 		res("The time will be displayed below.", 5000);
 
 		const tick = () => {
@@ -121,18 +154,27 @@ const smartReact = (command) => {
 			clearInterval(interval);
 			time.innerHTML = "";
 		});
+	} else {
+		// If the computer cannot find the command
+		res(
+			"<strong>Sorry, but this command could not be identified. Try searching it instead.</strong>",
+			10000
+		);
 	}
 };
 
 toggleSteps.addEventListener("click", toggleRedirectInstructions);
 
 google.addEventListener("submit", (e) => {
+	// Preventing the default action (reloading the page)
 	e.preventDefault();
 
+	// Getting the command and parameters
 	let userCommand = google.command.value;
 	let parameters = google.params.value;
 
 	if (parameters == "Search") {
+		// If the user wants to search for something
 		open(`https://www.google.com/search?q=${encodeURIComponent(userCommand)}`, "_blank");
 
 		response.innerHTML = `Opened <i>${userCommand}</i>.`;
@@ -140,6 +182,7 @@ google.addEventListener("submit", (e) => {
 			response.innerHTML = "";
 		}, 5000);
 	} else if (parameters == "URL") {
+		// If the user would like to view a URL
 		open(userCommand, "_blank");
 
 		response.innerHTML = `Opened <i>${userCommand}</i>.`;
@@ -147,12 +190,7 @@ google.addEventListener("submit", (e) => {
 			response.innerHTML = "";
 		}, 5000);
 	} else if (parameters == "Smart") {
-		smartNote.innerHTML =
-			"Please note that the backslash character (\\) may interfere with the response of the computer.";
+		// If the user would like Smart
 		smartReact(userCommand);
-
-		setTimeout(() => {
-			smartNote.innerHTML = "";
-		}, 2500);
 	}
 });
