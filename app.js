@@ -8,7 +8,7 @@ const response = document.querySelector(".response");
 
 // Getting special command response sections
 const music = document.querySelector(".music");
-const removeMusic = document.querySelector(".removeMusic");
+const smallButton = document.querySelector(".smallButton");
 const time = document.querySelector(".time");
 
 // HTML instructions page (leave closed if possible!)
@@ -60,7 +60,7 @@ const instructions = `
 `;
 
 // Leave the remove music button hidden as default
-removeMusic.style.visibility = "hidden";
+smallButton.style.visibility = "hidden";
 
 // Setting the instructions displayed default as hidden (false)
 let instructionsDisplayed = false;
@@ -126,13 +126,19 @@ const smartReact = (command) => {
 		res("The music is below.", 5000);
 		const audioHTML = `<audio controls>\n<source src="Over-the-Horizon.mp3" type="audio/mpeg" />\nSorry, but your browser does not support audio.\n</audio>`;
 
-		music.innerHTML = audioHTML;
-		removeMusic.style.visibility = "visible";
-
-		removeMusic.addEventListener("click", () => {
+		const removeMusic = () => {
 			music.innerHTML = "";
-			removeMusic.style.visibility = "hidden";
-		});
+			smallButton.style.visibility = "hidden";
+			smallButton.innerHTML = "";
+
+			smallButton.removeEventListener("click", removeMusic);
+		};
+
+		music.innerHTML = audioHTML;
+		smallButton.innerHTML = "Remove Music";
+		smallButton.style.visibility = "visible";
+
+		smallButton.addEventListener("click", removeMusic);
 	} else if (command.includes("time") || command.includes("clock")) {
 		// If the user requested the live time
 		res("The time will be displayed below.", 5000);
@@ -146,14 +152,21 @@ const smartReact = (command) => {
 			)} : ${dateFns.format(now, "ss")} ${dateFns.format(now, "A")}`;
 		};
 
-		alert("To remove the time, double-click on it.");
-
 		const interval = setInterval(tick, 1000);
 
-		time.addEventListener("dblclick", () => {
+		const removeTime = () => {
 			clearInterval(interval);
 			time.innerHTML = "";
-		});
+			smallButton.style.visibility = "hidden";
+			smallButton.innerHTML = "";
+
+			smallButton.removeEventListener("click", removeTime);
+		};
+
+		smallButton.innerHTML = "Remove Time";
+		smallButton.style.visibility = "visible";
+
+		smallButton.addEventListener("click", removeTime);
 	} else {
 		// If the computer cannot find the command
 		res(
