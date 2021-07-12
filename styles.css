@@ -40,6 +40,29 @@ img {
 	width: 100px;
 }
 
+.mainTitle {
+	font-size: 7.5vh;
+	color: #ff0000;
+	animation-name: googleColours;
+	animation-duration: 10s;
+	animation-iteration-count: infinite;
+}
+
+@keyframes googleColours {
+	0% {
+		color: #ff0000;
+	}
+	25% {
+		color: #ffae00;
+	}
+	50% {
+		color: #108600;
+	}
+	100% {
+		color: #0066ff;
+	}
+}
+
 .credits {
 	font-size: 1.25vh;
 	padding: 5px;

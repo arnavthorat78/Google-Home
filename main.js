@@ -60,22 +60,24 @@ const instructions = `
         </span>
     </ul>
 
-    <strong>This website does not support Internet Explorer.</strong>
+    <strong>This website does not support Internet Explorer.</strong><br />
 `;
 
 // Offline text (if the user is offline)
 const offlineHTML = `
 	<div class="offlineCSS">
-		<img src="Wi-Fi.png" alt="Wi-Fi" draggable="false" />
+		<img src="./img/Wi-Fi.png" alt="Wi-Fi" draggable="false" />
 		<h4>You are offline!</h4>
 		<p>Some features of this website may not work as desired.</p>
 	</div>
 `;
 
+// If the user is offline, display the error
 window.addEventListener("offline", (e) => {
 	offline.innerHTML = offlineHTML;
 });
 
+// If the user is back online, hide the error
 window.addEventListener("online", (e) => {
 	offline.innerHTML = "";
 });
@@ -124,7 +126,7 @@ const res = (text, ms) => {
 };
 
 /**
- * The brower's built-in reaction to a user's command. This can react to simple greetings, music, time, and also, if the command is not identified, will throw a simple readable error to the user.
+ * The brower's reaction to a user's command. This can react to simple greetings, music, time, and also, if the command is not identified, will throw a simple readable error to the user.
  *
  * Uses RegExp to validify the string. It uses the following methods to make the command as broad as possible. `replace()` (2 times), `trim()`, and `toLowerCase()`.
  * It also uses `includes()` in the conditions for the most broad usage possible.
@@ -142,10 +144,13 @@ const smartReact = (command) => {
 	if (command.includes("hello") || command.includes("hi")) {
 		// If the command includes 'hello'
 		res("Hello!", 5000);
+	} else if (command.includes("how are you") || command.includes("hows everything")) {
+		// If the user asks how the computer is
+		res("I'm great! How are you?", 5000);
 	} else if (command.includes("music") || command.includes("audio")) {
 		// If the user requested audio/music
 		res("The music is below.", 5000);
-		const audioHTML = `<audio controls>\n<source src="Over-the-Horizon.mp3" type="audio/mpeg" />\nSorry, but your browser does not support audio.\n</audio>`;
+		const audioHTML = `<audio controls>\n<source src="./music/Over-the-Horizon.mp3" type="audio/mpeg" />\nSorry, but your browser does not support audio.\n</audio>`;
 
 		const removeMusic = () => {
 			music.innerHTML = "";
@@ -195,7 +200,7 @@ const smartReact = (command) => {
 	) {
 		// If the user requested the collage
 		res("The collage is below!", 5000);
-		const collageHTML = `<a class="collageDownload" href="Collage.png" download>\n<img class="collage" src="Collage.png" alt="Collage" draggable="false" />\n</a>`;
+		const collageHTML = `<a class="collageDownload" href="./img/Collage.png" download>\n<img class="collage" src="./img/Collage.png" alt="Collage" draggable="false" />\n</a>`;
 
 		const removeCollage = () => {
 			collage.innerHTML = "";
@@ -210,6 +215,9 @@ const smartReact = (command) => {
 		smallButton.style.visibility = "visible";
 
 		smallButton.addEventListener("click", removeCollage);
+	} else if (command == "" || command == " ") {
+		// If the user typed in nothing
+		res("<strong>Please do not leave the command empty.</strong>", 10000);
 	} else {
 		// If the computer cannot find the command
 		res(
