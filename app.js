@@ -1,3 +1,6 @@
+// Getting the offline <div> element
+const offline = document.querySelector(".offline");
+
 // Getting the steps' DOM elements
 const toggleSteps = document.querySelector(".toggleSteps");
 const steps = document.querySelector(".steps");
@@ -59,6 +62,23 @@ const instructions = `
 
     <strong>This website does not support Internet Explorer.</strong>
 `;
+
+// Offline text (if the user is offline)
+const offlineHTML = `
+	<div class="offlineCSS">
+		<img src="Wi-Fi.png" alt="Wi-Fi" draggable="false" />
+		<h4>You are offline!</h4>
+		<p>Some features of this website may not work as desired.</p>
+	</div>
+`;
+
+window.addEventListener("offline", (e) => {
+	offline.innerHTML = offlineHTML;
+});
+
+window.addEventListener("online", (e) => {
+	offline.innerHTML = "";
+});
 
 // Leave the remove music button hidden as default
 smallButton.style.visibility = "hidden";

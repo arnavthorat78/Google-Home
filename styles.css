@@ -45,6 +45,11 @@ img {
 	padding: 5px;
 }
 
+.offlineCSS {
+	outline: 5px solid #ff0000;
+	background-color: #ffb0b0;
+}
+
 .toggleSteps {
 	width: 150px;
 	background: #111111;
