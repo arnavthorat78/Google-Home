@@ -200,7 +200,7 @@ const smartReact = (command) => {
 	) {
 		// If the user requested the collage
 		res("The collage is below!", 5000);
-		const collageHTML = `<a class="collageDownload" href="./img/Collage.png" download>\n<img class="collage" src="./img/Collage.png" alt="Collage" draggable="false" />\n</a>`;
+		const collageHTML = `<a class="collageDownload" href="./img/Collage.png" download>\n<img class="collage" src="../img/Collage.png" alt="Collage" draggable="false" />\n</a>`;
 
 		const removeCollage = () => {
 			collage.innerHTML = "";
