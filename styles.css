@@ -55,6 +55,17 @@ button {
 	display: block;
 }
 
+article {
+	width: 1000px;
+	background-color: #ffffff;
+	padding: 20px;
+	margin: 25px auto;
+	border: none;
+	border-radius: 5px;
+	display: block;
+	box-shadow: 10px 10px 8px #888888;
+}
+
 .mainTitle {
 	font-size: 7.5vh;
 	color: #ff0000;
@@ -78,17 +89,19 @@ button {
 	}
 }
 
+.navbarImg {
+	width: 25px;
+	height: 25px;
+}
+
 /* Navbar (thanks to W3Schools!) */
 .navbar {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
-	background-color: #333333;
-
-	position: fixed;
-	top: 0;
-	width: 100%;
+	border: 1px solid #696969;
+	background-color: #2e2e2e;
 }
 
 .navbarLink {
@@ -97,18 +110,19 @@ button {
 
 .navbarLink .navbarA {
 	display: block;
-	color: white;
+	color: #c9c9c9;
 	text-align: center;
 	padding: 14px 16px;
 	text-decoration: none;
 }
 
 .navbarLink .navbarA:hover {
-	background-color: #111111;
+	background-color: #ffffff;
 }
 
 .active {
 	background-color: #04aa6d;
+	color: #ffffff;
 }
 
 .credits {
