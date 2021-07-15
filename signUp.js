@@ -1,7 +1,35 @@
 const signUp = document.querySelector(".signUp");
 const feedback = document.querySelector(".feedback");
 
+const temp = document.querySelector(".temp");
+
 const passwordPattern = /^[a-zA-Z0-9]{5,}$/;
+
+const addUser = (user) => {
+	let recent_searches = [];
+	user.recent_searches.forEach((search) => {
+		recent_searches.push(search);
+	});
+	let html = `
+	<p>
+		<div>${user.first_name} ${user.last_name}</div>
+		<div>${recent_searches.join(", ")}</div>
+	</p>
+	`;
+
+	temp.innerHTML += html;
+};
+
+db.collection("users")
+	.get()
+	.then((snapshot) => {
+		snapshot.docs.forEach((doc) => {
+			addUser(doc.data());
+		});
+	})
+	.catch((err) => {
+		console.log(err);
+	});
 
 signUp.addEventListener("submit", (e) => {
 	e.preventDefault();
@@ -13,7 +41,23 @@ signUp.addEventListener("submit", (e) => {
 	let password = signUp.password.value;
 
 	if (passwordPattern.test(password)) {
-		feedback.textContent = "Your password is valid!";
+		const user = {
+			first_name: firstName,
+			last_name: lastName,
+			username: username,
+			email: email,
+			password: password,
+			recent_searches: [],
+		};
+
+		db.collection("users")
+			.add(user)
+			.then(() => {
+				console.log("User successfully added.");
+			})
+			.catch((err) => {
+				console.log(err);
+			});
 	} else {
 		feedback.textContent =
 			"The password must contain letters and numbers only (no symbols), and longer than 5 characters.";
