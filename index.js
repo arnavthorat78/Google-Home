@@ -169,13 +169,22 @@ const smartReact = (command) => {
 		// If the user requested the live time
 		res("The time will be displayed below.", 5000);
 
+		const formatAMPM = (date) => {
+			let hours = date.getHours();
+			let minutes = date.getMinutes();
+			let seconds = date.getSeconds();
+			let ampm = hours >= 12 ? "PM" : "AM";
+			hours = hours % 12;
+			hours = hours ? hours : 12; // the hour '0' should be '12'
+			minutes = minutes < 10 ? "0" + minutes : minutes;
+			let strTime = `${hours} : ${minutes} : ${seconds} ${ampm}`;
+			return strTime;
+		};
+
 		const tick = () => {
 			const now = new Date();
 
-			time.innerHTML = `${dateFns.format(now, "h")} : ${dateFns.format(
-				now,
-				"mm"
-			)} : ${dateFns.format(now, "ss")} ${dateFns.format(now, "A")}`;
+			time.innerHTML = formatAMPM(now);
 		};
 
 		const interval = setInterval(tick, 1000);
