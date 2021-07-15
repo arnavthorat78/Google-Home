@@ -35,7 +35,48 @@
 
 		<h1 class="mainTitle">Sign Up</h1>
 
-		<p>This page is currently in development. <a href="index.html">Navigate to Home!</a></p>
+		<p>
+			This page is currently in development. Please do not use it until further notice.
+			<a href="index.html">Navigate to Home!</a>
+		</p>
+
+		<form class="signUp">
+			<input
+				type="text"
+				id="firstName"
+				name="firstName"
+				placeholder="First Name..."
+				required
+			/>
+			<input
+				type="text"
+				id="lastName"
+				name="lastName"
+				placeholder="Last Name..."
+				required
+			/>&nbsp;
+
+			<input type="email" id="email" name="email" placeholder="Email..." required />&nbsp;
+
+			<input
+				type="password"
+				id="password"
+				name="password"
+				placeholder="Password..."
+				required
+			/>
+			<input
+				type="password"
+				id="confirmPassword"
+				name="confirmPassword"
+				placeholder="Confirm password..."
+				required
+			/>
+
+			<button class="signUpButton submitButton" type="submit">Sign Up</button>
+		</form>
+
+		<p class="response"></p>
 
 		<script src="signUp.js"></script>
 	</body>
