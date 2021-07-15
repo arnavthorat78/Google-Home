@@ -15,6 +15,14 @@
 				<a class="navbarA" href="index.html">Home</a>
 			</li>
 			<li class="navbarLink">
+				<img class="navbarImg" src="./img/Search.png" alt="Search" />
+				<a class="navbarA" href="search.html">Search</a>
+			</li>
+			<li class="navbarLink">
+				<img class="navbarImg" src="./img/Security.png" alt="Search" />
+				<a class="navbarA" href="permissions.html">Permissions</a>
+			</li>
+			<li class="navbarLink">
 				<img class="navbarImg" src="./img/Update.png" alt="Update" />
 				<a class="navbarA" href="updates.html">Updates</a>
 			</li>
@@ -39,8 +47,6 @@
 		<br />
 		<!-- <span class="credits">Credits: <i>https://gauger.io/fonticon/</i></span> -->
 
-		<div class="offline"></div>
-
 		<p>
 			This website can be used for doing all of the things Google Home can do - on your
 			computer!
@@ -53,66 +59,44 @@
 			</strong>
 		</p>
 
-		<h3>Start Searching!</h3>
+		<hr />
 
-		<img src="./img/Search.png" alt="Search" draggable="false" />
-		<br />
-		<!-- <span class="credits">Credits: <i>https://gauger.io/fonticon/</i></span> -->
+		<h3>Trending</h3>
 
-		<form class="google">
-			<input
-				type="text"
-				id="command"
-				name="command"
-				onClick="this.setSelectionRange(0, this.value.length)"
-				placeholder="Command..."
-				required
-			/>
+		<strong style="font-size: 3vh">See the new update that has just been released!</strong>
 
-			<label for="search">Search</label><br />
-			<input
-				type="radio"
-				class="params"
-				id="search"
-				name="params"
-				value="Search"
-				checked="checked"
-			/>
-			<label for="url">URL</label><br />
-			<input type="radio" class="params" id="url" name="params" value="URL" />
-			<label for="smart">Smart</label><br />
-			<input type="radio" class="params" id="smart" name="params" value="Smart" />
+		<article>
+			<h3 style="color: #06b900">Just Released: Version 1.0.5</h3>
+			<img src="./img/Tabs.png" alt="Tabs" /><br />
+			<strong style="font-size: 3vh">Tabs</strong>
+			<p>See more on the <a href="updates.html">Updates page</a>!</p>
+		</article>
 
-			<button class="submitCommand submitButton" type="submit">Submit</button>
-		</form>
+		<strong style="font-size: 3vh">Also, see the pending update!</strong>
 
-		<div class="responseContainer">
-			<p class="response"></p>
+		<article>
+			<h3 style="color: #ff0000">In Progress: Version 1.1.0</h3>
+			<img src="./img/Account.png" alt="Account" /><br />
+			<strong style="font-size: 3vh">Accounts</strong>
+			<p>See more on the <a href="updates.html">Updates page</a>!</p>
+		</article>
 
-			<div class="musicContainer">
-				<div class="music"></div>
-			</div>
-			<p class="time"></p>
-			<div class="collageContainer"></div>
+		<hr />
 
-			<button class="smallButton"></button>
-		</div>
+		<h3>What's on this Website?</h3>
 
-		<h3>Permissions</h3>
+		<p>
+			Let's see what's on this website!
+			<br /><br />
+			For the main part of this website, navigate to the
+			<a href="search.html">Search page</a>! In here, you can either type in a URL, search for
+			something on Google, or play around with some Smart features!
+			<br />
+			You may have to give this websites some permissions. For this, go to the
+			<a href="permissions.html">Permissions page</a> and follow the steps! <br /><br />
+			You can also sign in or sign up, and also check out updates and about for this website!
+		</p>
 
-		<img src="./img/Security.png" alt="Security" draggable="false" />
-		<br />
-		<!-- <span class="credits">Credits: <i>https://gauger.io/fonticon/</i></span> -->
-
-		<strong class="important">
-			Please note that you may have to change the webpage settings for the features to work.
-		</strong>
-
-		<button class="toggleSteps">Allow Redirects</button>
-
-		<div class="steps"></div>
-
-		<!-- <script src="http://cdn.date-fns.org/v1.9.0/date_fns.min.js"></script> -->
 		<script src="index.js"></script>
 	</body>
 </html>

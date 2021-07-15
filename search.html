@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" href="./img/Google.png" />
 		<link rel="stylesheet" href="styles.css" />
-		<title>Google Home - About</title>
+		<title>Google Home - Search</title>
 	</head>
 	<body>
 		<ul class="navbar">
@@ -14,7 +14,7 @@
 				<img class="navbarImg" src="./img/Home.png" alt="Home" />
 				<a class="navbarA" href="index.html">Home</a>
 			</li>
-						<li class="navbarLink">
+			<li class="navbarLink active">
 				<img class="navbarImg" src="./img/Search.png" alt="Search" />
 				<a class="navbarA" href="search.html">Search</a>
 			</li>
@@ -26,7 +26,7 @@
 				<img class="navbarImg" src="./img/Update.png" alt="Update" />
 				<a class="navbarA" href="updates.html">Updates</a>
 			</li>
-			<li class="navbarLink active">
+			<li class="navbarLink">
 				<img class="navbarImg" src="./img/About.png" alt="About" />
 				<a class="navbarA" href="about.html">About</a>
 			</li>
@@ -41,9 +41,12 @@
 			</li>
 		</ul>
 
-		<h1 class="mainTitle">About</h1>
+		<h1 class="mainTitle">Search</h1>
 
-		<p>Get information about this website!</p>
+		<p>
+			Use this page for searching, typing URLs, and also using Smart commands! This page is
+			the main part of this website. Have fun!
+		</p>
 
 		<p>
 			<strong>
@@ -52,39 +55,45 @@
 			</strong>
 		</p>
 
-		<h4>Developer</h4>
-		<p>
-			The developer who made this website is <strong>Arnav Thorat</strong>. He is a young<br />
-			coder who loves making programs to help the greater community.
-		</p>
+		<form class="google">
+			<input
+				type="text"
+				id="command"
+				name="command"
+				onClick="this.setSelectionRange(0, this.value.length)"
+				placeholder="Command..."
+				required
+			/>
 
-		<h4>About Webpage</h4>
-		<p>
-			This webpage is from Google's Smart Google Home, Google Home Mini, etc. This webpage<br />
-			would help with doing whatever you can do with those devices, on the computer. This<br />
-			webpage does not relate to any of Google's products and will not and never be owned
-			by<br />
-			Google.
-		</p>
-		<p>
-			This webpage was made by Arnav Thorat and is copyright under Arnav Thorat.
-			<br />
-			<u>Copyright © Arnav Thorat 2021. All rights reserved.</u>
-		</p>
+			<label for="search">Search</label><br />
+			<input
+				type="radio"
+				class="params"
+				id="search"
+				name="params"
+				value="Search"
+				checked="checked"
+			/>
+			<label for="url">URL</label><br />
+			<input type="radio" class="params" id="url" name="params" value="URL" />
+			<label for="smart">Smart</label><br />
+			<input type="radio" class="params" id="smart" name="params" value="Smart" />
 
-        <h4>Legal</h4>
-        <p>
-            This website was deployed by GitHub Pages. You may use the website under the following conditions.
+			<button class="submitCommand submitButton" type="submit">Submit</button>
+		</form>
 
-            <ul>
-                <span>1. YOU MAY USE THIS WEBSITE SAYING THAT YOU WILL NOT TAKE CREDIT FOR THIS WEBPAGE.</span><br>
-                <span>2. YOU MAY NOT USE THIS WEBSITE FOR YOUR OWN COMMERCIAL USE, UNLESS THE DEVELOPER HAS STATED THAT YOU MAY.</span><br>
-                <span>3. IF YOU HAVE CAUSE ANY DAMAGE TO THIS WEBSITE (E.G. ADDED A VIRUS TO THE PROGRAM), THEN YOU WILL NOT BE GRANTED ACCESS TO THIS WEBSITE.</span>
-            </ul>
+		<div class="responseContainer">
+			<p class="response"></p>
 
-            <strong>Copyright © Arnav Thorat 2021. All rights reserved.</strong>
-        </p>
+			<div class="musicContainer">
+				<div class="music"></div>
+			</div>
+			<p class="time"></p>
+			<div class="collageContainer"></div>
 
-		<script src="about.js"></script>
+			<button class="smallButton"></button>
+		</div>
+
+		<script src="search.js"></script>
 	</body>
 </html>
