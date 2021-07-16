@@ -8,6 +8,17 @@ const smallButton = document.querySelector(".smallButton");
 const time = document.querySelector(".time");
 const collage = document.querySelector(".collageContainer");
 
+const user = document.querySelector(".user");
+
+let fullNameRaw = localStorage.getItem("user");
+if (fullNameRaw == null) {
+	user.innerHTML = "User";
+} else {
+	const splitFullName = fullNameRaw.split(",");
+	let fullName = `${splitFullName[0]} ${splitFullName[1]}`;
+	user.innerHTML = fullName;
+}
+
 // Leave the remove music button hidden as default
 smallButton.style.visibility = "hidden";
 

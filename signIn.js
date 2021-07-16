@@ -1,8 +1,17 @@
 const signIn = document.querySelector(".signIn");
 const feedback = document.querySelector(".feedback");
+const user = document.querySelector(".user");
 
 let users = [];
-let valid = false;
+
+let fullNameRaw = localStorage.getItem("user");
+if (fullNameRaw == null) {
+	user.innerHTML = "User";
+} else {
+	const splitFullName = fullNameRaw.split(",");
+	let fullName = `${splitFullName[0]} ${splitFullName[1]}`;
+	user.innerHTML = fullName;
+}
 
 const togglePassword = () => {
 	let password = signIn.password;
@@ -35,8 +44,7 @@ signIn.addEventListener("submit", (e) => {
 
 	for (let i = 0; i < users.length; i++) {
 		if (users[i].username == username && users[i].password == password) {
-			valid = true;
-			console.log("Success!");
+			feedback.innerHTML = "You are successfully signed in!";
 
 			localStorage.setItem("user", [
 				users[i].first_name,
@@ -46,6 +54,7 @@ signIn.addEventListener("submit", (e) => {
 				users[i].password,
 			]);
 			localStorage.setItem("userRecentSearches", users[i].recent_searches);
+			localStorage.setItem("userName", `${users[i].first_name} ${users[i].last_name}`);
 
 			let name = localStorage.getItem("user").split(",");
 			let recentSearches = localStorage.getItem("userRecentSearches").split(",");
@@ -53,9 +62,12 @@ signIn.addEventListener("submit", (e) => {
 			console.log(name);
 			console.log(recentSearches);
 
+			user.innerHTML = `${name[0]} ${name[1]}`;
+
 			return;
 		}
 	}
 
-	console.log("Error!");
+	feedback.innerHTML =
+		"Sorry, but your credentials entered in could not be validified. Please try again.";
 });
