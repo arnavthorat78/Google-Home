@@ -122,21 +122,13 @@ article {
 	text-decoration: none;
 }
 
-.navbarLink .navbarUser {
-	display: block;
-	color: #c9c9c9;
-	text-align: center;
-	padding: 14px 16px;
-	text-decoration: none;
-}
-
 .navbarLink .navbarA:hover {
 	background-color: #ffffff;
 }
 
 .active {
-	background-color: #04aa6d !important;
-	color: #ffffff !important;
+	background-color: #04aa6d;
+	color: #ffffff;
 }
 
 .credits {
