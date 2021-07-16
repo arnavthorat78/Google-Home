@@ -5,6 +5,16 @@ const temp = document.querySelector(".temp");
 
 const passwordPattern = /^[a-zA-Z0-9]{5,}$/;
 
+const togglePassword = () => {
+	let password = signUp.password;
+
+	if (password.type === "password") {
+		password.type = "text";
+	} else {
+		password.type = "password";
+	}
+};
+
 const addUser = (user) => {
 	let recent_searches = [];
 	user.recent_searches.forEach((search) => {
@@ -58,8 +68,10 @@ signUp.addEventListener("submit", (e) => {
 			.catch((err) => {
 				console.log(err);
 			});
+
+		feedback.innerHTML = `Hooray! You have been successfully added! Now sign in from the <a href="signIn.html">Sign In</a> page!`;
 	} else {
-		feedback.textContent =
+		feedback.innerHTML =
 			"The password must contain letters and numbers only (no symbols), and longer than 5 characters.";
 	}
 });

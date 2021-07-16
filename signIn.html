@@ -45,9 +45,55 @@
 
 		<p>
 			This page is currently in development. Please do not use it until further notice.
+			<strong
+				>Also, please do not fill in the form until the update is fully functional.</strong
+			>
 			<a href="index.html">Navigate to Home!</a>
 		</p>
 
+		<form class="signIn">
+			<input type="text" id="username" name="username" placeholder="Username..." required />
+
+			<input
+				type="password"
+				id="password"
+				name="password"
+				placeholder="Password..."
+				required
+			/>
+			<label for="showPassword">Show password</label>
+			<input
+				type="checkbox"
+				name="showPassword"
+				id="showPassword"
+				onclick="togglePassword()"
+			/>
+
+			<button class="signUpButton submitButton" type="submit">Sign Up</button>
+
+			<div class="feedback"></div>
+		</form>
+
+		<!-- The core Firebase JS SDK is always required and must be listed first -->
+		<script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-firestore.js"></script>
+
+		<script>
+			// Your web app's Firebase configuration
+			// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+			var firebaseConfig = {
+				apiKey: "AIzaSyD3O6iq_pfmeIX1gAxrf7IFzj8H5q8MVy8",
+				authDomain: "home-1b99f.firebaseapp.com",
+				projectId: "home-1b99f",
+				storageBucket: "home-1b99f.appspot.com",
+				messagingSenderId: "473171000141",
+				appId: "1:473171000141:web:5f73269306b29713db9504",
+				measurementId: "G-BZS7ZWD165",
+			};
+			// Initialize Firebase
+			firebase.initializeApp(firebaseConfig);
+			const db = firebase.firestore();
+		</script>
 		<script src="signIn.js"></script>
 	</body>
 </html>
