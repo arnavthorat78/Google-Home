@@ -2,6 +2,7 @@ const user = document.querySelector(".user");
 const deleteAccountPassword = document.querySelector(".deleteAccountPassword");
 const signOut = document.querySelector(".signOut");
 const deleteAccount = document.querySelector(".deleteAccount");
+const submitButton = document.querySelector(".submitButton");
 const feedback = document.querySelector(".feedback");
 
 deleteAccountPassword.style.visibility = "hidden";
@@ -42,6 +43,16 @@ deleteAccount.addEventListener("click", () => {
 	deleteAccountPassword.style.visibility = "visible";
 
 	feedback.innerHTML = "Please enter your password to delete your account.";
+});
+
+deleteAccountPassword.password.addEventListener("keyup", (e) => {
+	let infoArray = fullNameRaw.split(",");
+
+	if (e.target.value != infoArray[4]) {
+		submitButton.disabled = true;
+	} else {
+		submitButton.disabled = false;
+	}
 });
 
 deleteAccountPassword.addEventListener("submit", (e) => {
