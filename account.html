@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" href="./img/Google.png" />
 		<link rel="stylesheet" href="styles.css" />
-		<title>Google Home - Sign Up</title>
+		<title>Google Home - Account Activity</title>
 	</head>
 	<body>
 		<ul class="navbar">
@@ -31,7 +32,7 @@
 				<a class="navbarA" href="about.html">About</a>
 			</li>
 
-			<li class="navbarLink" style="float: right; border-left: 1px solid #555555">
+			<li class="navbarLink active" style="float: right; border-left: 1px solid #555555">
 				<img
 					class="navbarImg"
 					src="./img/Account (2).png"
@@ -43,7 +44,7 @@
 				</a>
 			</li>
 
-			<li class="navbarLink active" style="float: right">
+			<li class="navbarLink" style="float: right">
 				<img class="navbarImg" src="./img/User.png" alt="User" draggable="false" />
 				<a class="navbarA" href="signUp.html">Sign Up</a>
 			</li>
@@ -53,33 +54,23 @@
 			</li>
 		</ul>
 
-		<h1 class="mainTitle">Sign Up</h1>
+		<h1 class="mainTitle">Account</h1>
+        <p>Use this page to see your account settings!</p>
 
-		<p>
-			Make an account over here! You will have access to many more features if you make an
-			account with us!
-		</p>
+        <button class="signOut" style="background-color: #e00000">   
+            Sign Out
+            <br>
+            <img style="width: 25px; height: 25px;" src="./img/Sign-out.png" alt="Sign-out" draggable="false" />
+        </button>
 
-		<form class="signUp">
-			<input
-				type="text"
-				id="firstName"
-				name="firstName"
-				placeholder="First Name..."
-				required
-			/>
-			<input
-				type="text"
-				id="lastName"
-				name="lastName"
-				placeholder="Last Name..."
-				required
-			/>&nbsp;
+        <button class="deleteAccount" style="background-color: #e00000">   
+            Delete Account
+            <br>
+            <img style="width: 25px; height: 25px;" src="./img/Delete User.png" alt="Sign-out" draggable="false" />
+        </button>
 
-			<input type="text" id="username" name="username" placeholder="Username..." required />
-			<input type="email" id="email" name="email" placeholder="Email..." required />&nbsp;
-
-			<input
+        <form class="deleteAccountPassword">
+            <input
 				type="password"
 				id="password"
 				name="password"
@@ -94,10 +85,10 @@
 				onclick="togglePassword()"
 			/>
 
-			<button class="signUpButton submitButton" type="submit">Sign Up</button>
+			<button class="signUpButton submitButton" type="submit">Delete Account</button>
+        </form>
 
-			<div class="feedback"></div>
-		</form>
+        <div class="feedback"></div>
 
 		<!-- The core Firebase JS SDK is always required and must be listed first -->
 		<script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
@@ -119,6 +110,6 @@
 			firebase.initializeApp(firebaseConfig);
 			const db = firebase.firestore();
 		</script>
-		<script src="signUp.js"></script>
-	</body>
+		<script src="account.js"></script>
+</body>
 </html>

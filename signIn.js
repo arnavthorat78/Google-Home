@@ -34,8 +34,6 @@ db.collection("users")
 		console.log(err);
 	});
 
-console.log(users);
-
 signIn.addEventListener("submit", (e) => {
 	e.preventDefault();
 
@@ -58,9 +56,6 @@ signIn.addEventListener("submit", (e) => {
 
 			let name = localStorage.getItem("user").split(",");
 			let recentSearches = localStorage.getItem("userRecentSearches").split(",");
-
-			console.log(name);
-			console.log(recentSearches);
 
 			user.innerHTML = `${name[0]} ${name[1]}`;
 

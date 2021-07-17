@@ -1,6 +1,5 @@
 const signUp = document.querySelector(".signUp");
 const feedback = document.querySelector(".feedback");
-const temp = document.querySelector(".temp");
 
 const user = document.querySelector(".user");
 
