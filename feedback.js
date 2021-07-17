@@ -27,9 +27,9 @@ const addFeedback = (feedback) => {
         <h2>${feedback.title}</h2>
         <strong style="font-size: 3vh">Posted by ${localInfo[0]} ${localInfo[1]}</strong>
         <p>${feedback.description}</p>
-        <strong style="font-size: 2vh"><img style="height: 25px; width: 25px;" src="./img/Likes.png" alt="Likes" draggable="false" /> ${feedback.thumbs_up}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <strong style="font-size: 2vh"><img style="height: 25px; width: 25px;" src="./img/Dislikes.png" alt="Dislikes" draggable="false" /> ${feedback.thumbs_down}</strong><br><br>
-        <span style="font-size: 1vh; color: #555555;">Posted at ${time}</span>
+        <strong style="font-size: 2.25vh"><img style="height: 25px; width: 25px;" src="./img/Likes.png" alt="Likes" draggable="false" /> ${feedback.thumbs_up}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <strong style="font-size: 2.25vh"><img style="height: 25px; width: 25px;" src="./img/Dislikes.png" alt="Dislikes" draggable="false" /> ${feedback.thumbs_down}</strong><br><br>
+        <span style="font-size: 1.75vh; color: #555555;">Posted at ${time}</span>
     </article>
 	`;
 
