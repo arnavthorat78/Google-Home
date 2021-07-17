@@ -42,6 +42,8 @@ db.collection("users")
 deleteAccount.addEventListener("click", () => {
 	deleteAccountPassword.style.visibility = "visible";
 
+	submitButton.disabled = true;
+
 	feedback.innerHTML = "Please enter your password to delete your account.";
 });
 
