@@ -67,16 +67,17 @@ signUp.addEventListener("submit", (e) => {
 			username: username,
 			email: email,
 			password: password,
-			recent_searches: [],
+			recent_searches: ["Testing..."],
 		};
 
 		db.collection("users")
-			.add(user)
+			.doc(username)
+			.set(user)
 			.then(() => {
-				console.log("User successfully added.");
+				console.log("User successfully added!");
 			})
-			.catch((err) => {
-				console.log(err);
+			.catch((error) => {
+				console.error(error);
 			});
 
 		feedback.innerHTML = `Hooray! You have been successfully added! Now sign in from the <a href="signIn.html">Sign In</a> page!`;

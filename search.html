@@ -70,17 +70,14 @@
 		<form class="google">
 			<input
 				type="text"
+				list="recentSearches"
 				id="command"
 				name="command"
 				onClick="this.setSelectionRange(0, this.value.length)"
 				placeholder="Command..."
 				required
 			/>
-			<!-- <label for="recentSearch">Or you can choose your recent searches...</label>
-
-			<select name="recentSearch" id="recentSearch">
-				<option value=""></option>
-			</select> -->
+			<datalist id="recentSearches"></datalist>
 
 			<label for="search">Search</label><br />
 			<input
@@ -111,6 +108,26 @@
 			<button class="smallButton"></button>
 		</div>
 
+		<!-- The core Firebase JS SDK is always required and must be listed first -->
+		<script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-firestore.js"></script>
+
+		<script>
+			// Your web app's Firebase configuration
+			// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+			var firebaseConfig = {
+				apiKey: "AIzaSyD3O6iq_pfmeIX1gAxrf7IFzj8H5q8MVy8",
+				authDomain: "home-1b99f.firebaseapp.com",
+				projectId: "home-1b99f",
+				storageBucket: "home-1b99f.appspot.com",
+				messagingSenderId: "473171000141",
+				appId: "1:473171000141:web:5f73269306b29713db9504",
+				measurementId: "G-BZS7ZWD165",
+			};
+			// Initialize Firebase
+			firebase.initializeApp(firebaseConfig);
+			const db = firebase.firestore();
+		</script>
 		<script src="search.js"></script>
 	</body>
 </html>

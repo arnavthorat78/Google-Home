@@ -1,5 +1,6 @@
 // Getting the command section
 const google = document.querySelector(".google");
+const recentSearches = document.querySelector("#recentSearches");
 const response = document.querySelector(".response");
 
 // Getting special command response sections
@@ -19,8 +20,18 @@ if (fullNameRaw == null) {
 	user.innerHTML = fullName;
 }
 
-// Leave the remove music button hidden as default
+// Leave the remove button hidden as default
 smallButton.style.visibility = "hidden";
+
+let recentSearchesLocal = localStorage.getItem("userRecentSearches").split(",");
+
+for (let i = 0; i < recentSearchesLocal.length; i++) {
+	if (i > 5) {
+		recentSearchesLocal = recentSearchesLocal.slice(recentSearchesLocal.length - 10, 10);
+	}
+
+	recentSearches.innerHTML += `<option value="${recentSearchesLocal[i]}">`;
+}
 
 /**
  * This method is to be used for responding to search queries, URL commands, and also smart commands.
@@ -154,6 +165,39 @@ google.addEventListener("submit", (e) => {
 	// Getting the command and parameters
 	let userCommand = google.command.value;
 	let parameters = google.params.value;
+
+	let recentSearchArray = [];
+
+	for (let i = 0; i < recentSearchesLocal.length; i++) {
+		if (i > 4) {
+			break;
+		}
+
+		recentSearchArray.push(recentSearchesLocal[i]);
+	}
+
+	recentSearchArray.push(userCommand);
+	localStorage.setItem("userRecentSearches", recentSearchArray);
+	recentSearches.innerHTML += `<option value="${userCommand}">`;
+
+	let recentRef = db.collection("users").doc(fullNameRaw.split(",")[2]);
+
+	db.runTransaction((transaction) => {
+		return transaction.get(recentRef).then((recent) => {
+			if (!recent.exists) {
+				throw "Document does not exist!";
+			}
+
+			let newRecentSearch = (recent.data().recent_searches = recentSearchArray);
+			transaction.update(recentRef, { recent_searches: newRecentSearch });
+		});
+	})
+		.then(() => {
+			console.log("Transaction successfully committed!");
+		})
+		.catch((error) => {
+			console.log("Transaction failed: ", error);
+		});
 
 	if (parameters == "Search") {
 		// If the user wants to search for something
