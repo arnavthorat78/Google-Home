@@ -4,6 +4,8 @@ const temp = document.querySelector(".temp");
 
 const user = document.querySelector(".user");
 
+let users = [];
+
 let fullNameRaw = localStorage.getItem("user");
 if (fullNameRaw == null) {
 	user.innerHTML = "User";
@@ -25,42 +27,62 @@ const togglePassword = () => {
 	}
 };
 
-const addUser = (user) => {
-	let recent_searches = [];
-	user.recent_searches.forEach((search) => {
-		recent_searches.push(search);
-	});
-	let html = `
-	<p>
-		<div>${user.first_name} ${user.last_name}</div>
-		<div>${recent_searches.join(", ")}</div>
-	</p>
-	`;
+// const addUser = (user) => {
+// 	let recent_searches = [];
+// 	user.recent_searches.forEach((search) => {
+// 		recent_searches.push(search);
+// 	});
+// 	let html = `
+// 	<p>
+// 		<div>${user.first_name} ${user.last_name}</div>
+// 		<div>${recent_searches.join(", ")}</div>
+// 	</p>
+// 	`;
 
-	temp.innerHTML += html;
-};
+// 	temp.innerHTML += html;
+// };
 
 db.collection("users")
 	.get()
 	.then((snapshot) => {
 		snapshot.docs.forEach((doc) => {
-			addUser(doc.data());
+			users.push(doc.data());
 		});
 	})
 	.catch((err) => {
 		console.log(err);
 	});
 
+// db.collection("users")
+// 	.get()
+// 	.then((snapshot) => {
+// 		snapshot.docs.forEach((doc) => {
+// 			addUser(doc.data());
+// 		});
+// 	})
+// 	.catch((err) => {
+// 		console.log(err);
+// 	});
+
 signUp.addEventListener("submit", (e) => {
 	e.preventDefault();
 
-	let firstName = signUp.firstName.value;
-	let lastName = signUp.lastName.value;
-	let username = signUp.username.value;
-	let email = signUp.email.value;
+	let firstName = signUp.firstName.value.replace(/[,]/g, "").trim();
+	let lastName = signUp.lastName.value.replace(/[,]/g, "").trim();
+	let username = signUp.username.value.replace(/[,]/g, "").trim();
+	let email = signUp.email.value.replace(/[,]/g, "").trim();
 	let password = signUp.password.value;
 
 	if (passwordPattern.test(password)) {
+		for (let i = 0; i < users.length; i++) {
+			if (users[i].username == username) {
+				feedback.innerHTML =
+					"Sorry, but an account with this username already exists. Please choose another username.";
+
+				return;
+			}
+		}
+
 		const user = {
 			first_name: firstName,
 			last_name: lastName,
