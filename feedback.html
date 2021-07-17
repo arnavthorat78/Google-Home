@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" href="./img/Google.png" />
 		<link rel="stylesheet" href="styles.css" />
-		<title>Google Home - Sign Up</title>
+		<title>Google Home - Feedback</title>
 	</head>
 	<body>
 		<ul class="navbar">
@@ -18,7 +19,7 @@
 				<img class="navbarImg" src="./img/Search.png" alt="Search" draggable="false" />
 				<a class="navbarA" href="search.html">Search</a>
 			</li>
-			<li class="navbarLink">
+            <li class="navbarLink active">
 				<img class="navbarImg" src="./img/Feedback.png" alt="Feedback" draggable="false" />
 				<a class="navbarA" href="feedback.html">Feedback</a>
 			</li>
@@ -47,7 +48,7 @@
 				</a>
 			</li>
 
-			<li class="navbarLink active" style="float: right">
+			<li class="navbarLink" style="float: right">
 				<img class="navbarImg" src="./img/User.png" alt="User" draggable="false" />
 				<a class="navbarA" href="signUp.html">Sign Up</a>
 			</li>
@@ -57,60 +58,30 @@
 			</li>
 		</ul>
 
-		<h1 class="mainTitle">Sign Up</h1>
+		<h1 class="mainTitle">Feedback</h1>
 
-		<p>
-			Make an account over here! You will have access to many more features if you make an
-			account with us!
-		</p>
+		<p>This page is currently in development. Please do not use it until further notice.</p>
 
-		<p>
-			<strong
-				>Important Notice: Since <a href="updates.html">version 1.2.0</a> is currently
-				pending, some website features may not function properly.</strong
-			>
-		</p>
-
-		<form class="signUp">
-			<input
+        <form class="feedbackForm">
+            <input
 				type="text"
-				id="firstName"
-				name="firstName"
-				placeholder="First Name..."
+				id="title"
+				name="title"
+				placeholder="Title..."
 				required
 			/>
-			<input
-				type="text"
-				id="lastName"
-				name="lastName"
-				placeholder="Last Name..."
-				required
-			/>&nbsp;
 
-			<input type="text" id="username" name="username" placeholder="Username..." required />
-			<input type="email" id="email" name="email" placeholder="Email..." required />&nbsp;
+            <textarea id="description" name="description" placeholder="Description..." required></textarea>
 
-			<input
-				type="password"
-				id="password"
-				name="password"
-				placeholder="Password..."
-				required
-			/>
-			<label for="showPassword">Show password</label>
-			<input
-				type="checkbox"
-				name="showPassword"
-				id="showPassword"
-				onclick="togglePassword()"
-			/>
+            <button class="submitFeedback submitButton" type="submit">Submit Feedback</button>
+            <div class="response"></div>
+        </form>
 
-			<button class="signUpButton submitButton" type="submit">Sign Up</button>
+        <hr>
 
-			<div class="feedback"></div>
-		</form>
+        <div class="feedback"></div>
 
-		<!-- The core Firebase JS SDK is always required and must be listed first -->
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
 		<script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-firestore.js"></script>
 
@@ -130,6 +101,6 @@
 			firebase.initializeApp(firebaseConfig);
 			const db = firebase.firestore();
 		</script>
-		<script src="signUp.js"></script>
-	</body>
+		<script src="feedback.js"></script>
+</body>
 </html>
