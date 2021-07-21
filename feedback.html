@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -19,7 +18,7 @@
 				<img class="navbarImg" src="./img/Search.png" alt="Search" draggable="false" />
 				<a class="navbarA" href="search.html">Search</a>
 			</li>
-            <li class="navbarLink active">
+			<li class="navbarLink active">
 				<img class="navbarImg" src="./img/Feedback.png" alt="Feedback" draggable="false" />
 				<a class="navbarA" href="feedback.html">Feedback</a>
 			</li>
@@ -62,27 +61,37 @@
 
 		<p>Use this page to send feedback about this website!</p>
 
-        <form class="feedbackForm">
-            <input
-				type="text"
-				id="title"
-				name="title"
-				placeholder="Title..."
-				required
-			/>
-
-            <textarea id="description" name="description" placeholder="Description..." required></textarea>
-
-            <button class="submitFeedback submitButton" type="submit">Submit Feedback</button>
-            <div class="response"></div>
-        </form>
-
-        <hr>
-
-        <div class="feedback">
+		<div class="info">
+			<h4>Important Notice!</h4>
+			<strong style="font-size: 3vh">We are going to change our look (UI)!</strong
+			><br /><br />
+			<img src="./img/Bootstrap-Image.png" alt="Bootstrap" draggable="false" />
+			<p>
+				We are going to change our look (UI) of the website to
+				<a href="https://getbootstrap.com/">Bootstrap</a>! For more information about this
+				update, go to the <a href="updates.html">Updates page</a>!
+			</p>
 		</div>
 
-        <!-- The core Firebase JS SDK is always required and must be listed first -->
+		<form class="feedbackForm">
+			<input type="text" id="title" name="title" placeholder="Title..." required />
+
+			<textarea
+				id="description"
+				name="description"
+				placeholder="Description..."
+				required
+			></textarea>
+
+			<button class="submitFeedback submitButton" type="submit">Submit Feedback</button>
+			<div class="response"></div>
+		</form>
+
+		<hr />
+
+		<div class="feedback"></div>
+
+		<!-- The core Firebase JS SDK is always required and must be listed first -->
 		<script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-firestore.js"></script>
 
@@ -103,5 +112,5 @@
 			const db = firebase.firestore();
 		</script>
 		<script src="feedback.js"></script>
-</body>
+	</body>
 </html>

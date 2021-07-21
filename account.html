@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" href="./img/Google.png" />
 		<link rel="stylesheet" href="styles.css" />
-		<title>Google Home - Account Activity</title>
+		<title>Google Home - Account</title>
 	</head>
 	<body>
 		<ul class="navbar">
@@ -60,22 +59,44 @@
 
 		<h1 class="mainTitle">Account</h1>
 
-        <p>Use this page to see your account settings!</p>
+		<p>Use this page to see your account settings!</p>
 
-        <button class="signOut" style="background-color: #e00000">   
-            Sign Out
-            <br>
-            <img style="width: 25px; height: 25px;" src="./img/Sign-out.png" alt="Sign-out" draggable="false" />
-        </button>
+		<div class="info">
+			<h4>Important Notice!</h4>
+			<strong style="font-size: 3vh">We are going to change our look (UI)!</strong
+			><br /><br />
+			<img src="./img/Bootstrap-Image.png" alt="Bootstrap" draggable="false" />
+			<p>
+				We are going to change our look (UI) of the website to
+				<a href="https://getbootstrap.com/">Bootstrap</a>! For more information about this
+				update, go to the <a href="updates.html">Updates page</a>!
+			</p>
+		</div>
 
-        <button class="deleteAccount" style="background-color: #e00000">   
-            Delete Account
-            <br>
-            <img style="width: 25px; height: 25px;" src="./img/Delete User.png" alt="Sign-out" draggable="false" />
-        </button>
+		<button class="signOut" style="background-color: #e00000">
+			Sign Out
+			<br />
+			<img
+				style="width: 25px; height: 25px"
+				src="./img/Sign-out.png"
+				alt="Sign-out"
+				draggable="false"
+			/>
+		</button>
 
-        <form class="deleteAccountPassword">
-            <input
+		<button class="deleteAccount" style="background-color: #e00000">
+			Delete Account
+			<br />
+			<img
+				style="width: 25px; height: 25px"
+				src="./img/Delete User.png"
+				alt="Sign-out"
+				draggable="false"
+			/>
+		</button>
+
+		<form class="deleteAccountPassword">
+			<input
 				type="password"
 				id="password"
 				name="password"
@@ -91,9 +112,9 @@
 			/>
 
 			<button class="signUpButton submitButton" type="submit">Delete Account</button>
-        </form>
+		</form>
 
-        <div class="feedback"></div>
+		<div class="feedback"></div>
 
 		<!-- The core Firebase JS SDK is always required and must be listed first -->
 		<script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
@@ -116,5 +137,5 @@
 			const db = firebase.firestore();
 		</script>
 		<script src="account.js"></script>
-</body>
+	</body>
 </html>

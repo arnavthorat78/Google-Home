@@ -25,7 +25,7 @@ const addFeedback = (feedback, id) => {
 	let html = `
 	<article data-id="${id}">
         <h2>${feedback.title}</h2>
-        <strong style="font-size: 3vh">Posted by ${localInfo[0]} ${localInfo[1]}</strong>
+        <strong style="font-size: 3vh">Posted by ${feedback.author}</strong>
         <p style="font-size: 2.75vh">${feedback.description}</p>
         <strong style="font-size: 2.25vh"><img style="height: 25px; width: 25px; cursor: pointer;" class="like" src="./img/Likes.png" alt="Likes" draggable="false" /> ${feedback.thumbs_up}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <strong style="font-size: 2.25vh"><img style="height: 25px; width: 25px; cursor: pointer;" class="dislike" src="./img/Dislikes.png" alt="Dislikes" draggable="false" /> ${feedback.thumbs_down}</strong><br><br>
@@ -77,12 +77,15 @@ feedbackForm.addEventListener("submit", (e) => {
 	let title = feedbackForm.title.value.trim();
 	let description = feedbackForm.description.value;
 
+	let localInfo = fullNameRaw.split(",");
+
 	let firebaseTitle = title.replace(/[!#$%&*+\\/?@[\]^_`{|}~]/g, "");
 
 	const now = new Date();
 	const feedback = {
 		title: title,
 		description: description,
+		author: `${localInfo[0]} ${localInfo[1]}`,
 		thumbs_up: 0,
 		thumbs_down: 0,
 		spam_rates: 0,

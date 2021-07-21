@@ -91,6 +91,11 @@ article {
 	border: 2px solid #ff0000;
 }
 
+.info {
+	border: 2.5px dotted #ff0000;
+	margin: 15px auto;
+}
+
 @keyframes googleColours {
 	0% {
 		color: #ff0000;
