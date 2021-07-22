@@ -6,56 +6,119 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" href="./img/Google.png" />
 		<link rel="stylesheet" href="styles.css" />
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+		/>
 		<title>Google Home - Updates</title>
 	</head>
 	<body>
-		<ul class="navbar">
-			<li class="navbarLink">
-				<img class="navbarImg" src="./img/Home.png" alt="Home" draggable="false" />
-				<a class="navbarA" href="index.html">Home</a>
-			</li>
-			<li class="navbarLink">
-				<img class="navbarImg" src="./img/Search.png" alt="Search" draggable="false" />
-				<a class="navbarA" href="search.html">Search</a>
-			</li>
-			<li class="navbarLink">
-				<img class="navbarImg" src="./img/Feedback.png" alt="Feedback" draggable="false" />
-				<a class="navbarA" href="feedback.html">Feedback</a>
-			</li>
-			<li class="navbarLink">
-				<img class="navbarImg" src="./img/Security.png" alt="Search" draggable="false" />
-				<a class="navbarA" href="permissions.html">Permissions</a>
-			</li>
-			<li class="navbarLink active">
-				<img class="navbarImg" src="./img/Update.png" alt="Update" draggable="false" />
-				<a class="navbarA" href="updates.html">Updates</a>
-			</li>
-			<li class="navbarLink">
-				<img class="navbarImg" src="./img/About.png" alt="About" draggable="false" />
-				<a class="navbarA" href="about.html">About</a>
-			</li>
-
-			<li class="navbarLink" style="float: right; border-left: 1px solid #555555">
-				<img
-					class="navbarImg"
-					src="./img/Account (2).png"
-					alt="Account"
-					draggable="false"
-				/>
-				<a class="navbarA" href="account.html">
-					<strong class="user">User</strong>
+		<nav class="navbar navbar-expand-xl navbar-dark bg-dark">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="#">
+					<img
+						src="./img/Google.png"
+						alt="Google"
+						width="30"
+						height="30"
+						class="d-inline-block align-text-top"
+					/>
+					Google Home
 				</a>
-			</li>
-
-			<li class="navbarLink" style="float: right">
-				<img class="navbarImg" src="./img/User.png" alt="User" draggable="false" />
-				<a class="navbarA" href="signUp.html">Sign Up</a>
-			</li>
-			<li class="navbarLink" style="float: right">
-				<img class="navbarImg" src="./img/Sign-in.png" alt="Sign-in" draggable="false" />
-				<a class="navbarA" href="signIn.html">Sign In</a>
-			</li>
-		</ul>
+				<button
+					class="navbar-toggler"
+					type="button"
+					data-bs-toggle="collapse"
+					data-bs-target="#navbarNavDropdown"
+					aria-controls="navbarNavDropdown"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+				>
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNavDropdown">
+					<ul class="navbar-nav">
+						<li class="nav-item">
+							<a class="nav-link" href="index.html">
+								<i class="bi bi-house"></i>
+								Home
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="search.html">
+								<i class="bi bi-search"></i>
+								Search
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="feedback.html">
+								<i class="bi bi-chat-text"></i>
+								Feedback
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" aria-current="page" href="updates.html">
+								<i class="bi bi-gear"></i>
+								Updates
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="permissions.html">
+								<i class="bi bi-shield-shaded"></i>
+								Permissions
+							</a>
+						</li>
+						<li class="nav-item border-end">
+							<a class="nav-link" href="about.html">
+								<i class="bi bi-info-circle"></i>
+								About
+							</a>
+						</li>
+						<li class="nav-item me-auto">
+							<a class="nav-link" href="signIn.html">
+								<i class="bi bi-box-arrow-in-right"></i>
+								Sign In
+							</a>
+						</li>
+						<li class="nav-item me-auto">
+							<a class="nav-link" href="signUp.html">
+								<i class="bi bi-person-plus"></i>
+								Sign Up
+							</a>
+						</li>
+						<li class="nav-item border">
+							<a class="nav-link" href="account.html">
+								<i class="bi bi-person-circle"></i>
+								<strong class="user">User</strong>
+							</a>
+						</li>
+						<!-- <li class="nav-item dropdown">
+							<a
+								class="nav-link dropdown-toggle"
+								href="#"
+								id="navbarDropdownMenuLink"
+								role="button"
+								data-bs-toggle="dropdown"
+								aria-expanded="false"
+							>
+								Dropdown link
+							</a>
+							<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+								<li><a class="dropdown-item" href="#">Action</a></li>
+								<li><a class="dropdown-item" href="#">Another action</a></li>
+								<li><a class="dropdown-item" href="#">Something else here</a></li>
+							</ul>
+						</li> -->
+					</ul>
+				</div>
+			</div>
+		</nav>
 
 		<h1 class="mainTitle">Updates</h1>
 
@@ -69,11 +132,11 @@
 		</div>
 
 		<article>
-			<h3 style="color: #ffae00">Coming Soon: Version 1.3.0</h3>
-			<img src="./img/Bootstrap.png" alt="Bootstrap" draggable="false" /><br />
+			<h3 style="color: #ff0000">Currently Pending: Version 1.3.0</h3>
+			<!-- <img src="./img/Bootstrap.png" alt="Bootstrap" draggable="false" /><br /> -->
 			<strong style="font-size: 3vh">Bootstrap (UI)</strong>
 			<p>
-				This is a very exciting updates, because the entire website's look (UI) is going
+				This is a very exciting update, because the entire website's look (UI) is going
 				to be changed by Bootstrap! There will be a page for help on how to use the new
 				features as well!
 				<br />
@@ -84,7 +147,7 @@
 
 		<article>
 			<h3>Version 1.2.0</h3>
-			<img src="./img/Comment.png" alt="Comment" draggable="false" /><br />
+			<!-- <img src="./img/Comment.png" alt="Comment" draggable="false" /><br /> -->
 			<strong style="font-size: 3vh">Feedback</strong>
 			<p>
 				You can now post feedback from the <a class="navbarA" href="feedback.html">Feedback page</a>!
@@ -104,7 +167,7 @@
 
 		<article>
 			<h3>Version 1.1.0</h3>
-			<img src="./img/Account.png" alt="Account" draggable="false" /><br />
+			<!-- <img src="./img/Account.png" alt="Account" draggable="false" /><br /> -->
 			<strong style="font-size: 3vh">Accounts</strong>
 			<p>
 				This website now has accounts! This is a very exciting update, as account
@@ -161,7 +224,7 @@
 
 		<article>
 			<h3>Version 1.0.5</h3>
-			<img src="./img/Tabs.png" alt="Tabs" draggable="false" /><br />
+			<!-- <img src="./img/Tabs.png" alt="Tabs" draggable="false" /><br /> -->
 			<strong style="font-size: 3vh">Tabs</strong>
 			<p>
 				This website had all of the pages on the naviagtion bar, such as search,
@@ -191,7 +254,7 @@
 
 		<article>
 			<h3>Version 1.0.0</h3>
-			<img src="./img/Computer.png" alt="Computer" draggable="false" /><br />
+			<!-- <img src="./img/Computer.png" alt="Computer" draggable="false" /><br /> -->
 			<strong style="font-size: 3vh">Initial Website</strong>
 			<p>This website featured all of the beginning features. These included:</p>
 			<ul>
@@ -203,6 +266,11 @@
 			</ul>
 		</article>
 
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+			crossorigin="anonymous"
+		></script>
 		<script src="updates.js"></script>
 	</body>
 </html>

@@ -46,10 +46,10 @@ textarea {
 	height: 100px;
 }
 
-img {
+/* img {
 	height: 100px;
 	width: 100px;
-}
+} */
 
 button {
 	width: 150px;
@@ -117,7 +117,7 @@ article {
 }
 
 /* Navbar (thanks to W3Schools!) */
-.navbar {
+/* .navbar {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
@@ -145,7 +145,7 @@ article {
 .active {
 	background-color: #04aa6d;
 	color: #ffffff;
-}
+} */
 
 .credits {
 	font-size: 1.25vh;
