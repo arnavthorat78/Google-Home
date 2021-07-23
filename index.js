@@ -1,5 +1,6 @@
 const user = document.querySelector(".user");
 const greeting = document.querySelector(".greeting");
+const scrollUp = document.querySelector(".scrollUp");
 
 let randNum = Math.ceil(Math.random() * 5);
 
@@ -24,3 +25,11 @@ if (fullNameRaw == null) {
 		greeting.innerHTML = `Hi, ${firstName}!`;
 	}
 }
+
+scrollUp.addEventListener("click", () => {
+	window.scroll({
+		top: 0,
+		left: 0,
+		behavior: "smooth",
+	});
+});

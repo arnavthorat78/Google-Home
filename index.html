@@ -126,76 +126,128 @@
 					<div class="col-md-5 text-center text-md-start">
 						<h1>
 							<div class="display-2">Google Home</div>
-							<div class="display-5 text-muted greeting">User</div>
+							<div class="display-5 text-muted greeting">Welcome!</div>
 						</h1>
 						<p class="lead my-4 text-muted">
-							Use this website for preforming Smart tasks on your computer... and much more!
+							Use this website for preforming Smart tasks on your computer... and much
+							more!
 						</p>
 						<a href="search.html" class="btn btn-success btn-lg">Search Now!</a>
+
+						<p class="text-muted pt-3">Or create an account with us and sign in!</p>
+
+						<div class="btn-group" role="group" aria-label="Account">
+							<a href="signIn.html" class="btn btn-outline-danger">
+								<i class="bi bi-box-arrow-in-right"></i> Sign In
+							</a>
+							<a href="signUp.html" class="btn btn-outline-danger">
+								<i class="bi bi-person-plus"></i> Sign Up
+							</a>
+						</div>
 					</div>
 					<div class="col-md-5 text-center d-none d-md-block">
-							<img
-								class="img-fluid"
-								src="./img/Google.png"
-								alt="Google"
-							/>
-						</span>
+						<img class="img-fluid" src="./img/Google.png" alt="Google" />
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<div class="info">
-			<h4>Important Notice!</h4>
-			<strong style="font-size: 3vh">We are going to change our look (UI)!</strong
-			><br /><br />
-			<img src="./img/Bootstrap-Image.png" alt="Bootstrap" draggable="false" />
-			<p>
-				We are going to change our look (UI) of the website to
-				<a href="https://getbootstrap.com/">Bootstrap</a>! For more information about this
-				update, go to the <a href="updates.html">Updates page</a>!
-			</p>
+		<div class="alert alert-danger d-flex justify-content-center ms-5 me-5" role="alert">
+			<div>
+				<div class="display-6"><i class="bi bi-exclamation-triangle-fill"></i></div>
+				<br />
+				<h3>Important Notice!</h3>
+				<p class="lead">
+					We are changing our look (UI) to
+					<a href="https://getbootstrap.com/" target="_blank" class="text-decoration-none"
+						>Bootstrap!</a
+					>
+				</p>
+				<img class="img-fluid" src="./img/Bootstrap-Image.png" alt="Bootstrap" />
+				<p>During this time, some features may not work properly.</p>
+			</div>
 		</div>
 
-		<hr />
+		<section class="p-5 bg-light">
+			<div class="container-lg">
+				<h2>Trending</h2>
+				<p class="lead text-muted">See what all of the trending news of the website is!</p>
 
-		<h3>Trending</h3>
+				<div class="row my-5 align-items-center justify-content-center g-0">
+					<div class="card shadow" style="width: 20rem">
+						<div class="card-img-top display-3">
+							<i class="bi bi-person-circle"></i>
+						</div>
+						<div class="card-body">
+							<h5 class="card-title text-success">
+								<i class="bi bi-check-circle-fill"></i>
+								Just Released: Version 1.1.0
+							</h5>
+							<p class="lead card-subtitle">Accounts</p>
+							<p class="card-text">
+								We are updating version 1.3.0 currently! This may cause some
+								unwanted issues, but the update will conclude soon, and you'll be
+								met with a brand-new dashboard and website!
+							</p>
+							<a href="updates.html" class="btn btn-success">More Information</a>
+						</div>
+					</div>
 
-		<strong style="font-size: 3vh">See the update that's about to come!</strong>
+					<div class="card shadow" style="width: 25rem">
+						<div class="card-header text-center text-danger fw-bold">Headline</div>
+						<div class="card-img-top display-3">
+							<i class="bi bi-bootstrap-fill"></i>
+						</div>
+						<div class="card-body">
+							<h5 class="card-title text-danger">
+								<i class="bi bi-exclamation-triangle-fill"></i>
+								Currently Pending: Version 1.3.0
+							</h5>
+							<p class="lead card-subtitle">Bootstrap (UI)</p>
+							<p class="card-text">
+								We are updating version 1.3.0 currently! This may cause some
+								unwanted issues, but the update will conclude soon, and you'll be
+								met with a brand-new dashboard and website!
+							</p>
+							<a href="updates.html" class="btn btn-danger">See More!</a>
+						</div>
+					</div>
 
-		<article>
-			<h3 style="color: #ffae00">Coming Soon: Version 1.3.0</h3>
-			<!-- <img src="./img/Bootstrap.png" alt="Bootstrap" draggable="false" /><br /> -->
-			<strong style="font-size: 3vh">Bootstrap (UI)</strong>
-			<p>See more on the <a href="updates.html">Updates page</a>!</p>
-			<br />
-			<p>
-				This update relates to the notice at the top of every page as well, with the
-				following logo:
-				<br /><br /><img
-					style="width: 50px; height: 50px"
-					src="./img/Bootstrap-Image.png"
-					alt="Bootstrap"
-					draggable="false"
-				/>
-			</p>
-		</article>
+					<div class="card shadow" style="width: 20rem">
+						<div class="card-img-top display-3">
+							<i class="bi bi-chat-text-fill"></i>
+						</div>
+						<div class="card-body">
+							<h5 class="card-title text-success">
+								<i class="bi bi-check-circle-fill"></i>
+								Just Released: Version 1.2.0
+							</h5>
+							<p class="lead card-subtitle">
+								Feedback <span class="badge bg-info">BETA</span>
+							</p>
+							<p class="card-text">
+								This update was very exciting! It is still in BETA mode, so some
+								features are being tested and may not work.
+							</p>
+							<a href="updates.html" class="btn btn-success">More Information</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 
-		<hr />
+		<section class="p-5">
+			<div class="container-lg">
+				<h2>Start Playing!</h2>
+				<p class="lead text-muted">Start playing with the website! Have fun!</p>
 
-		<h3>What's on this Website?</h3>
-
-		<p>
-			Let's see what's on this website!
-			<br /><br />
-			For the main part of this website, navigate to the
-			<a href="search.html">Search page</a>! In here, you can either type in a URL, search for
-			something on Google, or play around with some Smart features!
-			<br />
-			You may have to give this websites some permissions. For this, go to the
-			<a href="permissions.html">Permissions page</a> and follow the steps! <br /><br />
-			You can also create an account, and also check out updates and learn about this website!
-		</p>
+				<button type="button" class="btn btn-success scrollUp">Navigate to Top</button>
+				<br />
+				<small class="text-muted"
+					>Scroll to the top to see the available links on the naviagtion bar!</small
+				>
+			</div>
+		</section>
 
 		<script
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
