@@ -21,14 +21,13 @@
 	<body>
 		<nav class="navbar navbar-expand-xl navbar-dark bg-dark">
 			<div class="container-fluid">
-				<a class="navbar-brand" href="#">
-					<img
-						src="./img/Google.png"
-						alt="Google"
-						width="30"
-						height="30"
-						class="d-inline-block align-text-top"
-					/>
+				<a class="navbar-brand" href="index.html">
+					<div
+						class="text-danger d-inline-block align-text-top"
+						style="width: 30px; height: 30px"
+					>
+						<i class="bi bi-google"></i>
+					</div>
 					Google Home
 				</a>
 				<button
@@ -120,39 +119,153 @@
 			</div>
 		</nav>
 
-		<h1 class="mainTitle">Feedback</h1>
+		<section class="p-5" id="title">
+			<div class="container-lg">
+				<div class="row justify-content-center align-items-center">
+					<div class="col-md-5 text-center text-md-start">
+						<h1>
+							<div class="display-2">
+								Feedback <span class="badge bg-info">BETA</span>
+							</div>
+							<div class="display-5 text-muted">
+								Post your thoughts about this website!
+							</div>
+						</h1>
+						<p class="lead my-4 text-muted">
+							Add feedback so that people can see what you want for this website; what
+							you like and dislike. The developer also reads this, so they will be
+							able to update it accordingly if possible.
+						</p>
+					</div>
+					<div class="col-md-5 text-center d-none d-md-block">
+						<div class="display-1 text-warning">
+							<i class="bi bi-chat-text-fill"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 
-		<p>Use this page to send feedback about this website!</p>
-
-		<div class="info">
-			<h4>Important Notice!</h4>
-			<strong style="font-size: 3vh">We are going to change our look (UI)!</strong
-			><br /><br />
-			<img src="./img/Bootstrap-Image.png" alt="Bootstrap" draggable="false" />
-			<p>
-				We are going to change our look (UI) of the website to
-				<a href="https://getbootstrap.com/">Bootstrap</a>! For more information about this
-				update, go to the <a href="updates.html">Updates page</a>!
-			</p>
+		<div
+			class="alert alert-danger d-flex justify-content-center ms-5 me-5"
+			role="alert"
+			id="alert"
+		>
+			<div>
+				<div class="display-6"><i class="bi bi-exclamation-triangle-fill"></i></div>
+				<br />
+				<h3>Important Notice!</h3>
+				<p class="lead">
+					We are changing our look (UI) to
+					<a href="https://getbootstrap.com/" target="_blank" class="text-decoration-none"
+						>Bootstrap</a
+					>!
+				</p>
+				<img class="img-fluid" src="./img/Bootstrap-Image.png" alt="Bootstrap" />
+				<p>During this time, some features may not work properly.</p>
+			</div>
 		</div>
 
-		<form class="feedbackForm">
-			<input type="text" id="title" name="title" placeholder="Title..." required />
+		<div
+			class="alert alert-warning d-flex justify-content-center ms-5 me-5"
+			role="alert"
+			id="alert"
+		>
+			<div>
+				<div class="display-6"><i class="bi bi-exclamation-triangle-fill"></i></div>
+				<br />
+				<h3>Site not Working!</h3>
+				<p class="lead">
+					Sorry, but this site is not fully operational. The problems are that you cannot
+					like, dislike, or spam a post. You can, however, post comments, so you may use
+					that feature if you wish.
+				</p>
+				<a href="index.html" class="btn btn-warning">Navigate to Home!</a>
+			</div>
+		</div>
 
-			<textarea
-				id="description"
-				name="description"
-				placeholder="Description..."
-				required
-			></textarea>
+		<section class="p-5" id="form">
+			<div class="container-lg">
+				<div class="text-center">
+					<h2>Add Feedback!</h2>
+					<p class="lead">Add feedback about this website here!</p>
+				</div>
 
-			<button class="submitFeedback submitButton" type="submit">Submit Feedback</button>
-			<div class="response"></div>
-		</form>
+				<div class="row justify-content-center my-5">
+					<div class="col-lg-6">
+						<form class="feedbackForm">
+							<div class="input-group mb-3">
+								<span class="input-group-text">
+									<i class="bi bi-card-heading"></i>
+								</span>
+								<input
+									type="text"
+									class="form-control"
+									id="title"
+									name="title"
+									placeholder="Title..."
+									required
+								/>
+							</div>
 
-		<hr />
+							<div class="form-floating">
+								<textarea
+									class="form-control"
+									placeholder="Description"
+									id="description"
+									style="height: 100px"
+								></textarea>
+								<label for="description">Description...</label>
+							</div>
 
-		<div class="feedback"></div>
+							<div class="mt-3">
+								<button type="submit" class="btn btn-primary mb-3 submitFeedback">
+									Post
+								</button>
+							</div>
+
+							<div class="response"></div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="p-5 bg-light" id="feedback">
+			<div class="feedback">
+				<!-- <div class="card shadow" style="width: 100%">
+					<div class="card-body">
+						<h2 class="card-title">Nice!</h2>
+						<p class="card-subtitle text-muted">Posted by Arnav</p>
+						<p class="card-text" style="font-size: large">
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse nemo odit
+							hic maxime accusamus eligendi quis deserunt est rerum. Vel obcaecati sed
+							nulla fugiat soluta!
+						</p>
+					</div>
+					<ul class="list-group list-group-flush">
+						<li class="list-group-item">
+							<div class="h4 text-success">
+								<i class="bi bi-hand-thumbs-up-fill like" style="cursor: pointer"></i>
+								78
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="h4 text-danger">
+								<i class="bi bi-hand-thumbs-down-fill dislike" style="cursor: pointer"></i>
+								2
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="h4 text-warning">
+								<i class="bi bi-slash-circle-fill spam" style="cursor: pointer"></i>
+							</div>
+						</li>
+					</ul>
+					<div class="card-footer text-muted">Posted at Lorem ipsum dolor sit amet.</div>
+				</div> -->
+			</div>
+		</section>
 
 		<!-- The core Firebase JS SDK is always required and must be listed first -->
 		<script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>

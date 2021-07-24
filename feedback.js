@@ -19,26 +19,54 @@ if (fullNameRaw == null) {
 }
 
 const addFeedback = (feedback, id) => {
-	let localInfo = fullNameRaw.split(",");
-
 	let time = feedback.created_at.toDate();
+	// let html = `
+	// <article data-id="${id}">
+	//     <h2>${feedback.title}</h2>
+	//     <strong style="font-size: 3vh">Posted by ${feedback.author}</strong>
+	//     <p style="font-size: 2.75vh">${feedback.description}</p>
+	//     <strong style="font-size: 2.25vh"><img style="height: 25px; width: 25px; cursor: pointer;" class="like" src="./img/Likes.png" alt="Likes" draggable="false" /> ${feedback.thumbs_up}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	//     <strong style="font-size: 2.25vh"><img style="height: 25px; width: 25px; cursor: pointer;" class="dislike" src="./img/Dislikes.png" alt="Dislikes" draggable="false" /> ${feedback.thumbs_down}</strong><br><br>
+	//     <span style="font-size: 1.75vh; color: #555555;">Posted at ${time}</div><br><br>
+	// 	   <span style="font-size: 1.5vh;"><img style="height: 20px; width: 20px; cursor: pointer;" class="spam" src="./img/Spam.png" alt="Spam" draggable="false" /> ${feedback.spam_rates}</span>
+	// </article>
+	// `;
+
 	let html = `
-	<article data-id="${id}">
-        <h2>${feedback.title}</h2>
-        <strong style="font-size: 3vh">Posted by ${feedback.author}</strong>
-        <p style="font-size: 2.75vh">${feedback.description}</p>
-        <strong style="font-size: 2.25vh"><img style="height: 25px; width: 25px; cursor: pointer;" class="like" src="./img/Likes.png" alt="Likes" draggable="false" /> ${feedback.thumbs_up}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <strong style="font-size: 2.25vh"><img style="height: 25px; width: 25px; cursor: pointer;" class="dislike" src="./img/Dislikes.png" alt="Dislikes" draggable="false" /> ${feedback.thumbs_down}</strong><br><br>
-        <span style="font-size: 1.75vh; color: #555555;">Posted at ${time}</div><br><br>
-		<span style="font-size: 1.5vh;"><img style="height: 20px; width: 20px; cursor: pointer;" class="spam" src="./img/Spam.png" alt="Spam" draggable="false" /> ${feedback.spam_rates}</span>
-    </article>
+	<div class="card shadow mb-3" data-id="${id}" style="width: 100%">
+		<div class="card-body">
+			<h2 class="card-title">${feedback.title}</h2>
+			<p class="card-subtitle text-muted">Posted by ${feedback.author}</p>
+			<p class="card-text" style="font-size: large">${feedback.description}</p>
+		</div>
+		<ul class="list-group list-group-flush">
+			<li class="list-group-item">
+				<div class="h4 text-success">
+					<i class="bi bi-hand-thumbs-up-fill like" style="cursor: pointer"></i>
+					${feedback.thumbs_up}
+				</div>
+			</li>
+			<li class="list-group-item">
+				<div class="h4 text-danger">
+					<i class="bi bi-hand-thumbs-down-fill dislike" style="cursor: pointer"></i>
+					${feedback.thumbs_down}
+				</div>
+			</li>
+			<li class="list-group-item">
+				<div class="h4 text-warning">
+					<i class="bi bi-slash-circle-fill spam" style="cursor: pointer"></i>
+				</div>
+			</li>
+		</ul>
+		<div class="card-footer text-muted">Posted at ${time}</div>
+	</div>
 	`;
 
 	feedbackDiv.innerHTML += html;
 };
 
 const deleteFeedback = (id) => {
-	const feedbacks = document.querySelectorAll("article");
+	const feedbacks = document.querySelectorAll(".card");
 	feedbacks.forEach((feedback) => {
 		if (feedback.getAttribute("data-id") === id) {
 			feedback.remove();
@@ -104,8 +132,10 @@ feedbackForm.addEventListener("submit", (e) => {
 });
 
 feedbackDiv.addEventListener("click", (e) => {
-	if (e.target.className === "spam") {
+	if (e.target.className[2] === "spam") {
 		const id = e.target.parentElement.parentElement.parentElement.getAttribute("data-id");
+
+		console.log(id);
 
 		const sure = confirm(
 			"Are you sure you want to spam this feedback post? The post will not be visible to anyone."
