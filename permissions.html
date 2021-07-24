@@ -21,14 +21,13 @@
 	<body>
 		<nav class="navbar navbar-expand-xl navbar-dark bg-dark">
 			<div class="container-fluid">
-				<a class="navbar-brand" href="#">
-					<img
-						src="./img/Google.png"
-						alt="Google"
-						width="30"
-						height="30"
-						class="d-inline-block align-text-top"
-					/>
+				<a class="navbar-brand" href="index.html">
+					<div
+						class="text-danger d-inline-block align-text-top"
+						style="width: 30px; height: 30px"
+					>
+						<i class="bi bi-google"></i>
+					</div>
 					Google Home
 				</a>
 				<button
@@ -75,7 +74,7 @@
 							</a>
 						</li>
 						<li class="nav-item border-end">
-							<a class="nav-link" href="about.html">
+							<a class="nav-link disabled" href="about.html">
 								<i class="bi bi-info-circle"></i>
 								About
 							</a>
@@ -120,79 +119,222 @@
 			</div>
 		</nav>
 
-		<h1 class="mainTitle">Permissions</h1>
+		<section class="p-5" id="title">
+			<div class="container-lg">
+				<div class="row justify-content-center align-items-center">
+					<div class="col-md-5 text-center text-md-start">
+						<h1>
+							<div class="display-2">Permissions</div>
+							<div class="display-5 text-muted">Just for things to work...</div>
+						</h1>
+						<p class="lead my-4 text-muted">
+							We need access to some permissions for this website to function
+							properly. Please follow the steps below to enable them.
+						</p>
+					</div>
+					<div class="col-md-5 text-center d-none d-md-block">
+						<div class="display-1 text-primary">
+							<i class="bi bi-shield-shaded"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 
-		<p>
-			This page needs access to permissions. Use the following steps to allow the permissions.
-			<br />
-			If you don't know how to enable permissions, follow the steps below. However, if you do
-			know, enable the setting Pop-ups and redirects yourself.
-		</p>
-
-		<div class="info">
-			<h4>Important Notice!</h4>
-			<strong style="font-size: 3vh">We are going to change our look (UI)!</strong
-			><br /><br />
-			<img src="./img/Bootstrap-Image.png" alt="Bootstrap" draggable="false" />
-			<p>
-				We are going to change our look (UI) of the website to
-				<a href="https://getbootstrap.com/">Bootstrap</a>! For more information about this
-				update, go to the <a href="updates.html">Updates page</a>!
-			</p>
+		<div
+			class="alert alert-danger d-flex justify-content-center ms-5 me-5"
+			role="alert"
+			id="alert"
+		>
+			<div>
+				<div class="display-6"><i class="bi bi-exclamation-triangle-fill"></i></div>
+				<br />
+				<h3>Important Notice!</h3>
+				<p class="lead">
+					We are changing our look (UI) to
+					<a href="https://getbootstrap.com/" target="_blank" class="text-decoration-none"
+						>Bootstrap</a
+					>!
+				</p>
+				<img class="img-fluid" src="./img/Bootstrap-Image.png" alt="Bootstrap" />
+				<p>During this time, some features may not work properly.</p>
+			</div>
 		</div>
 
-		<hr />
+		<section class="p-5" id="redirects">
+			<div class="container-lg">
+				<div class="text-center">
+					<h2>Pop-ups & Redirects</h2>
+					<p class="lead">
+						Please follow the steps below to make the site work.
+						<br />
+						In case you were wondering what it is for, it is for searching on the Search
+						page.
+					</p>
+				</div>
 
-		<div class="instructions">
-			<span
-				>To enable pop-ups and redirects, preform the following steps depending on your
-				browser:</span
-			>
-			<br /><br />
+				<div
+					class="
+						alert alert-primary
+						d-flex
+						justify-content-center
+						ms-5
+						me-5
+						alert-dismissible
+						fade
+						show
+					"
+					role="alert"
+					id="alert"
+				>
+					<div>
+						<div class="display-6"><i class="bi bi-info-circle-fill"></i></div>
+						<br />
+						<h3>Unsupported Websites</h3>
+						<p class="lead">Some websites are not supported or are not listed below.</p>
+						<p>
+							<strong>Internet Explorer is not supported of any version.</strong>
+							<br />
+							Safari and Opera's steps, along with some other search engines, are not
+							listed below. We apologise for any inconvenience caused by this.
+						</p>
 
-			<strong>For Google Chrome:</strong>
-			<ul>
-				<span>1. Navigate to the button next to the URL (site information).</span>
-				<br />
-				<span>2. On the bottom, click <i>Site Settings</i>.</span>
-				<br />
-				<span>3. Scroll to <i>Pop-ups and redirects</i> and click <i>Allow</i>.</span>
-			</ul>
+						<button
+							type="button"
+							class="btn-close"
+							data-bs-dismiss="alert"
+							aria-label="Close"
+						></button>
+					</div>
+				</div>
 
-			<strong>For Microsoft Edge:</strong>
-			<ul>
-				<span>1. Navigate to the button next to the URL (site information).</span>
-				<br />
-				<span>2. Click <i>Permissions for this site</i> (with a password icon on it).</span>
-				<br />
-				<span>3. Scroll to <i>Pop-ups and redirects</i> and click <i>Allow</i>.</span>
-			</ul>
+				<nav class="mt-3">
+					<div class="nav nav-tabs" id="nav-tab" role="tablist">
+						<button
+							class="nav-link active"
+							id="nav-google-tab"
+							data-bs-toggle="tab"
+							data-bs-target="#nav-google"
+							type="button"
+							role="tab"
+							aria-controls="nav-google"
+							aria-selected="true"
+						>
+							Google Chrome
+						</button>
 
-			<strong>For Firefox:</strong>
-			<ul>
-				<span>
-					1. Navigate to the three horizontal lines (on the right side of the toolbar),
-					and click <i>Settings</i>.
-				</span>
-				<br />
-				<span>
-					2. Navigate to <i>Privacy and Security</i> on the left-hand side toolbar.
-				</span>
-				<br />
-				<span>
-					3. Scroll down to <i>Permissions</i>, and next to <i>Block pop-up windows</i>,
-					click <i>Exceptions...</i>.
-				</span>
-				<br />
-				<span>
-					4. Type in the URL of the website to allow (which is <u class="website"></u>,
-					with <u>search.html</u> instead of <u>permissions.html</u>). Then click
-					<i>Allow</i>.
-				</span>
-			</ul>
+						<button
+							class="nav-link"
+							id="nav-edge-tab"
+							data-bs-toggle="tab"
+							data-bs-target="#nav-edge"
+							type="button"
+							role="tab"
+							aria-controls="nav-edge"
+							aria-selected="true"
+						>
+							Microsoft Edge
+						</button>
 
-			<strong>This website does not support Internet Explorer.</strong><br />
-		</div>
+						<button
+							class="nav-link"
+							id="nav-firefox-tab"
+							data-bs-toggle="tab"
+							data-bs-target="#nav-firefox"
+							type="button"
+							role="tab"
+							aria-controls="nav-firefox"
+							aria-selected="true"
+						>
+							Firefox
+						</button>
+					</div>
+				</nav>
+
+				<div class="tab-content" id="nav-tabContent">
+					<div
+						class="tab-pane fade show active p-3"
+						id="nav-google"
+						role="tabpanel"
+						aria-labelledby="nav-google-tab"
+					>
+						<h2>Google Chrome</h2>
+						<ul>
+							<span
+								>1. Navigate to the button next to the URL (site information).</span
+							>
+							<br />
+							<span>2. On the bottom, click <i>Site Settings</i>.</span>
+							<br />
+							<span
+								>3. Scroll to <i>Pop-ups and redirects</i> and click
+								<i>Allow</i>.</span
+							>
+						</ul>
+					</div>
+
+					<div
+						class="tab-pane fade p-3"
+						id="nav-edge"
+						role="tabpanel"
+						aria-labelledby="nav-edge-tab"
+					>
+						<h2>Microsoft Edge</h2>
+						<ul>
+							<span
+								>1. Navigate to the button next to the URL (site information).</span
+							>
+							<br />
+							<span
+								>2. Click <i>Permissions for this site</i> (with a password icon on
+								it).</span
+							>
+							<br />
+							<span
+								>3. Scroll to <i>Pop-ups and redirects</i> and click
+								<i>Allow</i>.</span
+							>
+						</ul>
+					</div>
+
+					<div
+						class="tab-pane fade p-3"
+						id="nav-firefox"
+						role="tabpanel"
+						aria-labelledby="nav-firefox-tab"
+					>
+						<h2>Firefox</h2>
+						<ul>
+							<span>
+								1. Navigate to the three horizontal lines (on the right side of the
+								toolbar), and click <i>Settings</i>.
+							</span>
+							<br />
+							<span>
+								2. Navigate to <i>Privacy and Security</i> on the left-hand side
+								toolbar.
+							</span>
+							<br />
+							<span>
+								3. Scroll down to <i>Permissions</i>, and next to
+								<i>Block pop-up windows</i>, click <i>Exceptions...</i>.
+							</span>
+							<br />
+							<span>
+								4. Type in the URL of the website to allow (which is
+								<u class="website"></u>, with <u>search.html</u> instead of
+								<u>permissions.html</u>). Then click <i>Allow</i>.
+							</span>
+						</ul>
+					</div>
+				</div>
+
+				<small class="text-muted"
+					>Internet Explorer is not supported. Safari, Opera, and other search engines'
+					steps could not be received. Sorry for the inconvenience.</small
+				>
+			</div>
+		</section>
 
 		<script
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

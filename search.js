@@ -23,15 +23,15 @@ if (fullNameRaw == null) {
 // Leave the remove button hidden as default
 smallButton.style.visibility = "hidden";
 
-let recentSearchesLocal = localStorage.getItem("userRecentSearches").split(",");
+// let recentSearchesLocal = localStorage.getItem("userRecentSearches").split(",");
 
-for (let i = 0; i < recentSearchesLocal.length; i++) {
-	if (i > 5) {
-		recentSearchesLocal = recentSearchesLocal.slice(recentSearchesLocal.length - 10, 10);
-	}
+// for (let i = 0; i < recentSearchesLocal.length; i++) {
+// 	if (i > 5) {
+// 		recentSearchesLocal = recentSearchesLocal.slice(recentSearchesLocal.length - 10, 10);
+// 	}
 
-	recentSearches.innerHTML += `<option value="${recentSearchesLocal[i]}">`;
-}
+// 	recentSearches.innerHTML += `<option value="${recentSearchesLocal[i]}">`;
+// }
 
 /**
  * This method is to be used for responding to search queries, URL commands, and also smart commands.
@@ -131,7 +131,7 @@ const smartReact = (command) => {
 	) {
 		// If the user requested the collage
 		res("The collage is below!", 5000);
-		const collageHTML = `<a class="collageDownload" href="./img/Collage.png" download>\n<img class="collage" src="../img/Collage.png" alt="Collage" draggable="false" />\n</a>`;
+		const collageHTML = `<a class="collageDownload" href="./img/Collage.png" download>\n<img class="img-fluid m-2 collage" src="../img/Collage.png" alt="Collage" draggable="false" />\n</a>`;
 
 		const removeCollage = () => {
 			collage.innerHTML = "";
@@ -166,38 +166,38 @@ google.addEventListener("submit", (e) => {
 	let userCommand = google.command.value;
 	let parameters = google.params.value;
 
-	let recentSearchArray = [];
+	// let recentSearchArray = [];
 
-	for (let i = 0; i < recentSearchesLocal.length; i++) {
-		if (i > 4) {
-			break;
-		}
+	// for (let i = 0; i < recentSearchesLocal.length; i++) {
+	// 	if (i > 4) {
+	// 		break;
+	// 	}
 
-		recentSearchArray.push(recentSearchesLocal[i]);
-	}
+	// 	recentSearchArray.push(recentSearchesLocal[i]);
+	// }
 
-	recentSearchArray.push(userCommand);
-	localStorage.setItem("userRecentSearches", recentSearchArray);
-	recentSearches.innerHTML += `<option value="${userCommand}">`;
+	// recentSearchArray.push(userCommand);
+	// localStorage.setItem("userRecentSearches", recentSearchArray);
+	// recentSearches.innerHTML += `<option value="${userCommand}">`;
 
-	let recentRef = db.collection("users").doc(fullNameRaw.split(",")[2]);
+	// let recentRef = db.collection("users").doc(fullNameRaw.split(",")[2]);
 
-	db.runTransaction((transaction) => {
-		return transaction.get(recentRef).then((recent) => {
-			if (!recent.exists) {
-				throw "Document does not exist!";
-			}
+	// db.runTransaction((transaction) => {
+	// 	return transaction.get(recentRef).then((recent) => {
+	// 		if (!recent.exists) {
+	// 			throw "Document does not exist!";
+	// 		}
 
-			let newRecentSearch = (recent.data().recent_searches = recentSearchArray);
-			transaction.update(recentRef, { recent_searches: newRecentSearch });
-		});
-	})
-		.then(() => {
-			console.log("Transaction successfully committed!");
-		})
-		.catch((error) => {
-			console.log("Transaction failed: ", error);
-		});
+	// 		let newRecentSearch = (recent.data().recent_searches = recentSearchArray);
+	// 		transaction.update(recentRef, { recent_searches: newRecentSearch });
+	// 	});
+	// })
+	// 	.then(() => {
+	// 		console.log("Transaction successfully committed!");
+	// 	})
+	// 	.catch((error) => {
+	// 		console.log("Transaction failed: ", error);
+	// 	});
 
 	if (parameters == "Search") {
 		// If the user wants to search for something
