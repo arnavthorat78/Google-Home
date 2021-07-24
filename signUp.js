@@ -107,11 +107,3 @@ signUp.addEventListener("submit", (e) => {
 			"The password must contain letters and numbers only (no symbols), and longer than 5 characters.";
 	}
 });
-
-signUp.password.addEventListener("keyup", (e) => {
-	if (passwordPattern.test(e.target.value)) {
-		signUp.password.setAttribute("class", "success");
-	} else {
-		signUp.password.setAttribute("class", "error");
-	}
-});
