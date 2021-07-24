@@ -64,7 +64,7 @@
 						</li>
 						<li class="nav-item">
 							<a class="nav-link active" aria-current="page" aria-current="page" href="updates.html">
-								<i class="bi bi-gear"></i>
+								<i class="bi bi-cloud-download"></i>
 								Updates
 							</a>
 						</li>
@@ -120,151 +120,287 @@
 			</div>
 		</nav>
 
-		<h1 class="mainTitle">Updates</h1>
+		<section class="p-5" id="title">
+			<div class="container-lg">
+				<div class="row justify-content-center align-items-center">
+					<div class="col-md-5 text-center text-md-start">
+						<h1>
+							<div class="display-2">Updates</div>
+							<div class="display-5 text-muted greeting">See what's updating!</div>
+						</h1>
+						<p class="lead my-4 text-muted">
+							See all of the past and close future updates here!
+						</p>
 
-		<p>See all of the updates of this website!</p>
+						<a href="updates.html#usage" class="btn btn-primary btn-lg">Usage Help</a>
+						<br />
+						<small class="text-muted">See help on how to read the colours and icons on the updates.</small>
+					</div>
+					<div class="col-md-5 text-center d-none d-md-block">
+						<div class="display-1 text-primary">
+							<i class="bi bi-cloud-download"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 
-		<div class="info">
-			<h4>Important Notice!</h4>
-			<strong style="font-size: 3vh">We are going to change our look (UI)!</strong><br><br>
-			<img src="./img/Bootstrap-Image.png" alt="Bootstrap" draggable="false" />
-			<p>We are going to change our look (UI) of the website to <a href="https://getbootstrap.com/">Bootstrap</a>! For more information about this update, go to the <a href="updates.html">Updates page</a>!</p>
+		<div
+			class="alert alert-danger d-flex justify-content-center ms-5 me-5"
+			role="alert"
+			id="alert"
+		>
+			<div>
+				<div class="display-6"><i class="bi bi-exclamation-triangle-fill"></i></div>
+				<br />
+				<h3>Important Notice!</h3>
+				<p class="lead">
+					We are changing our look (UI) to
+					<a href="https://getbootstrap.com/" target="_blank" class="text-decoration-none"
+						>Bootstrap</a
+					>!
+				</p>
+				<img class="img-fluid" src="./img/Bootstrap-Image.png" alt="Bootstrap" />
+				<p>During this time, some features may not work properly.</p>
+			</div>
 		</div>
 
-		<article>
-			<h3 style="color: #ff0000">Currently Pending: Version 1.3.0</h3>
-			<!-- <img src="./img/Bootstrap.png" alt="Bootstrap" draggable="false" /><br /> -->
-			<strong style="font-size: 3vh">Bootstrap (UI)</strong>
-			<p>
-				This is a very exciting update, because the entire website's look (UI) is going
-				to be changed by Bootstrap! There will be a page for help on how to use the new
-				features as well!
-				<br />
-				During this time, please <strong>do not</strong> use the website! It may cause
-				severe issues.
-			</p>
-		</article>
-
-		<article>
-			<h3>Version 1.2.0</h3>
-			<!-- <img src="./img/Comment.png" alt="Comment" draggable="false" /><br /> -->
-			<strong style="font-size: 3vh">Feedback</strong>
-			<p>
-				You can now post feedback from the <a class="navbarA" href="feedback.html">Feedback page</a>!
-				<br />
-				You can write long description for your post, then post it! You can also like
-				and dislike existing posts, and if you think a post is mean or inappropriate,
-				then you can spam it.
-			</p>
-		</article>
-
-		<article>
-			<h3>Version 1.1.5</h3>
-			<!-- <img src="./img/Computer.png" alt="Computer" draggable="false" /><br /> -->
-			<strong style="font-size: 3vh">Unknown Update</strong>
-			<p>Sorry, but no information is available on this update.</p>
-		</article>
-
-		<article>
-			<h3>Version 1.1.0</h3>
-			<!-- <img src="./img/Account.png" alt="Account" draggable="false" /><br /> -->
-			<strong style="font-size: 3vh">Accounts</strong>
-			<p>
-				This website now has accounts! This is a very exciting update, as account
-				will give this website a more "personal" feel. Below is a list of the new
-				updates relating to accounts and the description.
-				<br />
-				<details>
-  					<summary>More Links on Navbar</summary>
-  					<p>
-						The navigation bar now features more links. These include Sign In,
-						Sign Up, and also the account name, which if you click on, will
-						present two buttons - Sign Out and Delete Account.
+		<section class="p-5" id="updates">
+			<div class="card shadow mb-5" id="bootstrap" style="width: 100%;">
+				<div class="card-img-top display-3">
+					<i class="bi bi-bootstrap-fill"></i>
+				</div>
+				<div class="card-body">
+					<h5 class="card-title text-danger">
+						<i class="bi bi-arrow-repeat"></i>
+						Currently Pending: Version 1.3.0
+					</h5>
+					<p class="lead card-subtitle">Bootstrap (UI)</p>
+					<p class="card-text">
+						This is a very exciting update, because the entire website's look (UI) is going
+						to be changed by Bootstrap! There will be a page for help on how to use the new
+						features as well!
+						<br />
+						During this time, please <strong>do not</strong> use the website! It may cause
+						severe issues.
 					</p>
-				</details>
-				<details>
-  					<summary>Signing Up</summary>
-  					<p>
-						You can now sign up for an account! The link to go there is on the
-						navbar, with the text Sign Up. There are many benefits for signing up
-						for an account, including...
+					<a href="index.html" class="btn btn-danger disabled">Check it out!</a>
+				</div>
+				<div class="card-footer text-muted">
+    				Expected to be completed by <strong>24/07/2021</strong>.
+  				</div>
+			</div>
+
+			<div class="card shadow mb-5" id="feedback" style="width: 100%;">
+				<div class="card-img-top display-3">
+					<i class="bi bi-chat-text-fill"></i>
+				</div>
+				<div class="card-body">
+					<h5 class="card-title text-success">
+						<i class="bi bi-check-circle-fill"></i>
+						Just Released: Version 1.2.0
+					</h5>
+					<p class="lead card-subtitle">Feedback</p>
+					<p class="card-text">
+						You can now post feedback!
+						<br />
+						You can write a long description for your post, then post it! You can also like
+						and dislike existing posts, and if you think a post is mean or inappropriate,
+						then you can spam it.
+					</p>
+					<a href="feedback.html" class="btn btn-success">Try it!</a>
+				</div>
+				<div class="card-footer text-muted">
+    				Completed at <strong>20/07/2021</strong>.
+  				</div>
+			</div>
+
+			<div class="card shadow mb-5" id="accounts" style="width: 100%;">
+				<div class="card-img-top display-3">
+					<i class="bi bi-person-circle"></i>
+				</div>
+				<div class="card-body">
+					<h5 class="card-title text-success">
+						<i class="bi bi-check-circle-fill"></i>
+						Just Released: Version 1.1.0
+					</h5>
+					<p class="lead card-subtitle">Accounts</p>
+					<p class="card-text">
+						This website now has accounts! This is a very exciting update, as account
+						will give this website a more "personal" feel. Below is a list of the new
+						updates relating to accounts and the description.
+
+						<div class="accordion" id="accordionExample">
+							<div class="accordion-item">
+								<h2 class="accordion-header" id="headingOne">
+								<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+									More Links on Navbar
+								</button>
+								</h2>
+								<div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+								<div class="accordion-body">
+									The navigation bar now features more links. These include Sign In,
+									Sign Up, and also the account name, which if you click on, will
+									present two buttons - Sign Out and Delete Account.
+								</div>
+								</div>
+							</div>
+							<div class="accordion-item">
+								<h2 class="accordion-header" id="headingTwo">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+									Signing Up & In
+								</button>
+								</h2>
+								<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+								<div class="accordion-body">
+									You can now sign up for an account! The link to go there is on the
+									navbar, with the text Sign Up. There are many benefits for signing up
+									for an account, including...
+									<ul>
+										<span> - You get nice personalised random greetings when you enter the Home page.</span>
+										<br />
+										<span> - You get more functionality with your website.</span>
+									</ul>
+									If you have an account, you can easily log in from any device to access your
+									data. If you do not have an account, the computer will warn you about that.
+									Remember, make sure to log in!
+								</div>
+								</div>
+							</div>
+							<div class="accordion-item">
+								<h2 class="accordion-header" id="headingThree">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+									Logging Out & Deleting Account
+								</button>
+								</h2>
+								<div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+								<div class="accordion-body">
+									If you want to log out or delete your account, then navigate to your name
+									(on the navbar), then click on it. You will be redirected to a page with a Log
+									Out and a Delete Account button. To log out, press the button, and then click
+									Okay on a confirmation box. You will be logged out.
+									<br>
+									However, if you want to delete your account, you can navigate to the same page as
+									described above, then click Delete Account. You will be prompted to enter your
+									password, and then your account will be deleted, after clicking Okay on the
+									confirmation box.
+								</div>
+								</div>
+							</div>
+						</div>
+					</p>
+					<a href="signUp.html" class="btn btn-success">Sign up now!</a>
+				</div>
+				<div class="card-footer text-muted">
+    				Completed at <strong>17/07/2021</strong>.
+  				</div>
+			</div>
+
+			<div class="card shadow mb-5" id="tabs" style="width: 100%;">
+				<div class="card-img-top display-3">
+					<i class="bi bi-segmented-nav"></i>
+				</div>
+				<div class="card-body">
+					<h5 class="card-title text-secondary">
+						<i class="bi bi-clock-history"></i>
+						Version 1.0.5
+					</h5>
+					<p class="lead card-subtitle">Tabs</p>
+					<p class="card-text">
+						This website had all of the pages on the naviagtion bar, such as search,
+						permissions, etc. You can now navigate fluidly through all of the web pages.
+						<br />
+						Along with this, the new and improved Home Page now have a cleaner look. The Search
+						and Permission sections have been moved to their seperate pages (see the navbar for
+						navigating). The Home page now has Trending news on the website, and also
+						information about the website (which is planned to be on its seperate webpage soon).
+						Trending normally will have new updates, but will also have something else sometimes
+						(like how to use the Smart feature).
+						<br />
+						<strong>At the time of this update</strong>, the navbar has the following links:
 						<ul>
-							<span> - Recent searches are saved to be viewed on another device, or your same device.</span>
+							<span> - Home</span>
 							<br />
-							<span> - You get nice personalised random greetings when you enter the Home page.</span>
+							<span> - Search</span>
 							<br />
-							<span> - You get more functionality with your website.</span>
+							<span> - Permissions</span>
+							<br />
+							<span> - Updates</span>
+							<br />
+							<span> - About</span>
 						</ul>
 					</p>
-				</details>
-				<details>
-  					<summary>Logging In</summary>
-  					<p>
-						If you have an account, you can easily log in from any device to access your
-						data. If you do not have an account, the computer will warn you about that.
-						Remember, make sure to log in!
-					</p>
-				</details>
-				<details>
-  					<summary>Logging Out & Deleting Account</summary>
-  					<p>
-						If you want to log out or delete your account, then navigate to your name
-						(on the navbar), then click on it. You will be redirected to a page with a Log
-						Out and a Delete Account button. To log out, press the button, and then click
-						Okay on a confirmation box. You will be logged out.
-						<br>
-						However, if you want to delete your account, you can navigate to the same page as
-						described above, then click Delete Account. You will be prompted to enter your
-						password, and then your account will be deleted, after clicking Okay on the
-						confirmation box.
-					</p>
-				</details>
-			</p>
-		</article>
+					<a href="index.html" class="btn btn-secondary">Check it!</a>
+				</div>
+				<div class="card-footer text-muted">
+    				Completed at <strong>14/07/2021</strong>.
+  				</div>
+			</div>
 
-		<article>
-			<h3>Version 1.0.5</h3>
-			<!-- <img src="./img/Tabs.png" alt="Tabs" draggable="false" /><br /> -->
-			<strong style="font-size: 3vh">Tabs</strong>
-			<p>
-				This website had all of the pages on the naviagtion bar, such as search,
-				permissions, etc. You can now navigate fluidly through all of the web pages.
-				<br />
-				Along with this, the new and improved Home Page now have a cleaner look. The Search
-				and Permission sections have been moved to their seperate pages (see the navbar for
-				navigating). The Home page now has Trending news on the website, and also
-				information about the website (which is planned to be on its seperate webpage soon).
-				Trending normally will have new updates, but will also have something else sometimes
-				(like how to use the Smart feature).
-				<br />
-				<strong>At the time of this update</strong>, the navbar has the following links:
-				<ul>
-					<span> - Home</span>
-					<br />
-					<span> - Search</span>
-					<br />
-					<span> - Permissions</span>
-					<br />
-					<span> - Updates</span>
-					<br />
-					<span> - About</span>
-				</ul>
-			</p>
-		</article>
+			<div class="card shadow mb-5" id="initial" style="width: 100%;">
+				<div class="card-img-top display-3">
+					<i class="bi bi-laptop"></i>
+				</div>
+				<div class="card-body">
+					<h5 class="card-title text-secondary">
+						<i class="bi bi-clock-history"></i>
+						Version 1.0.0
+					</h5>
+					<p class="lead card-subtitle">Initial Website</p>
+					<p class="card-text">
+						This was the initial website when it was first launched. It included basic Smart features, a navigation bar, and also parameter options.
+					</p>
+					<a href="index.html" class="btn btn-secondary">Check it out!</a>
+				</div>
+				<div class="card-footer text-muted">
+    				Completed at <strong>11/07/2021</strong>.
+  				</div>
+			</div>
+		</section>
 
-		<article>
-			<h3>Version 1.0.0</h3>
-			<!-- <img src="./img/Computer.png" alt="Computer" draggable="false" /><br /> -->
-			<strong style="font-size: 3vh">Initial Website</strong>
-			<p>This website featured all of the beginning features. These included:</p>
-			<ul>
-				<span> - Basic Smart features, such as basic greetings, audio, and time.</span>
-				<br />
-				<span> - A navbar for navigating through pages.</span>
-				<br />
-				<span> - A search and URL field (in paramter options).</span>
-			</ul>
-		</article>
+		<section class="p-5 bg-light" id="usage">
+			<div class="text-center">
+				<h2>Symbols</h2>
+				<p class="lead">What do the symbols and colours mean in front of the updates? Well, the answer is here!</p>
+			</div>
+
+			<div class="container-lg">
+				<table style="width: 100%">
+					<tr class="border">
+						<th>Symbol & Colour</th>
+						<th>Meaning</th>
+					</tr>
+					<tr class="border">
+						<td class="text-danger">
+							<i class="bi bi-arrow-repeat"></i>
+							Red
+						</td>
+						<td>The update is still pending. You will also likely see a button that is disabled.</td>
+					</tr>
+					<tr class="border">
+						<td class="text-warning">
+							<i class="bi bi-calendar-fill"></i>
+							Yellow
+						</td>
+						<td>The update is going to begin soon. This normally appears when it is going to start pending in a couple of days.</td>
+					</tr>
+					<tr class="border">
+						<td class="text-success">
+							<i class="bi bi-check-circle-fill"></i>
+							Green
+						</td>
+						<td>The update has just successfully completed. This normally stays for a week after launch.</td>
+					</tr>
+					<tr class="border">
+						<td class="text-secondary">
+							<i class="bi bi-clock-history"></i>
+							Grey
+						</td>
+						<td>It has been more than a week since the update has launched. It is advised not to read the description of these, as they might be outdated.</td>
+					</tr>
+				</table>
+			</div>
+		</section>
 
 		<script
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
