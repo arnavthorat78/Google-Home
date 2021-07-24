@@ -5,7 +5,6 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" href="./img/Google.png" />
-		<link rel="stylesheet" href="styles.css" />
 		<link
 			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 			rel="stylesheet"
@@ -18,17 +17,16 @@
 		/>
 		<title>Google Home - Account</title>
 	</head>
-	<body>
+	<body style="text-align: center">
 		<nav class="navbar navbar-expand-xl navbar-dark bg-dark">
 			<div class="container-fluid">
-				<a class="navbar-brand" href="#">
-					<img
-						src="./img/Google.png"
-						alt="Google"
-						width="30"
-						height="30"
-						class="d-inline-block align-text-top"
-					/>
+				<a class="navbar-brand" href="index.html">
+					<div
+						class="text-danger d-inline-block align-text-top"
+						style="width: 30px; height: 30px"
+					>
+						<i class="bi bi-google"></i>
+					</div>
 					Google Home
 				</a>
 				<button
@@ -120,64 +118,111 @@
 			</div>
 		</nav>
 
-		<h1 class="mainTitle">Account</h1>
+		<section class="p-5" id="title">
+			<div class="container-lg">
+				<div class="row justify-content-center align-items-center">
+					<div class="col-md-5 text-center text-md-start">
+						<h1>
+							<div class="display-2">Account</div>
+							<div class="display-5 text-muted">What can we do?</div>
+						</h1>
+						<p class="lead my-4 text-muted">See your account actions!</p>
+					</div>
+					<div class="col-md-5 text-center d-none d-md-block">
+						<div class="display-1 text-success">
+							<i class="bi bi-person-circle"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 
-		<p>Use this page to see your account settings!</p>
-
-		<div class="info">
-			<h4>Important Notice!</h4>
-			<strong style="font-size: 3vh">We are going to change our look (UI)!</strong
-			><br /><br />
-			<img src="./img/Bootstrap-Image.png" alt="Bootstrap" draggable="false" />
-			<p>
-				We are going to change our look (UI) of the website to
-				<a href="https://getbootstrap.com/">Bootstrap</a>! For more information about this
-				update, go to the <a href="updates.html">Updates page</a>!
-			</p>
+		<div
+			class="alert alert-danger d-flex justify-content-center ms-5 me-5"
+			role="alert"
+			id="alert"
+		>
+			<div>
+				<div class="display-6"><i class="bi bi-exclamation-triangle-fill"></i></div>
+				<br />
+				<h3>Important Notice!</h3>
+				<p class="lead">
+					We are changing our look (UI) to
+					<a href="https://getbootstrap.com/" target="_blank" class="text-decoration-none"
+						>Bootstrap</a
+					>!
+				</p>
+				<img class="img-fluid" src="./img/Bootstrap-Image.png" alt="Bootstrap" />
+				<p>During this time, some features may not work properly.</p>
+			</div>
 		</div>
 
-		<button class="signOut" style="background-color: #e00000">
-			Sign Out
-			<br />
-			<img
-				style="width: 25px; height: 25px"
-				src="./img/Sign-out.png"
-				alt="Sign-out"
-				draggable="false"
-			/>
-		</button>
+		<section class="p-5" id="danger">
+			<div class="container-lg">
+				<div class="text-center text-danger">
+					<h2>Danger Zone</h2>
+					<p class="lead">Make sure to not play around in this zone!</p>
+				</div>
 
-		<button class="deleteAccount" style="background-color: #e00000">
-			Delete Account
-			<br />
-			<img
-				style="width: 25px; height: 25px"
-				src="./img/Delete User.png"
-				alt="Sign-out"
-				draggable="false"
-			/>
-		</button>
+				<button class="btn btn-danger signOut">
+					<i class="bi bi-box-arrow-left"></i>
+					Sign Out
+				</button>
+				<br /><br />
+				<button class="btn btn-danger deleteAccount">
+					<i class="bi bi-person-dash-fill"></i>
+					Delete Account
+				</button>
 
-		<form class="deleteAccountPassword">
-			<input
-				type="password"
-				id="password"
-				name="password"
-				placeholder="Password..."
-				required
-			/>
-			<label for="showPassword">Show password</label>
-			<input
-				type="checkbox"
-				name="showPassword"
-				id="showPassword"
-				onclick="togglePassword()"
-			/>
+				<div class="row justify-content-center my-5">
+					<div class="col-lg-6">
+						<form class="deleteAccountPassword" style="text-align: start">
+							<div class="input-group mb-3">
+								<span class="input-group-text">
+									<i class="bi bi-lock-fill"></i>
+								</span>
+								<input
+									type="password"
+									class="form-control"
+									id="password"
+									name="password"
+									placeholder="Password..."
+									required
+								/>
+								<span class="input-group-text">
+									<span
+										class="tt"
+										data-bs-placement="bottom"
+										data-bs-html="true"
+										title="The password for your account. It is case-sensitive!"
+									>
+										<i class="bi bi-question-circle text-muted"></i>
+									</span>
+								</span>
+							</div>
+							<div class="form-check">
+								<input
+									class="form-check-input"
+									type="checkbox"
+									name="showPassword"
+									id="showPassword"
+									onclick="togglePassword()"
+								/>
+								<label class="form-check-label" for="showPassword">
+									Show password
+								</label>
+							</div>
 
-			<button class="signUpButton submitButton" type="submit">Delete Account</button>
-		</form>
+							<button class="btn btn-primary mt-2 submitButton" type="submit">
+								Delete Account
+							</button>
 
-		<div class="feedback"></div>
+							<div class="feedback"></div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
 
 		<!-- The core Firebase JS SDK is always required and must be listed first -->
 		<script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
@@ -205,6 +250,20 @@
 			integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 			crossorigin="anonymous"
 		></script>
+		<script>
+			const tooltips = document.querySelectorAll(".tt");
+			tooltips.forEach((t) => {
+				new bootstrap.Tooltip(t);
+			});
+		</script>
+		<script>
+			let tooltipTriggerList = [].slice.call(
+				document.querySelectorAll('[data-bs-toggle="tooltip"]')
+			);
+			let tooltipList = tooltipTriggerList.map((tooltipTriggerEl) => {
+				return new bootstrap.Tooltip(tooltipTriggerEl);
+			});
+		</script>
 		<script src="account.js"></script>
 	</body>
 </html>
