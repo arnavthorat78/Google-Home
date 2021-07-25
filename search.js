@@ -1,7 +1,8 @@
 // Getting the command section
 const google = document.querySelector(".google");
-const recentSearches = document.querySelector("#recentSearches");
+const voice = document.querySelector(".voice");
 const response = document.querySelector(".response");
+const output = document.querySelector(".output");
 
 // Getting special command response sections
 const music = document.querySelector(".music");
@@ -10,6 +11,14 @@ const time = document.querySelector(".time");
 const collage = document.querySelector(".collageContainer");
 
 const user = document.querySelector(".user");
+
+let smartCommands = [
+	["hello", "hi"],
+	["how are you", "hows everything"],
+	["music", "audio"],
+	["time", "clock"],
+	["picture", "photo", "collage"],
+];
 
 let fullNameRaw = localStorage.getItem("user");
 if (fullNameRaw == null) {
@@ -20,18 +29,27 @@ if (fullNameRaw == null) {
 	user.innerHTML = fullName;
 }
 
+var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
+var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
+
+var grammar = `#JSGF V1.0; grammar smartCommands; public <smartCommand> = ${smartCommands.join(
+	" | "
+)};`;
+
+var recognition = new SpeechRecognition();
+var speechRecognitionList = new SpeechGrammarList();
+
+speechRecognitionList.addFromString(grammar, 1);
+
+recognition.grammars = speechRecognitionList;
+recognition.continuous = false;
+recognition.lang = "en-US";
+recognition.interimResults = false;
+recognition.maxAlternatives = 1;
+
 // Leave the remove button hidden as default
 smallButton.style.visibility = "hidden";
-
-// let recentSearchesLocal = localStorage.getItem("userRecentSearches").split(",");
-
-// for (let i = 0; i < recentSearchesLocal.length; i++) {
-// 	if (i > 5) {
-// 		recentSearchesLocal = recentSearchesLocal.slice(recentSearchesLocal.length - 10, 10);
-// 	}
-
-// 	recentSearches.innerHTML += `<option value="${recentSearchesLocal[i]}">`;
-// }
 
 /**
  * This method is to be used for responding to search queries, URL commands, and also smart commands.
@@ -63,13 +81,13 @@ const smartReact = (command) => {
 		.trim()
 		.toLowerCase();
 
-	if (command.includes("hello") || command.includes("hi")) {
+	if (command.includes(smartCommands[0][0]) || command.includes(smartCommands[0][1])) {
 		// If the command includes 'hello'
 		res("Hello!", 5000);
-	} else if (command.includes("how are you") || command.includes("hows everything")) {
+	} else if (command.includes(smartCommands[1][0]) || command.includes(smartCommands[1][1])) {
 		// If the user asks how the computer is
 		res("I'm great! How are you?", 5000);
-	} else if (command.includes("music") || command.includes("audio")) {
+	} else if (command.includes(smartCommands[2][0]) || command.includes(smartCommands[2][1])) {
 		// If the user requested audio/music
 		res("The music is below.", 5000);
 		const audioHTML = `<audio controls>\n<source src="./music/Over-the-Horizon.mp3" type="audio/mpeg" />\nSorry, but your browser does not support audio.\n</audio>`;
@@ -87,7 +105,7 @@ const smartReact = (command) => {
 		smallButton.style.visibility = "visible";
 
 		smallButton.addEventListener("click", removeMusic);
-	} else if (command.includes("time") || command.includes("clock")) {
+	} else if (command.includes(smartCommands[3][0]) || command.includes(smartCommands[3][1])) {
 		// If the user requested the live time
 		res("The time will be displayed below.", 5000);
 
@@ -125,9 +143,9 @@ const smartReact = (command) => {
 
 		smallButton.addEventListener("click", removeTime);
 	} else if (
-		command.includes("picture") ||
-		command.includes("photo") ||
-		command.includes("collage")
+		command.includes(smartCommands[4][0]) ||
+		command.includes(smartCommands[4][1]) ||
+		command.includes(smartCommands[4][2])
 	) {
 		// If the user requested the collage
 		res("The collage is below!", 5000);
@@ -166,39 +184,6 @@ google.addEventListener("submit", (e) => {
 	let userCommand = google.command.value;
 	let parameters = google.params.value;
 
-	// let recentSearchArray = [];
-
-	// for (let i = 0; i < recentSearchesLocal.length; i++) {
-	// 	if (i > 4) {
-	// 		break;
-	// 	}
-
-	// 	recentSearchArray.push(recentSearchesLocal[i]);
-	// }
-
-	// recentSearchArray.push(userCommand);
-	// localStorage.setItem("userRecentSearches", recentSearchArray);
-	// recentSearches.innerHTML += `<option value="${userCommand}">`;
-
-	// let recentRef = db.collection("users").doc(fullNameRaw.split(",")[2]);
-
-	// db.runTransaction((transaction) => {
-	// 	return transaction.get(recentRef).then((recent) => {
-	// 		if (!recent.exists) {
-	// 			throw "Document does not exist!";
-	// 		}
-
-	// 		let newRecentSearch = (recent.data().recent_searches = recentSearchArray);
-	// 		transaction.update(recentRef, { recent_searches: newRecentSearch });
-	// 	});
-	// })
-	// 	.then(() => {
-	// 		console.log("Transaction successfully committed!");
-	// 	})
-	// 	.catch((error) => {
-	// 		console.log("Transaction failed: ", error);
-	// 	});
-
 	if (parameters == "Search") {
 		// If the user wants to search for something
 		open(`https://www.google.com/search?q=${encodeURIComponent(userCommand)}`, "_blank");
@@ -218,5 +203,66 @@ google.addEventListener("submit", (e) => {
 	} else if (parameters == "Smart") {
 		// If the user would like Smart
 		smartReact(userCommand);
+	}
+});
+
+voice.addEventListener("submit", (e) => {
+	e.preventDefault();
+
+	let parameters = voice.params.value;
+
+	if (parameters == "Search") {
+		recognition.start();
+		output.innerHTML = "Start saying your command!";
+
+		recognition.onresult = (event) => {
+			var command = event.results[0][0].transcript;
+			output.innerHTML = `Result received: ${command}.`;
+
+			open(`https://www.google.com/search?q=${encodeURIComponent(command)}`, "_blank");
+
+			response.innerHTML = `Opened <i>${command}</i>.`;
+			setTimeout(() => {
+				response.innerHTML = "";
+			}, 5000);
+
+			console.log("Confidence: " + event.results[0][0].confidence);
+		};
+
+		recognition.onspeechend = () => {
+			recognition.stop();
+		};
+
+		recognition.onnomatch = (event) => {
+			output.innerHTML = "I didn't recognize that command.";
+		};
+
+		recognition.onerror = (event) => {
+			output.innerHTML = "Error occurred in recognition: " + event.error;
+		};
+	} else if (parameters == "Smart") {
+		recognition.start();
+		output.innerHTML = "Start saying your command!";
+
+		recognition.onresult = (event) => {
+			var command = event.results[0][0].transcript;
+			output.innerHTML = `Result received: ${command}.`;
+
+			smartReact(command);
+
+			console.log("Confidence: " + event.results[0][0].confidence);
+		};
+
+		recognition.onspeechend = () => {
+			recognition.stop();
+		};
+
+		recognition.onnomatch = (event) => {
+			output.innerHTML = "I didn't recognize that command.";
+		};
+
+		recognition.onerror = (event) => {
+			output.innerHTML = "Error occurred in recognition: " + event.error;
+		};
 	}
 });
