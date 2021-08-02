@@ -11,4 +11,4 @@ if (fullNameRaw == null) {
 	user.innerHTML = fullName;
 }
 
-url.innerHTML = document.URL;
+url.innerHTML = document.URL.replace("permissions.html", "search.html");
