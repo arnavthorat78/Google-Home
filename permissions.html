@@ -48,12 +48,38 @@
 								Home
 							</a>
 						</li>
-						<li class="nav-item">
+						<li class="nav-item dropdown">
+							<a
+								class="nav-link dropdown-toggle"
+								href="#"
+								id="navbarDropdownMenuLink"
+								role="button"
+								data-bs-toggle="dropdown"
+								aria-expanded="false"
+							>
+								<i class="bi bi-search"></i>
+								Search
+							</a>
+							<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+								<li>
+									<a class="dropdown-item" href="./search/search.html">
+										<i class="bi bi-search"></i> Basic Search</a
+									>
+								</li>
+								<hr />
+								<li>
+									<a class="dropdown-item" href="./search/google.html">
+										<i class="bi bi-window-dock"></i> Google Applications</a
+									>
+								</li>
+							</ul>
+						</li>
+						<!-- <li class="nav-item">
 							<a class="nav-link" href="search.html">
 								<i class="bi bi-search"></i>
 								Search
 							</a>
-						</li>
+						</li> -->
 						<li class="nav-item">
 							<a class="nav-link" href="feedback.html">
 								<i class="bi bi-chat-text"></i>
@@ -139,21 +165,6 @@
 				</div>
 			</div>
 		</section>
-
-		<div
-			class="alert alert-success d-flex justify-content-center ms-5 me-5"
-			role="alert"
-			id="alert"
-		>
-			<div>
-				<div class="display-6"><i class="bi bi-check-circle-fill"></i></div>
-				<br />
-				<h3>Completed Version 1.4.0!</h3>
-				<p class="lead">We have added a new feature - voice commands!</p>
-				<a href="updates.html#voice" class="btn btn-success">See More!</a>
-				<a href="search.html#search" class="btn btn-success">Try it Yourself!</a>
-			</div>
-		</div>
 
 		<section class="p-5" id="redirects">
 			<div class="container-lg">

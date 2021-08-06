@@ -48,12 +48,38 @@
 								Home
 							</a>
 						</li>
-						<li class="nav-item">
+						<li class="nav-item dropdown">
+							<a
+								class="nav-link dropdown-toggle"
+								href="#"
+								id="navbarDropdownMenuLink"
+								role="button"
+								data-bs-toggle="dropdown"
+								aria-expanded="false"
+							>
+								<i class="bi bi-search"></i>
+								Search
+							</a>
+							<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+								<li>
+									<a class="dropdown-item" href="./search/search.html">
+										<i class="bi bi-search"></i> Basic Search</a
+									>
+								</li>
+								<hr />
+								<li>
+									<a class="dropdown-item" href="./search/google.html">
+										<i class="bi bi-window-dock"></i> Google Applications</a
+									>
+								</li>
+							</ul>
+						</li>
+						<!-- <li class="nav-item">
 							<a class="nav-link" href="search.html">
 								<i class="bi bi-search"></i>
 								Search
 							</a>
-						</li>
+						</li> -->
 						<li class="nav-item">
 							<a class="nav-link" href="feedback.html">
 								<i class="bi bi-chat-text"></i>
@@ -143,30 +169,38 @@
 			</div>
 		</section>
 
-		<div
-			class="alert alert-success d-flex justify-content-center ms-5 me-5"
-			role="alert"
-			id="alert"
-		>
-			<div>
-				<div class="display-6"><i class="bi bi-check-circle-fill"></i></div>
-				<br />
-				<h3>Completed Version 1.4.0!</h3>
-				<p class="lead">We have added a new feature - voice commands!</p>
-				<a href="updates.html#voice" class="btn btn-success">See More!</a>
-				<a href="search.html#search" class="btn btn-success">Try it Yourself!</a>
-			</div>
-		</div>
-
 		<section class="p-5" id="updates">
+			<div class="card shadow mb-5" id="dropdown" style="width: 100%;">
+				<div class="card-img-top display-3">
+					<i class="bi bi-window-dock"></i>
+				</div>
+				<div class="card-body">
+					<h5 class="card-title text-danger">
+						<i class="bi bi-arrow-repeat"></i>
+						Currently Pending: Version 1.4.5
+					</h5>
+					<p class="lead card-subtitle">Google Applications & Search Dropdown</p>
+					<p class="card-text">
+						We have added two new features: Search Dropdown and Google Applications!
+						<br />
+						The Search dropdown is going to be helpful later when we add more ability to the website (oops... gave you a little sneak-peak!).
+						The Google Applications are going to be very handy when you want to go to a Google app.
+					</p>
+					<a href="./search/google.html#app" class="btn btn-danger">Try it!</a>
+				</div>
+				<div class="card-footer text-muted">
+    				Completed at <strong>26/07/2021</strong>.
+  				</div>
+			</div>
+
 			<div class="card shadow mb-5" id="voice" style="width: 100%;">
 				<div class="card-img-top display-3">
 					<i class="bi bi-mic-fill"></i>
 				</div>
 				<div class="card-body">
-					<h5 class="card-title text-success">
-						<i class="bi bi-check-circle-fill"></i>
-						Just Released: Version 1.4.0
+					<h5 class="card-title text-secondary">
+						<i class="bi bi-clock-history"></i>
+						Version 1.4.0
 					</h5>
 					<p class="lead card-subtitle">Voice Commands</p>
 					<p class="card-text">
@@ -174,7 +208,7 @@
 						Search page! So, you can just click a button, say your
 						command, and the computer will do the rest!
 					</p>
-					<a href="search.html#search" class="btn btn-success">Try Voice Searching!</a>
+					<a href="./search/search.html#search" class="btn btn-secondary">Try Voice Searching!</a>
 				</div>
 				<div class="card-footer text-muted">
     				Completed at <strong>26/07/2021</strong>.
@@ -186,9 +220,9 @@
 					<i class="bi bi-bootstrap-fill"></i>
 				</div>
 				<div class="card-body">
-					<h5 class="card-title text-success">
-						<i class="bi bi-check-circle-fill"></i>
-						Just Released: Version 1.3.0
+					<h5 class="card-title text-secondary">
+						<i class="bi bi-clock-history"></i>
+						Version 1.3.0
 					</h5>
 					<p class="lead card-subtitle">Bootstrap (UI)</p>
 					<p class="card-text">
@@ -196,7 +230,7 @@
 						out everything of what we've done - all over the website. You'll
 						<i>definitely</i> see the difference!
 					</p>
-					<a href="index.html" class="btn btn-success">Check it out!</a>
+					<a href="index.html" class="btn btn-secondary">Check it out!</a>
 				</div>
 				<div class="card-footer text-muted">
     				Completed at <strong>25/07/2021</strong>.

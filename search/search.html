@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" href="./img/Google.png" />
+		<link rel="icon" href="../img/Google.png" />
 		<link
 			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 			rel="stylesheet"
@@ -20,7 +20,7 @@
 	<body style="text-align: center">
 		<nav class="navbar navbar-expand-xl navbar-dark bg-dark">
 			<div class="container-fluid">
-				<a class="navbar-brand" href="index.html">
+				<a class="navbar-brand" href="../index.html">
 					<div
 						class="text-danger d-inline-block align-text-top"
 						style="width: 30px; height: 30px"
@@ -43,55 +43,81 @@
 				<div class="collapse navbar-collapse" id="navbarNavDropdown">
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<a class="nav-link" href="index.html">
+							<a class="nav-link" href="../index.html">
 								<i class="bi bi-house"></i>
 								Home
 							</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" href="search.html">
+						<li class="nav-item dropdown">
+							<a
+								class="nav-link dropdown-toggle active"
+								href="#"
+								id="navbarDropdownMenuLink"
+								role="button"
+								data-bs-toggle="dropdown"
+								aria-expanded="false"
+							>
 								<i class="bi bi-search"></i>
 								Search
 							</a>
+							<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+								<li>
+									<a class="dropdown-item" href="search.html">
+										<i class="bi bi-search"></i> Basic Search</a
+									>
+								</li>
+								<hr />
+								<li>
+									<a class="dropdown-item" href="google.html">
+										<i class="bi bi-window-dock"></i> Google Applications</a
+									>
+								</li>
+							</ul>
 						</li>
+						<!-- <li class="nav-item">
+							<a class="nav-link" href="search.html">
+								<i class="bi bi-search"></i>
+								Search
+							</a>
+						</li> -->
 						<li class="nav-item">
-							<a class="nav-link" href="feedback.html">
+							<a class="nav-link" href="../feedback.html">
 								<i class="bi bi-chat-text"></i>
 								Feedback
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" aria-current="page" href="updates.html">
+							<a class="nav-link" aria-current="page" href="../updates.html">
 								<i class="bi bi-cloud-download"></i>
 								Updates
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="permissions.html">
+							<a class="nav-link" href="../permissions.html">
 								<i class="bi bi-shield-shaded"></i>
 								Permissions
 							</a>
 						</li>
 						<li class="nav-item border-end">
-							<a class="nav-link disabled" href="about.html">
+							<a class="nav-link disabled" href="../about.html">
 								<i class="bi bi-info-circle"></i>
 								About
 							</a>
 						</li>
 						<li class="nav-item me-auto">
-							<a class="nav-link" href="signIn.html">
+							<a class="nav-link" href="../signIn.html">
 								<i class="bi bi-box-arrow-in-right"></i>
 								Sign In
 							</a>
 						</li>
 						<li class="nav-item me-auto">
-							<a class="nav-link" href="signUp.html">
+							<a class="nav-link" href="../signUp.html">
 								<i class="bi bi-person-plus"></i>
 								Sign Up
 							</a>
 						</li>
 						<li class="nav-item border">
-							<a class="nav-link" href="account.html">
+							<a class="nav-link" href="../account.html">
 								<i class="bi bi-person-circle"></i>
 								<strong class="user">User</strong>
 							</a>
@@ -140,21 +166,6 @@
 				</div>
 			</div>
 		</section>
-
-		<div
-			class="alert alert-success d-flex justify-content-center ms-5 me-5"
-			role="alert"
-			id="alert"
-		>
-			<div>
-				<div class="display-6"><i class="bi bi-check-circle-fill"></i></div>
-				<br />
-				<h3>Completed Version 1.4.0!</h3>
-				<p class="lead">We have added a new feature - voice commands!</p>
-				<a href="updates.html#voice" class="btn btn-success">See More!</a>
-				<a href="search.html#search" class="btn btn-success">Try it Yourself!</a>
-			</div>
-		</div>
 
 		<section class="p-5" id="search">
 			<div class="container-lg">

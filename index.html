@@ -48,12 +48,38 @@
 								Home
 							</a>
 						</li>
-						<li class="nav-item">
+						<li class="nav-item dropdown">
+							<a
+								class="nav-link dropdown-toggle"
+								href="#"
+								id="navbarDropdownMenuLink"
+								role="button"
+								data-bs-toggle="dropdown"
+								aria-expanded="false"
+							>
+								<i class="bi bi-search"></i>
+								Search
+							</a>
+							<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+								<li>
+									<a class="dropdown-item" href="./search/search.html">
+										<i class="bi bi-search"></i> Basic Search</a
+									>
+								</li>
+								<hr />
+								<li>
+									<a class="dropdown-item" href="./search/google.html">
+										<i class="bi bi-window-dock"></i> Google Applications</a
+									>
+								</li>
+							</ul>
+						</li>
+						<!-- <li class="nav-item">
 							<a class="nav-link" href="search.html">
 								<i class="bi bi-search"></i>
 								Search
 							</a>
-						</li>
+						</li> -->
 						<li class="nav-item">
 							<a class="nav-link" href="feedback.html">
 								<i class="bi bi-chat-text"></i>
@@ -96,23 +122,6 @@
 								<strong class="user">User</strong>
 							</a>
 						</li>
-						<!-- <li class="nav-item dropdown">
-							<a
-								class="nav-link dropdown-toggle"
-								href="#"
-								id="navbarDropdownMenuLink"
-								role="button"
-								data-bs-toggle="dropdown"
-								aria-expanded="false"
-							>
-								Dropdown link
-							</a>
-							<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-								<li><a class="dropdown-item" href="#">Action</a></li>
-								<li><a class="dropdown-item" href="#">Another action</a></li>
-								<li><a class="dropdown-item" href="#">Something else here</a></li>
-							</ul>
-						</li> -->
 					</ul>
 				</div>
 			</div>
@@ -130,7 +139,9 @@
 							Use this website for preforming Smart tasks on your computer... and much
 							more!
 						</p>
-						<a href="search.html" class="btn btn-success btn-lg">Search Now!</a>
+						<a href="./search/search.html" class="btn btn-success btn-lg"
+							>Search Now!</a
+						>
 
 						<p class="text-muted pt-3">Or create an account with us and sign in!</p>
 
@@ -152,21 +163,6 @@
 			</div>
 		</section>
 
-		<div
-			class="alert alert-success d-flex justify-content-center ms-5 me-5"
-			role="alert"
-			id="alert"
-		>
-			<div>
-				<div class="display-6"><i class="bi bi-check-circle-fill"></i></div>
-				<br />
-				<h3>Completed Version 1.4.0!</h3>
-				<p class="lead">We have added a new feature - voice commands!</p>
-				<a href="updates.html#voice" class="btn btn-success">See More!</a>
-				<a href="search.html#search" class="btn btn-success">Try it Yourself!</a>
-			</div>
-		</div>
-
 		<section class="p-5 bg-light" id="trending">
 			<div class="container-lg">
 				<h2>Trending</h2>
@@ -175,35 +171,38 @@
 				<div class="row my-5 align-items-center justify-content-center g-0">
 					<div class="card shadow" style="width: 20rem">
 						<div class="card-img-top display-3">
-							<i class="bi bi-bootstrap-fill"></i>
+							<i class="bi bi-mic-fill"></i>
 						</div>
 						<div class="card-body">
-							<h5 class="card-title text-success">
-								<i class="bi bi-check-circle-fill"></i>
-								Just Released: Version 1.3.0
+							<h5 class="card-title text-secondary">
+								<i class="bi bi-clock-history"></i>
+								Version 1.4.0
 							</h5>
-							<p class="lead card-subtitle">Bootstrap (UI)</p>
-							<p class="card-text">
-								We have concluded updating our UI to Bootstrap! Now you can roam
-								around the website with a fresh, clean, new look.
-							</p>
-							<a href="updates.html#bootstrap" class="btn btn-success">See More!</a>
+							<p class="lead card-subtitle">Voice Commands</p>
+							<p class="card-text">We have concluded updating voice commands!</p>
+							<a href="updates.html#voice" class="btn btn-secondary">See More!</a>
 						</div>
 					</div>
 
 					<div class="card shadow" style="width: 25rem">
-						<div class="card-header text-center text-success fw-bold">Headline</div>
+						<div class="card-header text-center text-danger fw-bold">Headline</div>
 						<div class="card-img-top display-3">
-							<i class="bi bi-mic-fill"></i>
+							<i class="bi bi-window-dock"></i>
 						</div>
 						<div class="card-body">
-							<h5 class="card-title text-success">
-								<i class="bi bi-check-circle-fill"></i>
-								Just Released: Version 1.4.0
+							<h5 class="card-title text-danger">
+								<i class="bi bi-arrow-repeat"></i>
+								Currently Pending: Version 1.4.5
 							</h5>
-							<p class="lead card-subtitle">Voice Commands</p>
-							<p class="card-text">We have concluded updating voice commands!</p>
-							<a href="updates.html#voice" class="btn btn-success">See More!</a>
+							<p class="lead card-subtitle">Google Applications & Search Dropdown</p>
+							<p class="card-text">
+								We have added two new features: Search Dropdown and Google
+								Applications!
+							</p>
+							<a href="./search/google.html#app" class="btn btn-danger"
+								>See it Live!</a
+							>
+							<a href="updates.html#dropdown" class="btn btn-danger">See More</a>
 						</div>
 					</div>
 
@@ -219,7 +218,7 @@
 							<p class="lead card-subtitle">Feedback</p>
 							<p class="card-text">
 								We know that feedback was a very exciting update, but we might
-								remove it due to cyberbullying issues.
+								remove it due to issues.
 								<br />
 								We will tell you later about removing it.
 							</p>
