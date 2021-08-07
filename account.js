@@ -12,10 +12,16 @@ let users = [];
 let fullNameRaw = localStorage.getItem("user");
 if (fullNameRaw == null) {
 	user.innerHTML = "User";
+
+	signOut.disabled = true;
+	deleteAccount.disabled = true;
 } else {
 	const splitFullName = fullNameRaw.split(",");
 	let fullName = `${splitFullName[0]} ${splitFullName[1]}`;
 	user.innerHTML = fullName;
+
+	signOut.disabled = false;
+	deleteAccount.disabled = false;
 }
 
 const togglePassword = () => {

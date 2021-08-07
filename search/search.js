@@ -5,10 +5,10 @@ const response = document.querySelector(".response");
 const output = document.querySelector(".output");
 
 // Getting special command response sections
-const music = document.querySelector(".music");
+const music = document.querySelector("#music");
 const smallButton = document.querySelector(".smallButton");
 const time = document.querySelector(".time");
-const collage = document.querySelector(".collageContainer");
+const collage = document.querySelector("#collageContainer");
 
 const user = document.querySelector(".user");
 
@@ -18,6 +18,7 @@ let smartCommands = [
 	["music", "audio"],
 	["time", "clock"],
 	["picture", "photo", "collage"],
+	["name", "me", "my"],
 ];
 
 let fullNameRaw = localStorage.getItem("user");
@@ -90,17 +91,16 @@ const smartReact = (command) => {
 	} else if (command.includes(smartCommands[2][0]) || command.includes(smartCommands[2][1])) {
 		// If the user requested audio/music
 		res("The music is below.", 5000);
-		const audioHTML = `<audio controls>\n<source src="./music/Over-the-Horizon.mp3" type="audio/mpeg" />\nSorry, but your browser does not support audio.\n</audio>`;
 
 		const removeMusic = () => {
-			music.innerHTML = "";
+			music.className = "d-none";
 			smallButton.style.visibility = "hidden";
 			smallButton.innerHTML = "";
 
 			smallButton.removeEventListener("click", removeMusic);
 		};
 
-		music.innerHTML = audioHTML;
+		music.className = "d-block";
 		smallButton.innerHTML = "Remove Music";
 		smallButton.style.visibility = "visible";
 
@@ -149,21 +149,36 @@ const smartReact = (command) => {
 	) {
 		// If the user requested the collage
 		res("The collage is below!", 5000);
-		const collageHTML = `<a class="collageDownload" href="./img/Collage.png" download>\n<img class="img-fluid m-2 collage" src="../img/Collage.png" alt="Collage" draggable="false" />\n</a>`;
 
 		const removeCollage = () => {
-			collage.innerHTML = "";
+			collage.className = "d-none";
 			smallButton.style.visibility = "hidden";
 			smallButton.innerHTML = "";
 
 			smallButton.removeEventListener("click", removeCollage);
 		};
 
-		collage.innerHTML = collageHTML;
+		collage.className = "d-block";
 		smallButton.innerHTML = "Remove Collage";
 		smallButton.style.visibility = "visible";
 
 		smallButton.addEventListener("click", removeCollage);
+	} else if (
+		command.includes(smartCommands[5][0]) ||
+		command.includes(smartCommands[5][1]) ||
+		command.includes(smartCommands[5][2])
+	) {
+		if (fullNameRaw == null) {
+			res(
+				"<strong>Sorry, but we cannot retrieve your name since you have not signed in with an account. <a class='text-decoration-none' herf='../signUp.html'>Sign up!</a></strong>",
+				10000
+			);
+		} else {
+			const userName = fullNameRaw.split(",");
+			let fullName = `${userName[0]} ${userName[1]}`;
+
+			res(`Your name is <strong>${fullName}</strong>!`, 5000);
+		}
 	} else if (command == "" || command == " ") {
 		// If the user typed in nothing
 		res("<strong>Please do not leave the command empty.</strong>", 10000);

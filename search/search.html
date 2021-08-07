@@ -558,11 +558,23 @@
 
 					<small class="text-muted output"></small>
 
-					<div class="musicContainer">
-						<div class="music"></div>
+					<div class="d-none" id="music">
+						<audio controls>
+							<source src="../music/Over-the-Horizon.mp3" type="audio/mpeg" />
+							Sorry, but your browser does not support audio.
+						</audio>
 					</div>
 					<p class="display-5 fw-bold time"></p>
-					<div class="collageContainer"></div>
+					<div class="d-none" id="collageContainer">
+						<a class="collageDownload" href="../img/Collage.png" download>
+							<img
+								class="img-fluid m-2 collage"
+								src="../img/Collage.png"
+								alt="Collage"
+								draggable="false"
+							/>
+						</a>
+					</div>
 
 					<button class="btn btn-outline-danger smallButton"></button>
 				</div>
