@@ -1,11 +1,9 @@
 const user = document.querySelector(".user");
-const deleteAccountPassword = document.querySelector(".deleteAccountPassword");
+const deleteAccountPassword = document.querySelector("#deleteAccountPassword");
 const signOut = document.querySelector(".signOut");
 const deleteAccount = document.querySelector(".deleteAccount");
 const submitButton = document.querySelector(".submitButton");
 const feedback = document.querySelector(".feedback");
-
-deleteAccountPassword.style.visibility = "hidden";
 
 let users = [];
 
@@ -46,7 +44,7 @@ db.collection("users")
 	});
 
 deleteAccount.addEventListener("click", () => {
-	deleteAccountPassword.style.visibility = "visible";
+	deleteAccountPassword.className = "d-block";
 
 	submitButton.disabled = true;
 
