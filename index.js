@@ -1,7 +1,7 @@
 // Getting references to elements in the DOM
 const user = document.querySelector(".user");
 const greeting = document.querySelector(".greeting");
-const hours = document.querySelector(".hoursSinceRelease");
+// const hours = document.querySelector(".hoursSinceRelease");
 const scrollUp = document.querySelector(".scrollUp");
 
 // Getting a random number for later use
@@ -52,9 +52,9 @@ if (fullNameRaw == null) {
 
 // Time since
 // TODO Get a better formula
-let updateTime = new Date("August 6, 2021 17:00:00").getHours();
-let now = new Date().getHours();
-hours.innerHTML = `${24 - updateTime + now} hours ago`;
+// let updateTime = new Date("August 6, 2021 17:00:00").getHours();
+// let now = new Date().getHours();
+// hours.innerHTML = `${24 - updateTime + now} hours ago`;
 
 // Making the window scroll to the top when button clicked
 scrollUp.addEventListener("click", () => {
