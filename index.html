@@ -120,7 +120,14 @@
 						<li class="nav-item border">
 							<a class="nav-link" href="account.html">
 								<i class="bi bi-person-circle"></i>
-								<strong class="user">User</strong>
+								<div
+									class="spinner-border spinner-border-sm text-light"
+									id="userLoadSpinner"
+									role="status"
+								>
+									<span class="visually-hidden">Loading...</span>
+								</div>
+								<strong class="user">Loading...</strong>
 							</a>
 						</li>
 					</ul>
@@ -134,7 +141,12 @@
 					<div class="col-md-5 text-center text-md-start">
 						<h1>
 							<div class="display-2">Google Home</div>
-							<div class="display-5 text-muted greeting">Welcome!</div>
+							<div class="display-5 text-muted greeting">
+								<div class="spinner-grow" role="status">
+									<span class="visually-hidden">Loading...</span>
+								</div>
+								<span>Please wait...</span>
+							</div>
 						</h1>
 						<p class="lead my-4 text-muted">
 							Use this website for preforming Smart tasks on your computer... and much
@@ -167,10 +179,10 @@
 		<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
 			<div class="toast" id="toasty" role="alert" aria-live="assertive" aria-atomic="true">
 				<div class="toast-header">
-					<strong class="text-danger me-auto"
+					<strong class="text-success me-auto"
 						><i class="bi bi-lock-fill"></i> Secure Accounts</strong
 					>
-					<small>Expected by 15/08/21</small>
+					<small>Completed at 10/08/21</small>
 					<button
 						type="button"
 						class="btn-close"
@@ -179,10 +191,16 @@
 					></button>
 				</div>
 				<div class="toast-body">
-					We are adding more secure accounts, so your data and signing experience is
-					better!
+					We have concluded adding more secure accounts, so your data and signing
+					experience is better!
+					<br /><br />
+					<i
+						>Just a side note, we had to delete all of your accounts for this update, so
+						please <strong>create a new account</strong>. We apologise for any
+						inconvenience caused by this.</i
+					>
 					<div class="mt-2 pt-2 border-top">
-						<a href="updates.html#secure" class="btn btn-outline-danger btn-sm">
+						<a href="updates.html#secure" class="btn btn-outline-success btn-sm">
 							Learn more
 						</a>
 					</div>
@@ -217,21 +235,27 @@
 					</div>
 
 					<div class="card shadow" style="width: 25rem; height: 500px">
-						<div class="card-header text-center text-danger fw-bold">Headline</div>
+						<div class="card-header text-center text-success fw-bold">Headline</div>
 						<div class="card-img-top display-3">
 							<i class="bi bi-lock-fill"></i>
 						</div>
 						<div class="card-body">
-							<h5 class="card-title text-danger">
-								<i class="bi bi-arrow-repeat"></i>
-								Currently Pending: Version 1.5.0
+							<h5 class="card-title text-success">
+								<i class="bi bi-check-circle-fill"></i>
+								Just Released: Version 1.5.0
 							</h5>
 							<p class="lead card-subtitle">Secure Accounts</p>
 							<p class="card-text">
-								We are adding more secure accounts, so your data and signing
-								experience is better!
+								We have concluded adding more secure accounts, so your data and
+								signing experience is better!
+								<br /><br />
+								<i
+									>Just a side note, we had to delete all of your accounts for
+									this update, so please <strong>create a new account</strong>. We
+									apologise for any inconvenience caused by this.</i
+								>
 							</p>
-							<a href="updates.html#secure" class="btn btn-danger">Learn more</a>
+							<a href="updates.html#secure" class="btn btn-success">Learn more</a>
 						</div>
 					</div>
 
@@ -273,6 +297,29 @@
 			</div>
 		</section>
 
+		<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
+		<script>
+			var firebaseConfig = {
+				apiKey: "AIzaSyD3O6iq_pfmeIX1gAxrf7IFzj8H5q8MVy8",
+				authDomain: "home-1b99f.firebaseapp.com",
+				projectId: "home-1b99f",
+				storageBucket: "home-1b99f.appspot.com",
+				messagingSenderId: "473171000141",
+				appId: "1:473171000141:web:5f73269306b29713db9504",
+				measurementId: "G-BZS7ZWD165",
+			};
+			firebase.initializeApp(firebaseConfig);
+
+			// Make Auth and Firestore references
+			const auth = firebase.auth();
+			const db = firebase.firestore();
+
+			// Update Firestore settings
+			db.settings({ timestampsInSnapshots: true });
+		</script>
+
 		<script
 			src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
 			integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
@@ -284,7 +331,7 @@
 			crossorigin="anonymous"
 		></script>
 		<script>
-			let option = { animation: true, delay: 10000 };
+			let option = { animation: true, autohide: false };
 
 			let toastHTMLElement = document.getElementById("toasty");
 			let toastElement = new bootstrap.Toast(toastHTMLElement, option);

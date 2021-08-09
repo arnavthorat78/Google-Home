@@ -11,6 +11,20 @@ const time = document.querySelector(".time");
 const collage = document.querySelector("#collageContainer");
 
 const user = document.querySelector(".user");
+const userLoadSpinner = document.querySelector("#userLoadSpinner");
+
+// Listen for authentication status changes
+auth.onAuthStateChanged((userChange) => {
+	if (auth.currentUser) {
+		userLoadSpinner.classList.add("d-none");
+		user.innerHTML = auth.currentUser.displayName;
+	} else {
+		userLoadSpinner.classList.add("d-none");
+		user.innerHTML = "User";
+	}
+
+	console.log(auth.currentUser);
+});
 
 let smartCommands = [
 	["hello", "hi"],
@@ -20,15 +34,6 @@ let smartCommands = [
 	["picture", "photo", "collage"],
 	["name", "me", "my"],
 ];
-
-let fullNameRaw = localStorage.getItem("user");
-if (fullNameRaw == null) {
-	user.innerHTML = "User";
-} else {
-	const splitFullName = fullNameRaw.split(",");
-	let fullName = `${splitFullName[0]} ${splitFullName[1]}`;
-	user.innerHTML = fullName;
-}
 
 var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
 var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;

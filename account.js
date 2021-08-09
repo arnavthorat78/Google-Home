@@ -24,6 +24,10 @@ auth.onAuthStateChanged((userChange) => {
 		userLoadSpinner.classList.add("d-none");
 		user.innerHTML = "User";
 
+		info.innerHTML = `
+			<div>You are not logged in.</div>
+		`;
+
 		signOut.disabled = true;
 		deleteAccount.disabled = true;
 	}

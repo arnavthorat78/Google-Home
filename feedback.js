@@ -3,20 +3,22 @@ const feedbackForm = document.querySelector(".feedbackForm");
 const submitButton = document.querySelector(".submitFeedback");
 const response = document.querySelector(".response");
 const feedbackDiv = document.querySelector(".feedback");
+const userLoadSpinner = document.querySelector("#userLoadSpinner");
 
 let allFeedback = [];
 
-let fullNameRaw = localStorage.getItem("user");
-if (fullNameRaw == null) {
-	user.innerHTML = "User";
+// Listen for authentication status changes
+auth.onAuthStateChanged((userChange) => {
+	if (auth.currentUser) {
+		userLoadSpinner.classList.add("d-none");
+		user.innerHTML = auth.currentUser.displayName;
+	} else {
+		userLoadSpinner.classList.add("d-none");
+		user.innerHTML = "User";
+	}
 
-	submitButton.disabled = true;
-	response.innerHTML = "Sorry, but you must have an account to submit feedback.";
-} else {
-	const splitFullName = fullNameRaw.split(",");
-	let fullName = `${splitFullName[0]} ${splitFullName[1]}`;
-	user.innerHTML = fullName;
-}
+	console.log(auth.currentUser);
+});
 
 const addFeedback = (feedback, id) => {
 	let time = feedback.created_at.toDate();

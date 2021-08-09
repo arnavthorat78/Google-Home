@@ -46,6 +46,8 @@ signIn.addEventListener("submit", (e) => {
 			console.log(cred);
 
 			user.innerHTML = auth.currentUser.displayName;
+
+			feedback.innerHTML = "Hooray! You have been successfully signed in!";
 		})
 		.catch((err) => {
 			console.log(err);

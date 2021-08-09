@@ -43,9 +43,17 @@ signUp.addEventListener("submit", (e) => {
 	let email = signUp.email.value.replace(/[,]/g, "").trim();
 	let password = signUp.password.value;
 
+	let credential = {};
+
 	auth.createUserWithEmailAndPassword(email, password)
 		.then((cred) => {
 			console.log(cred);
+
+			credential = cred;
+
+			user.innerHTML = displayName;
+
+			feedback.innerHTML = `Hooray! You have been successfully added!`;
 
 			return cred.user.updateProfile({
 				displayName: displayName,
@@ -56,7 +64,9 @@ signUp.addEventListener("submit", (e) => {
 			// });
 		})
 		.then(() => {
-			user.innerHTML = auth.currentUser.displayName;
+			return db.collection("users").doc(credential.user.uid).set({
+				email: email,
+			});
 		})
 		.catch((err) => {
 			console.log(err);
@@ -69,6 +79,4 @@ signUp.addEventListener("submit", (e) => {
 				feedback.innerHTML = `An unknown error occured. Please try again later.`;
 			}
 		});
-
-	feedback.innerHTML = `Hooray! You have been successfully added!`;
 });

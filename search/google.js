@@ -1,10 +1,15 @@
 const user = document.querySelector(".user");
+const userLoadSpinner = document.querySelector("#userLoadSpinner");
 
-let fullNameRaw = localStorage.getItem("user");
-if (fullNameRaw == null) {
-	user.innerHTML = "User";
-} else {
-	const splitFullName = fullNameRaw.split(",");
-	let fullName = `${splitFullName[0]} ${splitFullName[1]}`;
-	user.innerHTML = fullName;
-}
+// Listen for authentication status changes
+auth.onAuthStateChanged((userChange) => {
+	if (auth.currentUser) {
+		userLoadSpinner.classList.add("d-none");
+		user.innerHTML = auth.currentUser.displayName;
+	} else {
+		userLoadSpinner.classList.add("d-none");
+		user.innerHTML = "User";
+	}
+
+	console.log(auth.currentUser);
+});
