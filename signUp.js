@@ -1,20 +1,30 @@
 const signUp = document.querySelector(".signUp");
 const feedback = document.querySelector(".feedback");
+const userLoadSpinner = document.querySelector("#userLoadSpinner");
 
 const user = document.querySelector(".user");
 
-let users = [];
+// Listen for authentication status changes
+auth.onAuthStateChanged((userChange) => {
+	if (auth.currentUser) {
+		userLoadSpinner.classList.add("d-none");
+		user.innerHTML = auth.currentUser.displayName;
+	} else {
+		userLoadSpinner.classList.add("d-none");
+		user.innerHTML = "User";
+	}
 
-let fullNameRaw = localStorage.getItem("user");
-if (fullNameRaw == null) {
-	user.innerHTML = "User";
-} else {
-	const splitFullName = fullNameRaw.split(",");
-	let fullName = `${splitFullName[0]} ${splitFullName[1]}`;
-	user.innerHTML = fullName;
-}
+	console.log(auth.currentUser);
+});
 
-const passwordPattern = /^[a-zA-Z0-9]{5,}$/;
+// let fullNameRaw = localStorage.getItem("user");
+// if (fullNameRaw == null) {
+// 	user.innerHTML = "User";
+// } else {
+// 	const splitFullName = fullNameRaw.split(",");
+// 	let fullName = `${splitFullName[0]} ${splitFullName[1]}`;
+// 	user.innerHTML = fullName;
+// }
 
 const togglePassword = () => {
 	let password = signUp.password;
@@ -26,84 +36,39 @@ const togglePassword = () => {
 	}
 };
 
-// const addUser = (user) => {
-// 	let recent_searches = [];
-// 	user.recent_searches.forEach((search) => {
-// 		recent_searches.push(search);
-// 	});
-// 	let html = `
-// 	<p>
-// 		<div>${user.first_name} ${user.last_name}</div>
-// 		<div>${recent_searches.join(", ")}</div>
-// 	</p>
-// 	`;
-
-// 	temp.innerHTML += html;
-// };
-
-db.collection("users")
-	.get()
-	.then((snapshot) => {
-		snapshot.docs.forEach((doc) => {
-			users.push(doc.data());
-		});
-	})
-	.catch((err) => {
-		console.log(err);
-	});
-
-// db.collection("users")
-// 	.get()
-// 	.then((snapshot) => {
-// 		snapshot.docs.forEach((doc) => {
-// 			addUser(doc.data());
-// 		});
-// 	})
-// 	.catch((err) => {
-// 		console.log(err);
-// 	});
-
 signUp.addEventListener("submit", (e) => {
 	e.preventDefault();
 
-	let firstName = signUp.firstName.value.replace(/[,]/g, "").trim();
-	let lastName = signUp.lastName.value.replace(/[,]/g, "").trim();
-	let username = signUp.username.value.replace(/[,]/g, "").trim();
+	let displayName = signUp.displayName.value.replace(/[,]/g, "").trim();
 	let email = signUp.email.value.replace(/[,]/g, "").trim();
 	let password = signUp.password.value;
 
-	if (passwordPattern.test(password)) {
-		for (let i = 0; i < users.length; i++) {
-			if (users[i].username == username) {
-				feedback.innerHTML =
-					"Sorry, but an account with this username already exists. Please choose another username.";
+	auth.createUserWithEmailAndPassword(email, password)
+		.then((cred) => {
+			console.log(cred);
 
-				return;
-			}
-		}
-
-		const user = {
-			first_name: firstName,
-			last_name: lastName,
-			username: username,
-			email: email,
-			password: password,
-			recent_searches: ["Testing..."],
-		};
-
-		db.collection("users")
-			.doc(username)
-			.set(user)
-			.then(() => {
-				console.log("User successfully added!");
-			})
-			.catch((error) => {
-				console.error(error);
+			return cred.user.updateProfile({
+				displayName: displayName,
 			});
 
-		feedback.innerHTML = `Hooray! You have been successfully added! Now sign in from the <a href="signIn.html">Sign In</a> page!`;
-	} else {
-		feedback.innerHTML =
-			"The password must contain letters and numbers only (no symbols), and longer than 5 characters.";
-	}
+			// return db.collection("users").doc(cred.user.uid).set({
+			// 	bio: signupForm["signup-bio"].value,
+			// });
+		})
+		.then(() => {
+			user.innerHTML = auth.currentUser.displayName;
+		})
+		.catch((err) => {
+			console.log(err);
+
+			if (err.code == "auth/weak-password") {
+				feedback.innerHTML = `Your password is too weak. It must be longer than six characters.`;
+			} else if (err.code == "auth/email-already-in-use") {
+				feedback.innerHTML = `Sorry, but this email is already in use. Please use another email address.`;
+			} else {
+				feedback.innerHTML = `An unknown error occured. Please try again later.`;
+			}
+		});
+
+	feedback.innerHTML = `Hooray! You have been successfully added!`;
 });

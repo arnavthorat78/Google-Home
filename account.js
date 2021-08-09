@@ -1,26 +1,35 @@
 const user = document.querySelector(".user");
-const deleteAccountPassword = document.querySelector("#deleteAccountPassword");
+// const deleteAccountPassword = document.querySelector("#deleteAccountPassword");
 const signOut = document.querySelector(".signOut");
 const deleteAccount = document.querySelector(".deleteAccount");
-const submitButton = document.querySelector(".submitButton");
+// const submitButton = document.querySelector(".submitButton");
 const feedback = document.querySelector(".feedback");
+const info = document.querySelector(".info");
 
-let users = [];
+const userLoadSpinner = document.querySelector("#userLoadSpinner");
 
-let fullNameRaw = localStorage.getItem("user");
-if (fullNameRaw == null) {
-	user.innerHTML = "User";
+// Listen for authentication status changes
+auth.onAuthStateChanged((userChange) => {
+	if (auth.currentUser) {
+		userLoadSpinner.classList.add("d-none");
+		user.innerHTML = auth.currentUser.displayName;
 
-	signOut.disabled = true;
-	deleteAccount.disabled = true;
-} else {
-	const splitFullName = fullNameRaw.split(",");
-	let fullName = `${splitFullName[0]} ${splitFullName[1]}`;
-	user.innerHTML = fullName;
+		info.innerHTML = `
+			<div>You are logged in as <strong>${auth.currentUser.email}</strong> (${auth.currentUser.displayName}).</div>
+		`;
 
-	signOut.disabled = false;
-	deleteAccount.disabled = false;
-}
+		signOut.disabled = false;
+		deleteAccount.disabled = false;
+	} else {
+		userLoadSpinner.classList.add("d-none");
+		user.innerHTML = "User";
+
+		signOut.disabled = true;
+		deleteAccount.disabled = true;
+	}
+
+	console.log(auth.currentUser);
+});
 
 const togglePassword = () => {
 	let password = deleteAccountPassword.password;
@@ -32,83 +41,57 @@ const togglePassword = () => {
 	}
 };
 
-db.collection("users")
-	.get()
-	.then((snapshot) => {
-		snapshot.docs.forEach((doc) => {
-			users.push(doc.data());
-		});
-	})
-	.catch((err) => {
-		console.log(err);
-	});
+// db.collection("users")
+// 	.get()
+// 	.then((snapshot) => {
+// 		snapshot.docs.forEach((doc) => {
+// 			users.push(doc.data());
+// 		});
+// 	})
+// 	.catch((err) => {
+// 		console.log(err);
+// 	});
 
 deleteAccount.addEventListener("click", () => {
-	deleteAccountPassword.className = "d-block";
+	if (confirm("Are you sure you want to delete your account?")) {
+		auth.currentUser
+			.delete()
+			.then(() => {
+				feedback.innerHTML = "Your account has successfully been deleted.";
 
-	submitButton.disabled = true;
+				user.innerHTML = "User";
+			})
+			.catch((error) => {
+				console.log(error);
 
-	feedback.innerHTML = "Please enter your password to delete your account.";
-});
-
-deleteAccountPassword.password.addEventListener("keyup", (e) => {
-	let infoArray = fullNameRaw.split(",");
-
-	if (e.target.value != infoArray[4]) {
-		submitButton.disabled = true;
-	} else {
-		submitButton.disabled = false;
+				feedback.innerHTML =
+					"Sorry, but an unknown error occured while deleting your account. Please try again later.";
+			});
 	}
 });
 
-deleteAccountPassword.addEventListener("submit", (e) => {
-	e.preventDefault();
+// deleteAccountPassword.password.addEventListener("keyup", (e) => {
+// 	let infoArray = fullNameRaw.split(",");
 
-	const password = deleteAccountPassword.password.value;
+// 	if (e.target.value != infoArray[4]) {
+// 		submitButton.disabled = true;
+// 	} else {
+// 		submitButton.disabled = false;
+// 	}
+// });
 
-	let infoArray = fullNameRaw.split(",");
-
-	if (!(password == infoArray[4])) {
-		feedback.innerHTML = "Sorry, but your password does not match. Please try again.";
-
-		return;
-	} else {
-		const sure = confirm(
-			"Are you sure you want to delete your account? You will lose all of your data."
-		);
-
-		if (sure) {
-			localStorage.removeItem("user");
-			localStorage.removeItem("userName");
-			localStorage.removeItem("userRecentSearches");
-
-			db.collection("users")
-				.doc(infoArray[2])
-				.delete()
-				.then(() => {
-					feedback.innerHTML = "Your account has been successfully deleted.";
-
-					user.innerHTML = "User";
-				})
-				.catch((err) => {
-					console.log(error);
-				});
-		} else {
-			return;
-		}
-	}
-});
+// deleteAccountPassword.addEventListener("submit", (e) => {
+// 	e.preventDefault();
+// });
 
 signOut.addEventListener("click", () => {
-	const sure = confirm("Are you sure you want to log out?");
-
-	if (sure) {
-		localStorage.removeItem("user");
-		localStorage.removeItem("userName");
-		localStorage.removeItem("userRecentSearches");
-
-		user.innerHTML = "User";
-	} else {
-		return;
+	if (confirm("Are you sure you want to log out?")) {
+		auth.signOut()
+			.then(() => {
+				user.innerHTML = "User";
+			})
+			.catch((err) => {
+				console.log(err);
+			});
 	}
 });
