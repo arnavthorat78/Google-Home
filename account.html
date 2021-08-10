@@ -170,12 +170,6 @@
 			</div>
 		</section>
 
-		<strong class="text-danger"
-			>It is advised not to preform any account activities during the
-			<a href="updates.html#secure" class="text-decoration-none">version 1.5.0</a>
-			update!</strong
-		>
-
 		<section class="p-5" id="info">
 			<div class="container-lg">
 				<div class="text-center">
@@ -188,6 +182,53 @@
 						<span class="visually-hidden">Loading...</span>
 					</div>
 					<span>Retrieving data...</span>
+				</div>
+			</div>
+		</section>
+
+		<section class="p-5" id="general">
+			<div class="container-lg">
+				<div class="text-center text-success">
+					<h2>General Settings</h2>
+					<p class="lead">See general settings below!</p>
+				</div>
+
+				<div class="row justify-content-center my-5">
+					<div class="col-lg-6">
+						<div class="p-3">
+							<form class="changeName" style="text-align: start">
+								<div class="input-group mb-3">
+									<span class="input-group-text">
+										<i class="bi bi-person-lines-fill"></i>
+									</span>
+									<input
+										type="text"
+										class="form-control"
+										id="changingName"
+										name="changingName"
+										placeholder="Display Name..."
+										required
+									/>
+									<span class="input-group-text">
+										<span
+											class="tt"
+											data-bs-placement="bottom"
+											data-bs-html="true"
+											title="Change your display name for your account."
+										>
+											<i class="bi bi-question-circle text-muted"></i>
+										</span>
+									</span>
+								</div>
+
+								<button class="btn btn-success mt-2" id="nameSubmit" type="submit">
+									Change Name
+								</button>
+
+								<div class="nameFeedback"></div>
+							</form>
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>

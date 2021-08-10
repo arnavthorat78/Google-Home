@@ -28,7 +28,7 @@ auth.onAuthStateChanged((userChange) => {
 			greeting.innerHTML = `Let's start searching, ${userName}!`;
 		} else if (randNum == 4) {
 			greeting.innerHTML = `What should we do, ${userName}?`;
-		} else if (randNum == 5 || randNum == 6) {
+		} else if (randNum == 5 || randNum == 6 || randNum == 7) {
 			if (now >= 0 && now < 12) {
 				greeting.innerHTML = `Good morning, ${userName}!`;
 			} else if (now >= 12 && now < 17) {
@@ -36,18 +36,18 @@ auth.onAuthStateChanged((userChange) => {
 			} else {
 				greeting.innerHTML = `Good evening, ${userName}!`;
 			}
-		} else if (randNum == 7) {
-			greeting.innerHTML = `Glad to see you again, ${userName}!`;
 		} else if (randNum == 8) {
-			greeting.innerHTML = `What to do, ${userName}?`;
+			greeting.innerHTML = `Glad to see you again, ${userName}!`;
 		} else if (randNum == 9) {
-			greeting.innerHTML = `Welcome, ${userName}!`;
+			greeting.innerHTML = `What to do, ${userName}?`;
 		} else {
 			greeting.innerHTML = `Hi, ${userName}!`;
 		}
 	} else {
 		userLoadSpinner.classList.add("d-none");
 		user.innerHTML = "User";
+
+		greeting.innerHTML = "Welcome!";
 	}
 
 	console.log(auth.currentUser);

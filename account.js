@@ -5,6 +5,9 @@ const deleteAccount = document.querySelector(".deleteAccount");
 // const submitButton = document.querySelector(".submitButton");
 const feedback = document.querySelector(".feedback");
 const info = document.querySelector(".info");
+const changeName = document.querySelector(".changeName");
+const nameFeedback = document.querySelector(".nameFeedback");
+const nameSubmit = document.querySelector("#nameSubmit");
 
 const userLoadSpinner = document.querySelector("#userLoadSpinner");
 
@@ -18,6 +21,7 @@ auth.onAuthStateChanged((userChange) => {
 			<div>You are logged in as <strong>${auth.currentUser.email}</strong> (${auth.currentUser.displayName}).</div>
 		`;
 
+		nameSubmit.disabled = false;
 		signOut.disabled = false;
 		deleteAccount.disabled = false;
 	} else {
@@ -28,6 +32,7 @@ auth.onAuthStateChanged((userChange) => {
 			<div>You are not logged in.</div>
 		`;
 
+		nameSubmit.disabled = true;
 		signOut.disabled = true;
 		deleteAccount.disabled = true;
 	}
@@ -45,16 +50,24 @@ const togglePassword = () => {
 	}
 };
 
-// db.collection("users")
-// 	.get()
-// 	.then((snapshot) => {
-// 		snapshot.docs.forEach((doc) => {
-// 			users.push(doc.data());
-// 		});
-// 	})
-// 	.catch((err) => {
-// 		console.log(err);
-// 	});
+changeName.addEventListener("submit", (e) => {
+	e.preventDefault();
+
+	const changedName = changeName.changingName.value;
+
+	auth.currentUser
+		.updateProfile({
+			displayName: changedName,
+		})
+		.then(() => {
+			nameFeedback.innerHTML = "Your name has been successfully changed!";
+
+			user.innerHTML = changedName;
+		})
+		.catch((error) => {
+			console.log(error);
+		});
+});
 
 deleteAccount.addEventListener("click", () => {
 	if (confirm("Are you sure you want to delete your account?")) {
@@ -68,8 +81,13 @@ deleteAccount.addEventListener("click", () => {
 			.catch((error) => {
 				console.log(error);
 
-				feedback.innerHTML =
-					"Sorry, but an unknown error occured while deleting your account. Please try again later.";
+				if (error.code == "auth/requires-recent-login") {
+					feedback.innerHTML =
+						"Sorry, but you have signed in too long ago for this action to be completed. To successfully delete your account, sign in again on the sign-in page.";
+				} else {
+					feedback.innerHTML =
+						"Sorry, but an unknown error occured while deleting your account. Please try again later.";
+				}
 			});
 	}
 });
