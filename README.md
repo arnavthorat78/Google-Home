@@ -1,5 +1,5 @@
 # Google-Home
-This project is all about Google Home!
+This website is all about Google Home!
 
 See the following URL for the online version of this website: https://arnavthorat78.github.io/Google-Home/.
 
@@ -7,10 +7,12 @@ This website is very helpful for searching, typing URLs, and also using Smart fe
 
 Now, you can see the bottom information for seeing how to use this website.
 
-This website can be used for searching, typing URLs, and also the built-in Smart feature!
-You can also use Accounts with this website to save your data, such as previous searches and a personalised website (e.g. Hello, User!).
-Please keep in mind that you need to give permissions to the website (which is redirects, for the searches and URLs). You can get the steps from the Google Home website, from the link above.
-You can also see updates and about information from the navigation bar on the top of the webpage.
-To sign in, you need to have an account. If you don't, then you need to sign up. You can do this by navigating to the navbar and clicking sign up (on the right side, with the person icon). However, if you do have an account, then sign up with your credentials so that you can have your information across multiple devices.
+This website's main feature is the Search page. In there, you can search, type URLs, or use the built-in Smart feature. Also, if your browser supports it, version 1.4.0 of the website lauched voice commands, so if your browser supports it, you can actually speak whatever you want to Search or speak your Smart commands as well!
 
-More information about this website will be posted later.
+Version 1.5.0 lauched a better account experience, so your data is more secure and also your signing experience is more better. For instance, in version 1.1.0, when we first launched accounts, you had to sign in after signing up. But know, after you sign up, everything is done!
+
+There are way more features of the website, and there will also be way more coming!
+
+Sneak-peak: Version 1.6.0 might announce Settings!
+
+More information about this site will be posted later when more updates have concluded. But for now, keep searching!
