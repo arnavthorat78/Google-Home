@@ -4,8 +4,16 @@ const submitButton = document.querySelector(".submitFeedback");
 const response = document.querySelector(".response");
 const feedbackDiv = document.querySelector(".feedback");
 const userLoadSpinner = document.querySelector("#userLoadSpinner");
+const feedbackLoad = document.querySelector(".feedbackWait");
 
 let allFeedback = [];
+
+const spinner = `
+	<div class="spinner-grow spinner-grow-sm" role="status">
+		<span class="visually-hidden">Loading...</span>
+	</div>
+	<span>Posting feedback...</span>
+`;
 
 // Listen for authentication status changes
 auth.onAuthStateChanged((userChange) => {
@@ -34,35 +42,40 @@ const addFeedback = (feedback, id) => {
 	// </article>
 	// `;
 
+	if (!feedbackLoad.classList.contains("d-none")) {
+		feedbackLoad.classList.add("d-none");
+	}
+
 	let html = `
-	<div class="card shadow mb-3" data-id="${id}" style="width: 100%">
+	<div class="card shadow mb-5" data-id="${id}" style="width: 100%">
 		<div class="card-body">
 			<h2 class="card-title">${feedback.title}</h2>
 			<p class="card-subtitle text-muted">Posted by ${feedback.author}</p>
 			<p class="card-text" style="font-size: large">${feedback.description}</p>
 		</div>
-		<ul class="list-group list-group-flush">
-			<li class="list-group-item">
-				<div class="h4 text-success">
-					<i class="bi bi-hand-thumbs-up-fill like" style="cursor: pointer"></i>
-					${feedback.thumbs_up}
-				</div>
-			</li>
-			<li class="list-group-item">
-				<div class="h4 text-danger">
-					<i class="bi bi-hand-thumbs-down-fill dislike" style="cursor: pointer"></i>
-					${feedback.thumbs_down}
-				</div>
-			</li>
-			<li class="list-group-item">
-				<div class="h4 text-warning">
-					<i class="bi bi-slash-circle-fill spam" style="cursor: pointer"></i>
-				</div>
-			</li>
-		</ul>
 		<div class="card-footer text-muted">Posted at ${time}</div>
 	</div>
 	`;
+
+	// <ul class="list-group list-group-flush">
+	// 	<li class="list-group-item">
+	// 		<div class="h4 text-success">
+	// 			<i class="bi bi-hand-thumbs-up-fill like" style="cursor: pointer"></i>$
+	// 			{feedback.thumbs_up}
+	// 		</div>
+	// 	</li>
+	// 	<li class="list-group-item">
+	// 		<div class="h4 text-danger">
+	// 			<i class="bi bi-hand-thumbs-down-fill dislike" style="cursor: pointer"></i>$
+	// 			{feedback.thumbs_down}
+	// 		</div>
+	// 	</li>
+	// 	<li class="list-group-item">
+	// 		<div class="h4 text-warning">
+	// 			<i class="bi bi-slash-circle-fill spam" style="cursor: pointer"></i>
+	// 		</div>
+	// 	</li>
+	// </ul>;
 
 	feedbackDiv.innerHTML += html;
 };
@@ -104,10 +117,10 @@ db.collection("feedback").onSnapshot((snapshot) => {
 feedbackForm.addEventListener("submit", (e) => {
 	e.preventDefault();
 
+	response.innerHTML = spinner;
+
 	let title = feedbackForm.title.value.trim();
 	let description = feedbackForm.description.value;
-
-	let localInfo = fullNameRaw.split(",");
 
 	let firebaseTitle = title.replace(/[!#$%&*+\\/?@[\]^_`{|}~]/g, "");
 
@@ -115,7 +128,7 @@ feedbackForm.addEventListener("submit", (e) => {
 	const feedback = {
 		title: title,
 		description: description,
-		author: `${localInfo[0]} ${localInfo[1]}`,
+		author: `${auth.currentUser.displayName}`,
 		thumbs_up: 0,
 		thumbs_down: 0,
 		spam_rates: 0,
@@ -127,6 +140,8 @@ feedbackForm.addEventListener("submit", (e) => {
 		.set(feedback)
 		.then(() => {
 			console.log("Feedback successfully added!");
+
+			response.innerHTML = "Feedback successfully posted!";
 		})
 		.catch((error) => {
 			console.error(error);
@@ -135,7 +150,10 @@ feedbackForm.addEventListener("submit", (e) => {
 
 feedbackDiv.addEventListener("click", (e) => {
 	if (e.target.className[2] === "spam") {
-		const id = e.target.parentElement.parentElement.parentElement.getAttribute("data-id");
+		const id =
+			e.target.parentElement.parentElement.parentElement.parentElement.parentElement.getAttribute(
+				"data-id"
+			);
 
 		console.log(id);
 

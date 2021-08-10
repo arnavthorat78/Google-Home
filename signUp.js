@@ -51,8 +51,6 @@ signUp.addEventListener("submit", (e) => {
 
 			credential = cred;
 
-			user.innerHTML = displayName;
-
 			feedback.innerHTML = `Hooray! You have been successfully added!`;
 
 			return cred.user.updateProfile({

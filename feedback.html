@@ -142,14 +142,10 @@
 							<div class="display-2">
 								Feedback <span class="badge bg-info">BETA</span>
 							</div>
-							<div class="display-5 text-muted">
-								Post your thoughts about this website!
-							</div>
+							<div class="display-5 text-muted">Post your thoughts!</div>
 						</h1>
 						<p class="lead my-4 text-muted">
-							Add feedback so that people can see what you want for this website; what
-							you like and dislike. The developer also reads this, so they will be
-							able to update it accordingly if possible.
+							Add feedback so that others can see what you think!
 						</p>
 					</div>
 					<div class="col-md-5 text-center d-none d-md-block">
@@ -162,21 +158,19 @@
 		</section>
 
 		<div
-			class="alert alert-danger d-flex justify-content-center ms-5 me-5"
+			class="alert alert-primary d-flex justify-content-center ms-5 me-5"
 			role="alert"
 			id="alert"
 		>
 			<div>
-				<div class="display-6"><i class="bi bi-exclamation-triangle-fill"></i></div>
+				<div class="display-6"><i class="bi bi-info-circle-fill"></i></div>
 				<br />
-				<h3>Site not Working!</h3>
+				<h3>Fixed... but some removals!</h3>
 				<p class="lead">
-					Sorry, but this site is not operational.
-					<!-- The problems are that you cannot
-					like, dislike, or spam a post. You can, however, post comments, so you may use
-					that feature if you wish. -->
+					The site is fixed, but we had to remove some things, such as liking and
+					disliking, but otherwise, everything else is the same!
 				</p>
-				<a href="index.html" class="btn btn-danger">Navigate to Home</a>
+				<a href="feedback.html#form" class="btn btn-primary">Start Posting!</a>
 			</div>
 		</div>
 
@@ -215,15 +209,12 @@
 							</div>
 
 							<div class="mt-3">
-								<button
-									type="submit"
-									class="btn btn-primary mb-3 submitFeedback"
-									disabled
-								>
+								<button type="submit" class="btn btn-primary mb-3 submitFeedback">
+									<!-- disabled -->
 									Post
 								</button>
-								<br />
-								<small class="text-muted">Posting feedback is not working.</small>
+								<!-- <br />
+								<small class="text-muted">Posting feedback is not working.</small> -->
 							</div>
 
 							<div class="response"></div>
@@ -235,37 +226,12 @@
 
 		<section class="p-5 bg-light" id="feedback">
 			<div class="feedback">
-				<!-- <div class="card shadow" style="width: 100%">
-					<div class="card-body">
-						<h2 class="card-title">Nice!</h2>
-						<p class="card-subtitle text-muted">Posted by Arnav</p>
-						<p class="card-text" style="font-size: large">
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse nemo odit
-							hic maxime accusamus eligendi quis deserunt est rerum. Vel obcaecati sed
-							nulla fugiat soluta!
-						</p>
+				<div class="feedbackWait">
+					<div class="spinner-grow me-2" role="status">
+						<span class="visually-hidden">Loading...</span>
 					</div>
-					<ul class="list-group list-group-flush">
-						<li class="list-group-item">
-							<div class="h4 text-success">
-								<i class="bi bi-hand-thumbs-up-fill like" style="cursor: pointer"></i>
-								78
-							</div>
-						</li>
-						<li class="list-group-item">
-							<div class="h4 text-danger">
-								<i class="bi bi-hand-thumbs-down-fill dislike" style="cursor: pointer"></i>
-								2
-							</div>
-						</li>
-						<li class="list-group-item">
-							<div class="h4 text-warning">
-								<i class="bi bi-slash-circle-fill spam" style="cursor: pointer"></i>
-							</div>
-						</li>
-					</ul>
-					<div class="card-footer text-muted">Posted at Lorem ipsum dolor sit amet.</div>
-				</div> -->
+					<span class="h2">Getting feedback...</span>
+				</div>
 			</div>
 		</section>
 
