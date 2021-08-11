@@ -8,17 +8,12 @@ const userLoadSpinner = document.querySelector("#userLoadSpinner");
 // Getting a random number for later use
 let randNum = Math.ceil(Math.random() * 10);
 
-// Listen for authentication status changes
-auth.onAuthStateChanged((userChange) => {
-	if (auth.currentUser) {
-		let userName = auth.currentUser.displayName;
+const randGreeting = (status) => {
+	// Getting the hours for later use
+	const now = new Date().getHours();
+	let userName = auth.currentUser.displayName;
 
-		userLoadSpinner.classList.add("d-none");
-		user.innerHTML = userName;
-
-		// Getting the hours for later use
-		const now = new Date().getHours();
-
+	if (status == "account") {
 		// Random greetings
 		if (randNum == 1) {
 			greeting.innerHTML = `Welcome back, ${userName}!`;
@@ -43,11 +38,42 @@ auth.onAuthStateChanged((userChange) => {
 		} else {
 			greeting.innerHTML = `Hi, ${userName}!`;
 		}
+	} else if (status == "user") {
+		greeting.innerHTML = "Welcome!";
+	} else {
+		greeting.innerHTML = "A great website!";
+	}
+};
+
+// Listen for authentication status changes
+auth.onAuthStateChanged((userChange) => {
+	if (auth.currentUser) {
+		let userName = auth.currentUser.displayName;
+
+		userLoadSpinner.classList.add("d-none");
+		user.innerHTML = userName;
+
+		db.collection("users")
+			.doc(userChange.uid)
+			.onSnapshot(
+				(snapshot) => {
+					console.log(snapshot.data().settings.general.greeting);
+
+					if (snapshot.data().settings.general.greeting) {
+						randGreeting("account");
+					} else {
+						randGreeting("");
+					}
+				},
+				(err) => {
+					console.log(err.message);
+				}
+			);
 	} else {
 		userLoadSpinner.classList.add("d-none");
 		user.innerHTML = "User";
 
-		greeting.innerHTML = "Welcome!";
+		randGreeting("user");
 	}
 
 	console.log(auth.currentUser);

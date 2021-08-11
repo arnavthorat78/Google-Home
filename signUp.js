@@ -62,9 +62,17 @@ signUp.addEventListener("submit", (e) => {
 			// });
 		})
 		.then(() => {
-			return db.collection("users").doc(credential.user.uid).set({
-				email: email,
-			});
+			return db
+				.collection("users")
+				.doc(credential.user.uid)
+				.set({
+					email: email,
+					settings: {
+						general: {
+							greeting: true,
+						},
+					},
+				});
 		})
 		.catch((err) => {
 			console.log(err);
