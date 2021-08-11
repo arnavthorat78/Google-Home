@@ -13,14 +13,31 @@ const collage = document.querySelector("#collageContainer");
 const user = document.querySelector(".user");
 const userLoadSpinner = document.querySelector("#userLoadSpinner");
 
+let searchEngine = "";
+
 // Listen for authentication status changes
 auth.onAuthStateChanged((userChange) => {
 	if (auth.currentUser) {
 		userLoadSpinner.classList.add("d-none");
 		user.innerHTML = auth.currentUser.displayName;
+
+		db.collection("users")
+			.doc(userChange.uid)
+			.onSnapshot(
+				(snapshot) => {
+					console.log(snapshot.data().settings.general.searchEngine);
+
+					searchEngine = snapshot.data().settings.general.searchEngine;
+				},
+				(err) => {
+					console.log(err.message);
+				}
+			);
 	} else {
 		userLoadSpinner.classList.add("d-none");
 		user.innerHTML = "User";
+
+		searchEngine = "Google";
 	}
 
 	console.log(auth.currentUser);
@@ -206,7 +223,13 @@ google.addEventListener("submit", (e) => {
 
 	if (parameters == "Search") {
 		// If the user wants to search for something
-		open(`https://www.google.com/search?q=${encodeURIComponent(userCommand)}`, "_blank");
+		if (searchEngine == "Bing") {
+			open(`https://www.bing.com/search?q=${encodeURIComponent(userCommand)}`, "_blank");
+		} else if (searchEngine == "DuckDuckGo") {
+			open(`https://duckduckgo.com/?q=${encodeURIComponent(userCommand)}`, "_blank");
+		} else {
+			open(`https://www.google.com/search?q=${encodeURIComponent(userCommand)}`, "_blank");
+		}
 
 		response.innerHTML = `Opened <i>${userCommand}</i>.`;
 		setTimeout(() => {
@@ -239,7 +262,16 @@ voice.addEventListener("submit", (e) => {
 			var command = event.results[0][0].transcript;
 			output.innerHTML = `Result received: ${command}.`;
 
-			open(`https://www.google.com/search?q=${encodeURIComponent(command)}`, "_blank");
+			if (searchEngine == "Bing") {
+				open(`https://www.bing.com/search?q=${encodeURIComponent(userCommand)}`, "_blank");
+			} else if (searchEngine == "DuckDuckGo") {
+				open(`https://duckduckgo.com/?q=${encodeURIComponent(userCommand)}`, "_blank");
+			} else {
+				open(
+					`https://www.google.com/search?q=${encodeURIComponent(userCommand)}`,
+					"_blank"
+				);
+			}
 
 			response.innerHTML = `Opened <i>${command}</i>.`;
 			setTimeout(() => {

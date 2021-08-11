@@ -7,6 +7,12 @@ const userLoadSpinner = document.querySelector("#userLoadSpinner");
 
 let globalUser = {};
 
+/**
+ * Get a Bootstrap grow spinner with your custom message.
+ *
+ * @param {string} mes The message to display on the spinner.
+ * @returns The spinner with the message
+ */
 const spinner = (mes) => {
 	return `
         <div class="spinner-grow spinner-grow-sm" role="status">
@@ -24,7 +30,20 @@ auth.onAuthStateChanged((userChange) => {
 
 		globalUser = userChange;
 
-		generalSubmit.disabled = false;
+		db.collection("users")
+			.doc(userChange.uid)
+			.onSnapshot(
+				(snapshot) => {
+					// console.log(snapshot.data().settings.general.greeting);
+
+					general.greeting.checked = snapshot.data().settings.general.greeting;
+					general.searchEngine.value = snapshot.data().settings.general.searchEngine;
+					generalSubmit.disabled = false;
+				},
+				(err) => {
+					console.log(err.message);
+				}
+			);
 	} else {
 		userLoadSpinner.classList.add("d-none");
 		user.innerHTML = "User";
@@ -38,12 +57,14 @@ auth.onAuthStateChanged((userChange) => {
 general.addEventListener("submit", (e) => {
 	e.preventDefault();
 
-	generalRes.innerHTML = spinner("Applying settings...");
+	generalRes.innerHTML = spinner("Viewing settings...");
 
 	const greeting = general.greeting.checked;
+	const searchEngine = general.searchEngine.value;
 
 	let rawNewSettings = {
 		greeting: greeting,
+		searchEngine: searchEngine,
 	};
 	let settingDocRef = db.collection("users").doc(globalUser.uid);
 
@@ -57,7 +78,7 @@ general.addEventListener("submit", (e) => {
 
 				let newSettings = (settingDoc.data().settings.general = rawNewSettings);
 				settingDocRef
-					.set({ settings: { general: newSettings } } /*, { merge: true }*/)
+					.set({ settings: { general: newSettings } }, { merge: true })
 					.then(() => {
 						console.log(settingDoc.data().settings.general);
 
@@ -68,7 +89,7 @@ general.addEventListener("submit", (e) => {
 					});
 			})
 			.then(() => {
-				generalRes.innerHTML = spinner("Final changes...");
+				generalRes.innerHTML = spinner("Setting global changes...");
 			})
 			.catch((error) => {
 				generalRes.innerHTML =

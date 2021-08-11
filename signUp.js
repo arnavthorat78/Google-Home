@@ -70,6 +70,7 @@ signUp.addEventListener("submit", (e) => {
 					settings: {
 						general: {
 							greeting: true,
+							searchEngine: "Google",
 						},
 					},
 				});
