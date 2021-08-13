@@ -5,15 +5,19 @@ const response = document.querySelector(".response");
 const feedbackDiv = document.querySelector(".feedback");
 const userLoadSpinner = document.querySelector("#userLoadSpinner");
 const feedbackLoad = document.querySelector(".feedbackWait");
+const editForm = document.querySelector(".editForm");
+const editResponse = document.querySelector(".editResponse");
 
 let allFeedback = [];
 
-const spinner = `
-	<div class="spinner-grow spinner-grow-sm" role="status">
-		<span class="visually-hidden">Loading...</span>
-	</div>
-	<span>Posting feedback...</span>
-`;
+const spinner = (message) => {
+	return `
+		<div class="spinner-grow spinner-grow-sm" role="status">
+			<span class="visually-hidden">Loading...</span>
+		</div>
+		<span>${message}</span>
+	`;
+};
 let globalUser = {};
 let editable = [];
 
@@ -35,19 +39,34 @@ auth.onAuthStateChanged((userChange) => {
 	console.log(auth.currentUser);
 });
 
+// const initialiseEdit = (button, id, title, description) => {
+// 	console.log(title, id);
+
+// 	button.addEventListener("click", (e) => {
+// 		console.log(e);
+// 	});
+// };
+
+const updateClipboard = (newClip) => {
+	navigator.clipboard.writeText(newClip).then(
+		() => {
+			console.log("Successfully copied!");
+		},
+		() => {
+			console.log("An error occured.");
+		}
+	);
+};
+const copyToClipboard = () => {
+	navigator.permissions.query({ name: "clipboard-write" }).then((result) => {
+		if (result.state == "granted" || result.state == "prompt") {
+			updateClipboard(id);
+		}
+	});
+};
+
 const addFeedback = (feedback, id, uid) => {
 	let time = feedback.created_at.toDate();
-	// let html = `
-	// <article data-id="${id}">
-	//     <h2>${feedback.title}</h2>
-	//     <strong style="font-size: 3vh">Posted by ${feedback.author}</strong>
-	//     <p style="font-size: 2.75vh">${feedback.description}</p>
-	//     <strong style="font-size: 2.25vh"><img style="height: 25px; width: 25px; cursor: pointer;" class="like" src="./img/Likes.png" alt="Likes" draggable="false" /> ${feedback.thumbs_up}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	//     <strong style="font-size: 2.25vh"><img style="height: 25px; width: 25px; cursor: pointer;" class="dislike" src="./img/Dislikes.png" alt="Dislikes" draggable="false" /> ${feedback.thumbs_down}</strong><br><br>
-	//     <span style="font-size: 1.75vh; color: #555555;">Posted at ${time}</div><br><br>
-	// 	   <span style="font-size: 1.5vh;"><img style="height: 20px; width: 20px; cursor: pointer;" class="spam" src="./img/Spam.png" alt="Spam" draggable="false" /> ${feedback.spam_rates}</span>
-	// </article>
-	// `;
 
 	if (!feedbackLoad.classList.contains("d-none")) {
 		feedbackLoad.classList.add("d-none");
@@ -69,32 +88,50 @@ const addFeedback = (feedback, id, uid) => {
 	}</h2>
 				<p class="card-subtitle text-muted">Posted by ${feedback.author}</p>
 				<p class="card-text" style="font-size: large">${feedback.description}</p>
+				${
+					editable.includes(id)
+						? `<div class="row justify-content-center my-5">
+								<div class="col-2">
+									<button
+										class="btn btn-primary"
+										type="button"
+										data-bs-toggle="collapse"
+										data-bs-target="#collapseExample"
+										aria-expanded="false"
+										aria-controls="collapseExample"
+									>
+									<small class="text-muted">ID for editing:
+										<input class="form-control mt-2 mb-2" style="width: 225px;" type="text" readonly value="${id}"/>
+										<button type="button" class="btn btn-outline-secondary btn-sm ms-1" onclick="copyToClipboard"><i class="bi bi-clipboard-plus"></i></button>
+									</small>
+								</div>
+							</div>`
+						: ""
+				}
 			</div>
 			<div class="card-footer text-muted">Posted at ${time}</div>
 		</div>
 	`;
 
-	// <ul class="list-group list-group-flush">
-	// 	<li class="list-group-item">
-	// 		<div class="h4 text-success">
-	// 			<i class="bi bi-hand-thumbs-up-fill like" style="cursor: pointer"></i>$
-	// 			{feedback.thumbs_up}
-	// 		</div>
-	// 	</li>
-	// 	<li class="list-group-item">
-	// 		<div class="h4 text-danger">
-	// 			<i class="bi bi-hand-thumbs-down-fill dislike" style="cursor: pointer"></i>$
-	// 			{feedback.thumbs_down}
-	// 		</div>
-	// 	</li>
-	// 	<li class="list-group-item">
-	// 		<div class="h4 text-warning">
-	// 			<i class="bi bi-slash-circle-fill spam" style="cursor: pointer"></i>
-	// 		</div>
-	// 	</li>
-	// </ul>;
-
 	feedbackDiv.innerHTML += html;
+
+	// `<button type="button" class="btn btn-outline-secondary ms-2 ${id}" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-pencil-fill"></i></button>`
+
+	// if (document.querySelector(`.${id}`) == null) {
+	// 	return;
+	// } else if (document.querySelector(`.${id}`) != null) {
+	// 	initialiseEdit(
+	// 		document.querySelector(`.${id}`),
+	// 		document.querySelector(`.${id}`).classList[3],
+	// 		feedback.title,
+	// 		feedback.description
+	// 	);
+
+	// 	// document.querySelector(`.${id}`).addEventListener("click", (e) => {
+	// 	// 	console.log(e);
+	// 	// 	initialiseEdit(document.querySelector(`.${id}`).classList[3]);
+	// 	// });
+	// }
 };
 
 const deleteFeedback = (id) => {
@@ -118,28 +155,13 @@ db.collection("feedback").onSnapshot((snapshot) => {
 	});
 });
 
-// db.collection("feedback")
-// 	.get()
-// 	.then((snapshot) => {
-// 		snapshot.docs.forEach((doc) => {
-// 			allFeedback.push(doc.data());
-
-// 			addFeedback(doc.data(), doc.id);
-// 		});
-// 	})
-// 	.catch((err) => {
-// 		console.log(err);
-// 	});
-
 feedbackForm.addEventListener("submit", (e) => {
 	e.preventDefault();
 
-	response.innerHTML = spinner;
+	response.innerHTML = spinner("Posting feedback...");
 
 	let title = feedbackForm.title.value.trim();
 	let description = feedbackForm.description.value;
-
-	// let firebaseTitle = title.replace(/[!#$%&*+\\/?@[\]^_`{|}~]/g, "");
 
 	const now = new Date();
 	const feedback = {
@@ -161,6 +183,17 @@ feedbackForm.addEventListener("submit", (e) => {
 		.catch((error) => {
 			console.error(error);
 		});
+});
+
+editForm.addEventListener("submit", (e) => {
+	e.preventDefault();
+
+	editResponse.innerHTML = spinner("Editing feedback...");
+
+	let title = editForm.title.value.trim();
+	let description = editForm.description.value;
+
+	console.log(e, title, description);
 });
 
 // feedbackDiv.addEventListener("click", (e) => {
