@@ -14,21 +14,28 @@ const spinner = `
 	</div>
 	<span>Posting feedback...</span>
 `;
+let globalUser = {};
+let editable = [];
 
 // Listen for authentication status changes
 auth.onAuthStateChanged((userChange) => {
 	if (auth.currentUser) {
 		userLoadSpinner.classList.add("d-none");
 		user.innerHTML = auth.currentUser.displayName;
+
+		globalUser = userChange;
+		submitButton.disabled = false;
 	} else {
 		userLoadSpinner.classList.add("d-none");
 		user.innerHTML = "User";
+
+		submitButton.disabled = true;
 	}
 
 	console.log(auth.currentUser);
 });
 
-const addFeedback = (feedback, id) => {
+const addFeedback = (feedback, id, uid) => {
 	let time = feedback.created_at.toDate();
 	// let html = `
 	// <article data-id="${id}">
@@ -46,15 +53,25 @@ const addFeedback = (feedback, id) => {
 		feedbackLoad.classList.add("d-none");
 	}
 
+	if (uid == globalUser.uid) {
+		console.log(`${id} is editable!`);
+
+		editable.push(id);
+	}
+
 	let html = `
-	<div class="card shadow mb-5" data-id="${id}" style="width: 100%">
-		<div class="card-body">
-			<h2 class="card-title">${feedback.title}</h2>
-			<p class="card-subtitle text-muted">Posted by ${feedback.author}</p>
-			<p class="card-text" style="font-size: large">${feedback.description}</p>
+		<div class="card shadow mb-5" data-id="${id}" data-uid="${uid}" style="width: 100%">
+			<div class="card-body">
+				<h2 class="card-title">${feedback.title} ${
+		editable.includes(id)
+			? `<button type="button" class="btn btn-outline-secondary ms-2" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-pencil-fill"></i></button>`
+			: ""
+	}</h2>
+				<p class="card-subtitle text-muted">Posted by ${feedback.author}</p>
+				<p class="card-text" style="font-size: large">${feedback.description}</p>
+			</div>
+			<div class="card-footer text-muted">Posted at ${time}</div>
 		</div>
-		<div class="card-footer text-muted">Posted at ${time}</div>
-	</div>
 	`;
 
 	// <ul class="list-group list-group-flush">
@@ -94,7 +111,7 @@ db.collection("feedback").onSnapshot((snapshot) => {
 		const doc = change.doc;
 
 		if (change.type === "added") {
-			addFeedback(doc.data(), doc.id);
+			addFeedback(doc.data(), doc.id, doc.data().uid);
 		} else if (change.type === "removed") {
 			deleteFeedback(doc.id);
 		}
@@ -122,21 +139,19 @@ feedbackForm.addEventListener("submit", (e) => {
 	let title = feedbackForm.title.value.trim();
 	let description = feedbackForm.description.value;
 
-	let firebaseTitle = title.replace(/[!#$%&*+\\/?@[\]^_`{|}~]/g, "");
+	// let firebaseTitle = title.replace(/[!#$%&*+\\/?@[\]^_`{|}~]/g, "");
 
 	const now = new Date();
 	const feedback = {
 		title: title,
 		description: description,
-		author: `${auth.currentUser.displayName}`,
-		thumbs_up: 0,
-		thumbs_down: 0,
-		spam_rates: 0,
+		author: auth.currentUser.displayName,
 		created_at: firebase.firestore.Timestamp.fromDate(now),
+		uid: globalUser.uid,
 	};
 
 	db.collection("feedback")
-		.doc(firebaseTitle)
+		.doc()
 		.set(feedback)
 		.then(() => {
 			console.log("Feedback successfully added!");
@@ -148,75 +163,75 @@ feedbackForm.addEventListener("submit", (e) => {
 		});
 });
 
-feedbackDiv.addEventListener("click", (e) => {
-	if (e.target.className[2] === "spam") {
-		const id =
-			e.target.parentElement.parentElement.parentElement.parentElement.parentElement.getAttribute(
-				"data-id"
-			);
+// feedbackDiv.addEventListener("click", (e) => {
+// 	if (e.target.className[2] === "spam") {
+// 		const id =
+// 			e.target.parentElement.parentElement.parentElement.parentElement.parentElement.getAttribute(
+// 				"data-id"
+// 			);
 
-		console.log(id);
+// 		console.log(id);
 
-		const sure = confirm(
-			"Are you sure you want to spam this feedback post? The post will not be visible to anyone."
-		);
+// 		const sure = confirm(
+// 			"Are you sure you want to spam this feedback post? The post will not be visible to anyone."
+// 		);
 
-		if (!sure) {
-			return;
-		} else {
-			db.collection("feedback")
-				.doc(id)
-				.delete()
-				.then(() => {
-					console.log("Post deleted!");
-				})
-				.catch((err) => {
-					console.log(err);
-				});
-		}
-	}
+// 		if (!sure) {
+// 			return;
+// 		} else {
+// 			db.collection("feedback")
+// 				.doc(id)
+// 				.delete()
+// 				.then(() => {
+// 					console.log("Post deleted!");
+// 				})
+// 				.catch((err) => {
+// 					console.log(err);
+// 				});
+// 		}
+// 	}
 
-	if (e.target.className === "like") {
-		const id = e.target.parentElement.parentElement.getAttribute("data-id");
-		let likeDocRef = db.collection("feedback").doc(id);
+// 	if (e.target.className === "like") {
+// 		const id = e.target.parentElement.parentElement.getAttribute("data-id");
+// 		let likeDocRef = db.collection("feedback").doc(id);
 
-		db.runTransaction((transaction) => {
-			return transaction.get(likeDocRef).then((likeDoc) => {
-				if (!likeDoc.exists) {
-					throw "Document does not exist!";
-				}
+// 		db.runTransaction((transaction) => {
+// 			return transaction.get(likeDocRef).then((likeDoc) => {
+// 				if (!likeDoc.exists) {
+// 					throw "Document does not exist!";
+// 				}
 
-				let newLikes = likeDoc.data().thumbs_up + 1;
-				transaction.update(likeDocRef, { thumbs_up: newLikes });
-			});
-		})
-			.then(() => {
-				console.log("Added like!");
-			})
-			.catch((error) => {
-				console.log(error);
-			});
-	}
+// 				let newLikes = likeDoc.data().thumbs_up + 1;
+// 				transaction.update(likeDocRef, { thumbs_up: newLikes });
+// 			});
+// 		})
+// 			.then(() => {
+// 				console.log("Added like!");
+// 			})
+// 			.catch((error) => {
+// 				console.log(error);
+// 			});
+// 	}
 
-	if (e.target.className === "dislike") {
-		const id = e.target.parentElement.parentElement.getAttribute("data-id");
-		let dislikeDocRef = db.collection("feedback").doc(id);
+// 	if (e.target.className === "dislike") {
+// 		const id = e.target.parentElement.parentElement.getAttribute("data-id");
+// 		let dislikeDocRef = db.collection("feedback").doc(id);
 
-		db.runTransaction((transaction) => {
-			return transaction.get(dislikeDocRef).then((dislikeDoc) => {
-				if (!dislikeDoc.exists) {
-					throw "Document does not exist!";
-				}
+// 		db.runTransaction((transaction) => {
+// 			return transaction.get(dislikeDocRef).then((dislikeDoc) => {
+// 				if (!dislikeDoc.exists) {
+// 					throw "Document does not exist!";
+// 				}
 
-				let newDislikes = dislikeDoc.data().thumbs_down + 1;
-				transaction.update(dislikeDocRef, { thumbs_down: newDislikes });
-			});
-		})
-			.then(() => {
-				console.log("Added dislike!");
-			})
-			.catch((error) => {
-				console.log(error);
-			});
-	}
-});
+// 				let newDislikes = dislikeDoc.data().thumbs_down + 1;
+// 				transaction.update(dislikeDocRef, { thumbs_down: newDislikes });
+// 			});
+// 		})
+// 			.then(() => {
+// 				console.log("Added dislike!");
+// 			})
+// 			.catch((error) => {
+// 				console.log(error);
+// 			});
+// 	}
+// });
