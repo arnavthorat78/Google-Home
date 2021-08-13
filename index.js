@@ -9,11 +9,11 @@ const userLoadSpinner = document.querySelector("#userLoadSpinner");
 let randNum = Math.ceil(Math.random() * 10);
 
 const randGreeting = (status) => {
-	// Getting the hours for later use
-	const now = new Date().getHours();
-	let userName = auth.currentUser.displayName;
-
 	if (status == "account") {
+		// Getting the hours for later use
+		const now = new Date().getHours();
+		let userName = auth.currentUser.displayName;
+
 		// Random greetings
 		if (randNum == 1) {
 			greeting.innerHTML = `Welcome back, ${userName}!`;
