@@ -3,6 +3,11 @@ const generalSubmit = document.querySelector("#generalSubmit");
 const generalRes = document.querySelector(".generalRes");
 const generalProgress = document.querySelector(".generalProgress");
 
+const weather = document.querySelector(".weatherSettings");
+const weatherSubmit = document.querySelector("#weatherSubmit");
+const weatherRes = document.querySelector(".weatherRes");
+const weatherProgress = document.querySelector(".weatherProgress");
+
 const user = document.querySelector(".user");
 const userLoadSpinner = document.querySelector("#userLoadSpinner");
 
@@ -41,6 +46,9 @@ auth.onAuthStateChanged((userChange) => {
 					general.greeting.checked = snapshot.data().settings.general.greeting;
 					general.searchEngine.value = snapshot.data().settings.general.searchEngine;
 					generalSubmit.disabled = false;
+
+					weather.tempUnits.value = snapshot.data().settings.weather.tempUnits;
+					weatherSubmit.disabled = false;
 				},
 				(err) => {
 					console.log(err.message);
@@ -51,6 +59,7 @@ auth.onAuthStateChanged((userChange) => {
 		user.innerHTML = "User";
 
 		generalSubmit.disabled = true;
+		weatherSubmit.disabled = true;
 	}
 
 	console.log(auth.currentUser);
@@ -116,6 +125,70 @@ general.addEventListener("submit", (e) => {
 			})
 			.catch((error) => {
 				generalRes.innerHTML =
+					"Sorry, but an unknown error occured while changing the settings. Please try again later.";
+				console.log(error);
+			});
+	});
+});
+
+weather.addEventListener("submit", (e) => {
+	e.preventDefault();
+
+	weatherProgress.classList.remove("d-none");
+	weatherProgress.children[0].classList.remove("bg-success");
+	weatherProgress.children[0].classList.add("bg-danger");
+	weatherProgress.children[0].style.width = "25%";
+	weatherRes.innerHTML = spinner("Viewing settings...");
+
+	const tempUnits = weather.tempUnits.value;
+
+	let rawNewSettings = {
+		tempUnits: tempUnits,
+	};
+	let settingDocRef = db.collection("users").doc(globalUser.uid);
+
+	return db.runTransaction((transaction) => {
+		return transaction
+			.get(settingDocRef)
+			.then((settingDoc) => {
+				if (!settingDoc.exists) {
+					throw "Document does not exist!";
+				}
+
+				let newSettings = (settingDoc.data().settings.weather = rawNewSettings);
+				settingDocRef
+					.set({ settings: { weather: newSettings } }, { merge: true })
+					.then(() => {
+						console.log(settingDoc.data().settings.weather);
+
+						weatherProgress.children[0].style.width = "75%";
+						weatherProgress.children[0].classList.remove("bg-danger");
+						weatherProgress.children[0].classList.add("bg-warning");
+						weatherRes.innerHTML = spinner("Changing local information...");
+						setTimeout(() => {
+							weatherProgress.children[0].classList.remove("bg-warning");
+							weatherProgress.children[0].classList.add("bg-success");
+							weatherProgress.children[0].style.width = "100%";
+
+							weatherRes.innerHTML = "Settings successfully saved!";
+
+							setTimeout(() => {
+								weatherProgress.classList.add("d-none");
+								weatherRes.innerHTML = "";
+							}, 5000);
+						}, 2500);
+					})
+					.catch((err) => {
+						console.log(err);
+					});
+			})
+			.then(() => {
+				weatherRes.innerHTML = spinner("Setting global changes...");
+				weatherProgress.children[0].style.width = "50%";
+				weatherProgress.children[0].classList.add("bg-danger");
+			})
+			.catch((error) => {
+				weatherRes.innerHTML =
 					"Sorry, but an unknown error occured while changing the settings. Please try again later.";
 				console.log(error);
 			});

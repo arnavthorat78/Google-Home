@@ -265,7 +265,7 @@
 									type="submit"
 									disabled
 								>
-									Apply Settings
+									Apply General Settings
 								</button>
 
 								<div class="mt-3 generalRes"></div>
@@ -290,7 +290,105 @@
 			</div>
 		</section>
 
-		<section class="p-5 bg-light" id="account">
+		<section class="p-5 bg-light" id="weather">
+			<div class="container-lg">
+				<div class="text-center">
+					<h2>Weather Settings</h2>
+					<p class="lead">
+						See the weather settings for customizing your weather experience!
+					</p>
+
+					<div class="row justify-content-center my-5">
+						<div class="col-lg-6">
+							<div class="p-3">
+								<form class="weatherSettings" style="text-align: start">
+									<label for="searchEngine" class="mt-3"
+										>Temperature units:
+									</label>
+									<span
+										class="ms-2 tt"
+										data-bs-placement="bottom"
+										data-bs-html="true"
+										title="Decide what unit you want your temperature to be displayed in."
+									>
+										<i class="bi bi-question-circle text-muted"></i>
+									</span>
+									<br />
+									<div class="ms-5 form-check">
+										<input
+											class="form-check-input"
+											type="radio"
+											name="tempUnits"
+											id="metric"
+											value="metric"
+											checked
+										/>
+										<label class="form-check-label" for="metric"
+											>Metric (°C)</label
+										>
+									</div>
+									<div class="ms-5 form-check">
+										<input
+											class="form-check-input"
+											type="radio"
+											name="tempUnits"
+											id="imperial"
+											value="imperial"
+										/>
+										<label class="form-check-label" for="imperial">
+											Imperial (°F)</label
+										>
+									</div>
+									<div class="ms-5 form-check">
+										<input
+											class="form-check-input"
+											type="radio"
+											name="tempUnits"
+											id="default"
+											value="default"
+										/>
+										<label class="form-check-label" for="default"
+											>Kelvin (°K)</label
+										>
+									</div>
+
+									<br />
+
+									<button
+										class="btn btn-success mt-2"
+										id="weatherSubmit"
+										type="submit"
+										disabled
+									>
+										Apply Weather Settings
+									</button>
+
+									<div class="mt-3 weatherRes"></div>
+
+									<div class="progress weatherProgress d-none mt-3">
+										<div
+											class="
+												progress-bar
+												progress-bar-striped
+												progress-bar-animated
+												bg-danger
+											"
+											role="progressbar"
+											aria-valuenow="75"
+											aria-valuemin="0"
+											aria-valuemax="100"
+											style="width: 0%"
+										></div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="p-5" id="account">
 			<div class="container-lg">
 				<div class="text-center">
 					<h2>Account Settings</h2>

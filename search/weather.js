@@ -4,14 +4,35 @@ const response = document.querySelector(".response");
 const user = document.querySelector(".user");
 const userLoadSpinner = document.querySelector("#userLoadSpinner");
 
+let tempUnits = "";
+let tempSymbol = "";
+
 // Listen for authentication status changes
 auth.onAuthStateChanged((userChange) => {
 	if (auth.currentUser) {
 		userLoadSpinner.classList.add("d-none");
 		user.innerHTML = auth.currentUser.displayName;
+
+		db.collection("users")
+			.doc(userChange.uid)
+			.onSnapshot(
+				(snapshot) => {
+					console.log(snapshot.data().settings.weather.tempUnits);
+
+					tempUnits = snapshot.data().settings.weather.tempUnits;
+					tempSymbol =
+						tempUnits == "default" ? "°K" : tempUnits == "metric" ? "°C" : "°F";
+				},
+				(err) => {
+					console.log(err.message);
+				}
+			);
 	} else {
 		userLoadSpinner.classList.add("d-none");
 		user.innerHTML = "User";
+
+		tempUnits = "metric";
+		tempSymbol = "°C";
 	}
 
 	console.log(auth.currentUser);
@@ -65,7 +86,7 @@ weatherLocation.addEventListener("submit", (e) => {
 	fetch(
 		`https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(
 			`${city},${extraDetails ? `${stateCode},${countryCode}` : ""}`
-		)}&appid=${api}&units=metric`
+		)}&appid=${api}&units=${tempUnits}`
 	)
 		.then((response) => response.json())
 		.then((data) => {
@@ -111,7 +132,7 @@ weatherLocation.addEventListener("submit", (e) => {
 						</h2>
 						<p class="lead card-subtitle" style="font-size: 2rem;">${
 							data.main.temp || "Temperature unavailable"
-						}${data.main.temp ? "°C" : ""}</p>
+						}${data.main.temp ? tempSymbol : ""}</p>
 						<p class="card-text">
 							In <strong>${data.name || "<i>city name unavailable</i>"}</strong> (${
 				data.sys.country || "<i>country code unavailable</i>"
@@ -133,13 +154,15 @@ weatherLocation.addEventListener("submit", (e) => {
 						<div class="m-3 collapse" id="collapseExample">
 							<ul class="list-group list-group-flush">
 								<li class="list-group-item">Feels like: <strong>${data.main.feels_like || "RealFeel unavailable"}${
-				data.main.feels_like ? "°C" : ""
+				data.main.feels_like ? tempSymbol : ""
 			}</strong></li>
 								<li class="list-group-item">Daily temperature: <span class="text-danger fw-bold">${
 									data.main.temp_max || "Unavailable"
-								}°C</span> / <span class="text-primary fw-bold">${
-				data.main.temp_min || "Unavailable"
-			}°C</span></li>
+								}${
+				data.main.temp_max ? tempSymbol : ""
+			}</span> / <span class="text-primary fw-bold">${data.main.temp_min || "Unavailable"}${
+				data.main.temp_min ? tempSymbol : ""
+			}</span></li>
 								<li class="list-group-item">
 									Wind: <strong class="text-secondary">${
 										data.wind.speed
