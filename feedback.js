@@ -5,8 +5,8 @@ const response = document.querySelector(".response");
 const feedbackDiv = document.querySelector(".feedback");
 const userLoadSpinner = document.querySelector("#userLoadSpinner");
 const feedbackLoad = document.querySelector(".feedbackWait");
-const editForm = document.querySelector(".editForm");
-const editResponse = document.querySelector(".editResponse");
+// const editForm = document.querySelector(".editForm");
+// const editResponse = document.querySelector(".editResponse");
 
 let allFeedback = [];
 
@@ -47,23 +47,15 @@ auth.onAuthStateChanged((userChange) => {
 // 	});
 // };
 
-const updateClipboard = (newClip) => {
-	navigator.clipboard.writeText(newClip).then(
-		() => {
-			console.log("Successfully copied!");
-		},
-		() => {
-			console.log("An error occured.");
-		}
-	);
-};
-const copyToClipboard = () => {
-	navigator.permissions.query({ name: "clipboard-write" }).then((result) => {
-		if (result.state == "granted" || result.state == "prompt") {
-			updateClipboard(id);
-		}
-	});
-};
+// const copyToClipboard = (ele) => {
+// 	const copyText = ele;
+
+// 	copyText.select();
+// 	copyText.setSelectionRange(0, 99999);
+// 	document.execCommand("copy");
+
+// 	console.log("Copied!");
+// };
 
 const addFeedback = (feedback, id, uid) => {
 	let time = feedback.created_at.toDate();
@@ -72,11 +64,11 @@ const addFeedback = (feedback, id, uid) => {
 		feedbackLoad.classList.add("d-none");
 	}
 
-	if (uid == globalUser.uid) {
-		console.log(`${id} is editable!`);
+	// if (uid == globalUser.uid) {
+	// 	console.log(`${id} is editable!`);
 
-		editable.push(id);
-	}
+	// 	editable.push(id);
+	// }
 
 	let html = `
 		<div class="card shadow mb-5" data-id="${id}" data-uid="${uid}" style="width: 100%">
@@ -88,26 +80,6 @@ const addFeedback = (feedback, id, uid) => {
 	}</h2>
 				<p class="card-subtitle text-muted">Posted by ${feedback.author}</p>
 				<p class="card-text" style="font-size: large">${feedback.description}</p>
-				${
-					editable.includes(id)
-						? `<div class="row justify-content-center my-5">
-								<div class="col-2">
-									<button
-										class="btn btn-primary"
-										type="button"
-										data-bs-toggle="collapse"
-										data-bs-target="#collapseExample"
-										aria-expanded="false"
-										aria-controls="collapseExample"
-									>
-									<small class="text-muted">ID for editing:
-										<input class="form-control mt-2 mb-2" style="width: 225px;" type="text" readonly value="${id}"/>
-										<button type="button" class="btn btn-outline-secondary btn-sm ms-1" onclick="copyToClipboard"><i class="bi bi-clipboard-plus"></i></button>
-									</small>
-								</div>
-							</div>`
-						: ""
-				}
 			</div>
 			<div class="card-footer text-muted">Posted at ${time}</div>
 		</div>
@@ -131,6 +103,29 @@ const addFeedback = (feedback, id, uid) => {
 	// 	// 	console.log(e);
 	// 	// 	initialiseEdit(document.querySelector(`.${id}`).classList[3]);
 	// 	// });
+	// }
+
+	// 	${
+	// 	editable.includes(id)
+	// 		? `<div class="row justify-content-center my-5">
+	// 				<div class="col-2">
+	// 					<button
+	// 						class="btn btn-outline-danger btn-sm"
+	// 						type="button"
+	// 						data-bs-toggle="collapse"
+	// 						data-bs-target="#collapseExample"
+	// 						aria-expanded="false"
+	// 						aria-controls="collapseExample"
+	// 					>Need to edit? You might need this information!</button>
+	// 					<div class="m-1 collapse" id="collapseExample">
+	// 						<small class="text-muted">ID for editing:
+	// 							<input class="form-control mt-1 mb-1 ${id}" style="width: 225px;" type="text" readonly value="${id}" />
+	// 							<button type="button" class="btn btn-outline-secondary btn-sm" onclick="() => { copyToClipboard(document.querySelector(".${id}")) }"><i class="bi bi-clipboard-plus"></i></button>
+	// 						</small>
+	// 					</div>
+	// 				</div>
+	// 			</div>`
+	// 		: ""
 	// }
 };
 
@@ -185,16 +180,16 @@ feedbackForm.addEventListener("submit", (e) => {
 		});
 });
 
-editForm.addEventListener("submit", (e) => {
-	e.preventDefault();
+// editForm.addEventListener("submit", (e) => {
+// 	e.preventDefault();
 
-	editResponse.innerHTML = spinner("Editing feedback...");
+// 	editResponse.innerHTML = spinner("Editing feedback...");
 
-	let title = editForm.title.value.trim();
-	let description = editForm.description.value;
+// 	let title = editForm.title.value.trim();
+// 	let description = editForm.description.value;
 
-	console.log(e, title, description);
-});
+// 	console.log(e, title, description);
+// });
 
 // feedbackDiv.addEventListener("click", (e) => {
 // 	if (e.target.className[2] === "spam") {

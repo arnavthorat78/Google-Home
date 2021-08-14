@@ -1,11 +1,13 @@
 const general = document.querySelector(".generalSettings");
 const generalSubmit = document.querySelector("#generalSubmit");
 const generalRes = document.querySelector(".generalRes");
+const generalProgress = document.querySelector(".generalProgress");
 
 const user = document.querySelector(".user");
 const userLoadSpinner = document.querySelector("#userLoadSpinner");
 
 let globalUser = {};
+generalProgress.classList.add("d-none");
 
 /**
  * Get a Bootstrap grow spinner with your custom message.
@@ -57,6 +59,10 @@ auth.onAuthStateChanged((userChange) => {
 general.addEventListener("submit", (e) => {
 	e.preventDefault();
 
+	generalProgress.classList.remove("d-none");
+	generalProgress.children[0].classList.remove("bg-success");
+	generalProgress.children[0].classList.add("bg-danger");
+	generalProgress.children[0].style.width = "25%";
 	generalRes.innerHTML = spinner("Viewing settings...");
 
 	const greeting = general.greeting.checked;
@@ -82,7 +88,22 @@ general.addEventListener("submit", (e) => {
 					.then(() => {
 						console.log(settingDoc.data().settings.general);
 
-						generalRes.innerHTML = "Settings successfully saved!";
+						generalProgress.children[0].style.width = "75%";
+						generalProgress.children[0].classList.remove("bg-danger");
+						generalProgress.children[0].classList.add("bg-warning");
+						generalRes.innerHTML = spinner("Changing local information...");
+						setTimeout(() => {
+							generalProgress.children[0].classList.remove("bg-warning");
+							generalProgress.children[0].classList.add("bg-success");
+							generalProgress.children[0].style.width = "100%";
+
+							generalRes.innerHTML = "Settings successfully saved!";
+
+							setTimeout(() => {
+								generalProgress.classList.add("d-none");
+								generalRes.innerHTML = "";
+							}, 5000);
+						}, 2500);
 					})
 					.catch((err) => {
 						console.log(err);
@@ -90,6 +111,8 @@ general.addEventListener("submit", (e) => {
 			})
 			.then(() => {
 				generalRes.innerHTML = spinner("Setting global changes...");
+				generalProgress.children[0].style.width = "50%";
+				generalProgress.children[0].classList.add("bg-danger");
 			})
 			.catch((error) => {
 				generalRes.innerHTML =
