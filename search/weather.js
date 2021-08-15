@@ -117,6 +117,10 @@ weatherLocation.addEventListener("submit", (e) => {
 				return;
 			}
 
+			let sunrise = new Date(data.sys.sunrise * 1000);
+			let sunset = new Date(data.sys.sunset * 1000);
+			console.log(`${sunrise.toLocaleString()} \n ${sunset.toLocaleString()}`);
+
 			html = `
 				<div class="card shadow mb-5" style="width: 100%;">
 					<div class="card-img-top display-3 pt-3">
@@ -176,6 +180,14 @@ weatherLocation.addEventListener("submit", (e) => {
 											: "Unavailable"
 									} ${data.wind.gust ? "km/h" : ""}</strong>
 								</li>
+								<li class="list-group-item">Rain (in last 1 hour): <strong class="text-primary">${
+									!data.rain ? "Unavailable" : data.rain["1h"]
+								}${data.rain ? "mm" : ""}</strong>
+								</li>
+								<li class="list-group-item">Snow (in last 1 hour): <strong>${
+									!data.snow ? "Unavailable" : data.snow["1h"]
+								}${data.snow ? "mm" : ""}</strong>
+								</li>
 								<li class="list-group-item">Cloud cover: <strong>${data.clouds.all || "Unavailable"}${
 				data.clouds.all ? "%" : ""
 			}</strong></li>
@@ -185,6 +197,11 @@ weatherLocation.addEventListener("submit", (e) => {
 								<li class="list-group-item">Atmospheric pressure: <strong>${data.main.pressure || "Unavailable"} ${
 				data.clouds.all ? "hPa" : ""
 			}</strong></li>
+								<li class="list-group-item">
+									Sunrise (your local time): <strong class="text-muted">${sunrise.toLocaleString()}</strong>
+									<br />
+									Sunset (your local time): <strong class="text-muted">${sunset.toLocaleString()}</strong>
+								</li>
 							</ul>
 						</div>
 					</div>
@@ -196,7 +213,11 @@ weatherLocation.addEventListener("submit", (e) => {
 
 			weather.innerHTML = html;
 
-			response.innerHTML = "Not your city? Try searching with state and country codes.";
+			if (stateCode && countryCode) {
+				response.innerHTML = "";
+			} else {
+				response.innerHTML = "Not your city? Try searching with state and country codes.";
+			}
 		})
 		.catch((err) => {
 			console.log(err);
