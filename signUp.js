@@ -73,7 +73,7 @@ signUp.addEventListener("submit", (e) => {
 							searchEngine: "Google",
 						},
 						weather: {
-							tempUnits: "metric",
+							units: "metric",
 						},
 					},
 				});

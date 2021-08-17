@@ -6,6 +6,8 @@ const userLoadSpinner = document.querySelector("#userLoadSpinner");
 
 let tempUnits = "";
 let tempSymbol = "";
+let speedUnits = "";
+let speedSymbol = "";
 
 // Listen for authentication status changes
 auth.onAuthStateChanged((userChange) => {
@@ -17,11 +19,15 @@ auth.onAuthStateChanged((userChange) => {
 			.doc(userChange.uid)
 			.onSnapshot(
 				(snapshot) => {
-					console.log(snapshot.data().settings.weather.tempUnits);
+					console.log(snapshot.data().settings.weather.units);
 
-					tempUnits = snapshot.data().settings.weather.tempUnits;
+					tempUnits = snapshot.data().settings.weather.units;
 					tempSymbol =
 						tempUnits == "default" ? "°K" : tempUnits == "metric" ? "°C" : "°F";
+
+					speedUnits = snapshot.data().settings.weather.units;
+					speedSymbol =
+						speedUnits == "default" || speedUnits == "metric" ? "km/h" : "mp/h";
 				},
 				(err) => {
 					console.log(err.message);
@@ -33,6 +39,9 @@ auth.onAuthStateChanged((userChange) => {
 
 		tempUnits = "metric";
 		tempSymbol = "°C";
+
+		speedUnits = "metric";
+		speedSymbol = "km/h";
 	}
 
 	console.log(auth.currentUser);
@@ -119,7 +128,7 @@ weatherLocation.addEventListener("submit", (e) => {
 
 			let sunrise = new Date(data.sys.sunrise * 1000);
 			let sunset = new Date(data.sys.sunset * 1000);
-			console.log(`${sunrise.toLocaleString()} \n ${sunset.toLocaleString()}`);
+			console.log(`${sunrise.toLocaleString()}\n${sunset.toLocaleString()}`);
 
 			html = `
 				<div class="card shadow mb-5" style="width: 100%;">
@@ -172,13 +181,13 @@ weatherLocation.addEventListener("submit", (e) => {
 										data.wind.speed
 											? (data.wind.speed * 3.6).toFixed(2)
 											: "Unavailable"
-									} ${data.wind.speed ? "km/h" : ""}</strong>
+									} ${data.wind.speed ? speedSymbol : ""}</strong>
 									<br />
 									Gusts: <strong class="text-secondary">${
 										data.wind.gust
 											? (data.wind.gust * 3.6).toFixed(2)
 											: "Unavailable"
-									} ${data.wind.gust ? "km/h" : ""}</strong>
+									} ${data.wind.gust ? speedSymbol : ""}</strong>
 								</li>
 								<li class="list-group-item">Rain (in last 1 hour): <strong class="text-primary">${
 									!data.rain ? "Unavailable" : data.rain["1h"]
@@ -221,5 +230,8 @@ weatherLocation.addEventListener("submit", (e) => {
 		})
 		.catch((err) => {
 			console.log(err);
+
+			weather.innerHTML =
+				"Sorry, but an unknown error occured while processing the request. Try again later.";
 		});
 });

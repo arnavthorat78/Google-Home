@@ -47,7 +47,7 @@ auth.onAuthStateChanged((userChange) => {
 					general.searchEngine.value = snapshot.data().settings.general.searchEngine;
 					generalSubmit.disabled = false;
 
-					weather.tempUnits.value = snapshot.data().settings.weather.tempUnits;
+					weather.tempUnits.value = snapshot.data().settings.weather.units;
 					weatherSubmit.disabled = false;
 				},
 				(err) => {
@@ -140,10 +140,10 @@ weather.addEventListener("submit", (e) => {
 	weatherProgress.children[0].style.width = "25%";
 	weatherRes.innerHTML = spinner("Viewing settings...");
 
-	const tempUnits = weather.tempUnits.value;
+	const units = weather.tempUnits.value;
 
 	let rawNewSettings = {
-		tempUnits: tempUnits,
+		units: units,
 	};
 	let settingDocRef = db.collection("users").doc(globalUser.uid);
 
