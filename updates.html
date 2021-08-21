@@ -17,7 +17,7 @@
 		/>
 		<title>Google Home - Updates</title>
 	</head>
-	<body style="text-align: center;">
+	<body style="text-align: center">
 		<nav class="navbar navbar-expand-xl navbar-dark bg-dark">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="index.html">
@@ -66,7 +66,7 @@
 										<i class="bi bi-search"></i> Basic Search</a
 									>
 								</li>
-								<li><hr class="dropdown-divider"></li>
+								<li><hr class="dropdown-divider" /></li>
 								<li>
 									<a class="dropdown-item" href="./search/weather.html">
 										<i class="bi bi-cloud-sun"></i> Weather</a
@@ -92,7 +92,12 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" aria-current="page" href="updates.html">
+							<a
+								class="nav-link active"
+								aria-current="page"
+								aria-current="page"
+								href="updates.html"
+							>
 								<i class="bi bi-cloud-download"></i>
 								Updates
 							</a>
@@ -153,7 +158,9 @@
 
 						<a href="updates.html#usage" class="btn btn-primary btn-lg">Usage Help</a>
 						<br />
-						<small class="text-muted">See help on how to read the colours and icons on the updates.</small>
+						<small class="text-muted"
+							>See help on how to read the colours and icons on the updates.</small
+						>
 					</div>
 					<div class="col-md-5 text-center d-none d-md-block">
 						<div class="display-1 text-primary">
@@ -164,443 +171,645 @@
 			</div>
 		</section>
 
-		<section class="p-5" id="updates">
-			<div class="card shadow mb-5" id="weather" style="width: 100%;">
-				<div class="card-img-top display-3">
-					<i class="bi bi-cloud-upload-fill"></i>
-				</div>
-				<div class="card-body">
-					<h5 class="card-title text-success">
-						<i class="bi bi-check-circle-fill"></i>
-						Just Released: Version 1.7.5
-					</h5>
-					<p class="lead card-subtitle">Weather Settings</p>
-					<p class="card-text">
-						We have just added weather settings, so that your weather page can be transformed into your own way!
-					</p>
-					<a href="settings.html#weather" class="btn btn-success">Try it!</a>
-				</div>
-				<div class="card-footer text-muted">
-    				Completed at <strong>15/08/2021</strong>.
-  				</div>
-			</div>
-			
-			<div class="card shadow mb-5" id="weather" style="width: 100%;">
-				<div class="card-img-top display-3">
-					<i class="bi bi-cloud-sun-fill"></i>
-				</div>
-				<div class="card-body">
-					<h5 class="card-title text-success">
-						<i class="bi bi-check-circle-fill"></i>
-						Just Released: Version 1.7.0
-					</h5>
-					<p class="lead card-subtitle">Weather</p>
-					<p class="card-text">
-						We have added weather to our website, so you can see the forecast for the areas around you!
-					</p>
-					<a href="search/weather.html" class="btn btn-success">Check your forecast!</a>
-				</div>
-				<div class="card-footer text-muted">
-    				Completed at <strong>14/08/2021</strong>.
-  				</div>
+		<section class="p-5" id="updatesSection">
+			<div class="text-center">
+				<h2>Updates</h2>
+				<p class="lead">
+					See the updates so that you know what has happened and what is <i>going</i> to
+					happen!
+				</p>
 			</div>
 
-			<div class="card shadow mb-5" id="progress" style="width: 100%;">
-				<div class="card-img-top display-3">
-					<i class="bi bi-percent"></i>
-				</div>
-				<div class="card-body">
-					<h5 class="card-title text-success">
-						<i class="bi bi-check-circle-fill"></i>
-						Just Released: Version 1.6.5
-					</h5>
-					<p class="lead card-subtitle">Progress Bar</p>
-					<p class="card-text">
-						We have added a progress bar to our Settings page, so you know what stage we are up to at saving your settings!
-					</p>
-					<a href="settings.html" class="btn btn-success">Try it!</a>
-				</div>
-				<div class="card-footer text-muted">
-    				Completed at <strong>13/08/2021</strong>.
-  				</div>
-			</div>
-
-			<div class="card shadow mb-5" id="settings" style="width: 100%;">
-				<div class="card-img-top display-3">
-					<i class="bi bi-gear-fill"></i>
-				</div>
-				<div class="card-body">
-					<h5 class="card-title text-success">
-						<i class="bi bi-check-circle-fill"></i>
-						Just Released: Version 1.6.0
-					</h5>
-					<p class="lead card-subtitle">Settings</p>
-					<p class="card-text">
-						We have added Settings to the website! You can customize your experience if you have an account and make the website truly yours!
-						<br />
-						At the start, we will only have one/two setting options, but soon, we will have way more!
-					</p>
-					<a href="settings.html" class="btn btn-success">Try customizing now!</a>
-				</div>
-				<div class="card-footer text-muted">
-    				Completed at <strong>12/08/2021</strong>.
-  				</div>
-			</div>
-
-			<div class="card shadow mb-5" id="feedbackBug" style="width: 100%;">
-				<div class="card-img-top display-3">
-					<i class="bi bi-bug-fill"></i>
-				</div>
-				<div class="card-body">
-					<h5 class="card-title text-success">
-						<i class="bi bi-check-circle-fill"></i>
-						Just Released: Version 1.5.5
-					</h5>
-					<p class="lead card-subtitle">Bug Fixes - Feedback</p>
-					<p class="card-text">
-						We have finally fixed the feedback page, but unfortunately, for this to work,
-						we had to remove liking, disliking, and also spamming. But hopefully, we will
-						be able to add those soon.
-					</p>
-					<a href="feedback.html" class="btn btn-success">Try posting!</a>
-				</div>
-				<div class="card-footer text-muted">
-    				Completed at <strong>11/08/2021</strong>.
-  				</div>
-			</div>
-
-			<div class="card shadow mb-5" id="secure" style="width: 100%;">
-				<div class="card-img-top display-3">
-					<i class="bi bi-lock-fill"></i>
-				</div>
-				<div class="card-body">
-					<h5 class="card-title text-success">
-						<i class="bi bi-check-circle-fill"></i>
-						Just Released: Version 1.5.0
-					</h5>
-					<p class="lead card-subtitle">Secure Accounts</p>
-					<p class="card-text">
-						We have concluded adding more secure accounts, so your data and
-						signing experience is better!
-						<br /><br />
-						<i
-							>Just a side note, we had to delete all of your accounts for
-							this update, so please <strong>create a new account</strong>. We apologise for
-							any inconvenience caused by this.</i
-						>
-					</p>
-					<a href="signUp.html" class="btn btn-success">Sign up now!</a>
-				</div>
-				<div class="card-footer text-muted">
-    				Completed at <strong>10/08/2021</strong>.
-  				</div>
-			</div>
-
-			<div class="card shadow mb-5" id="dropdown" style="width: 100%;">
-				<div class="card-img-top display-3">
-					<i class="bi bi-window-dock"></i>
-				</div>
-				<div class="card-body">
-					<h5 class="card-title text-secondary">
-						<i class="bi bi-clock-history"></i>
-						Version 1.4.5
-					</h5>
-					<p class="lead card-subtitle">Google Applications & Search Dropdown</p>
-					<p class="card-text">
-						We have added two new features: Search Dropdown and Google Applications!
-						<br />
-						The Search dropdown is going to be helpful later when we add more ability to the website (oops... gave you a little sneak-peak!).
-						The Google Applications are going to be very handy when you want to go to a Google app.
-					</p>
-					<a href="./search/google.html#app" class="btn btn-secondary">Try it!</a>
-				</div>
-				<div class="card-footer text-muted">
-    				Completed at <strong>6/08/2021</strong>.
-  				</div>
-			</div>
-
-			<div class="card shadow mb-5" id="voice" style="width: 100%;">
-				<div class="card-img-top display-3">
-					<i class="bi bi-mic-fill"></i>
-				</div>
-				<div class="card-body">
-					<h5 class="card-title text-secondary">
-						<i class="bi bi-clock-history"></i>
-						Version 1.4.0
-					</h5>
-					<p class="lead card-subtitle">Voice Commands</p>
-					<p class="card-text">
-						We have added voice commands to our website on the
-						Search page! So, you can just click a button, say your
-						command, and the computer will do the rest!
-					</p>
-					<a href="./search/search.html#search" class="btn btn-secondary">Try Voice Searching!</a>
-				</div>
-				<div class="card-footer text-muted">
-    				Completed at <strong>26/07/2021</strong>.
-  				</div>
-			</div>
-
-			<div class="card shadow mb-5" id="toast" style="width: 100%;">
-				<div class="card-img-top display-3">
-					<i class="bi bi-app-indicator"></i>
-				</div>
-				<div class="card-body">
-					<h5 class="card-title text-secondary">
-						<i class="bi bi-clock-history"></i>
-						Version 1.3.5
-					</h5>
-					<p class="lead card-subtitle">Toasts</p>
-					<p class="card-text">
-						We have added Toasts to our websites! Toasts are basically
-						notification pop-ups, and these ones tell you about scheduled
-						and released updates, important information and news with the
-						website, and more.
-					</p>
-					<a href="index.html" class="btn btn-secondary">Check it!</a>
-				</div>
-				<div class="card-footer text-muted">
-    				Completed at <strong>25/07/2021</strong>.
-  				</div>
-			</div>
-
-			<div class="card shadow mb-5" id="bootstrap" style="width: 100%;">
-				<div class="card-img-top display-3">
-					<i class="bi bi-bootstrap-fill"></i>
-				</div>
-				<div class="card-body">
-					<h5 class="card-title text-secondary">
-						<i class="bi bi-clock-history"></i>
-						Version 1.3.0
-					</h5>
-					<p class="lead card-subtitle">Bootstrap (UI)</p>
-					<p class="card-text">
-						We have changed our full websites look by Bootstrap! You can check
-						out everything of what we've done - all over the website. You'll
-						<i>definitely</i> see the difference!
-					</p>
-					<a href="index.html" class="btn btn-secondary">Check it out!</a>
-				</div>
-				<div class="card-footer text-muted">
-    				Completed at <strong>24/07/2021</strong>.
-  				</div>
-			</div>
-
-			<div class="card shadow mb-5" id="icons" style="width: 100%;">
-				<div class="card-img-top display-3">
-					<i class="bi bi-emoji-smile"></i>
-				</div>
-				<div class="card-body">
-					<h5 class="card-title text-secondary">
-						<i class="bi bi-clock-history"></i>
-						Version 1.2.5
-					</h5>
-					<p class="lead card-subtitle">Changed Icons</p>
-					<p class="card-text">
-						This website now has brand-new icons from Bootstrap!
-						<br>
-						This update is actually paired up with the <a class="text-decoration-none" href="updates.html#bootstrap">Bootstrap</a> update!
-					</p>
-					<a href="index.html" class="btn btn-secondary">See it!</a>
-				</div>
-				<div class="card-footer text-muted">
-    				Completed at <strong>22/07/2021</strong>.
-  				</div>
-			</div>
-
-			<div class="card shadow mb-5" id="feedback" style="width: 100%;">
-				<div class="card-img-top display-3">
-					<i class="bi bi-chat-text-fill"></i>
-				</div>
-				<div class="card-body">
-					<h5 class="card-title text-secondary">
-						<i class="bi bi-clock-history"></i>
-						Version 1.2.0
-					</h5>
-					<p class="lead card-subtitle">Feedback</p>
-					<p class="card-text">
-						You can now post feedback!
-						<br />
-						You can write a long description for your post, then post it! You can also like
-						and dislike existing posts, and if you think a post is mean or inappropriate,
-						then you can spam it.
-					</p>
-					<a href="feedback.html" class="btn btn-secondary">Try it!</a>
-				</div>
-				<div class="card-footer text-muted">
-    				Completed at <strong>20/07/2021</strong>.
-  				</div>
-			</div>
-
-			<div class="card shadow mb-5" id="greetings" style="width: 100%;">
-				<div class="card-img-top display-3">
-					<i class="bi bi-chat-dots-fill"></i>
-				</div>
-				<div class="card-body">
-					<h5 class="card-title text-secondary">
-						<i class="bi bi-clock-history"></i>
-						Version 1.1.5
-					</h5>
-					<p class="lead card-subtitle">More Greetings</p>
-					<p class="card-text">
-						This website now has more greetings. It also greets you depending on the
-						time. For example, if it is 2 PM at your local time, it will greet you
-						accordingly (Good afternoon!).
-					</p>
-					<a href="index.html" class="btn btn-secondary">See it!</a>
-				</div>
-				<div class="card-footer text-muted">
-    				Completed at <strong>18/07/2021</strong>.
-  				</div>
-			</div>
-
-			<div class="card shadow mb-5" id="accounts" style="width: 100%;">
-				<div class="card-img-top display-3">
-					<i class="bi bi-person-circle"></i>
-				</div>
-				<div class="card-body">
-					<h5 class="card-title text-secondary">
-						<i class="bi bi-clock-history"></i>
-						Version 1.1.0
-					</h5>
-					<p class="lead card-subtitle">Accounts</p>
-					<p class="card-text">
-						This website now has accounts! This is a very exciting update, as account
-						will give this website a more "personal" feel. Below is a list of the new
-						updates relating to accounts and the description.
-
-						<div class="accordion" id="accordionExample">
-							<div class="accordion-item">
-								<h2 class="accordion-header" id="headingOne">
-								<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-									More Links on Navbar
-								</button>
-								</h2>
-								<div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-								<div class="accordion-body">
-									The navigation bar now features more links. These include Sign In,
-									Sign Up, and also the account name, which if you click on, will
-									present two buttons - Sign Out and Delete Account.
-								</div>
-								</div>
-							</div>
-							<div class="accordion-item">
-								<h2 class="accordion-header" id="headingTwo">
-								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-									Signing Up & In
-								</button>
-								</h2>
-								<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-								<div class="accordion-body">
-									You can now sign up for an account! The link to go there is on the
-									navbar, with the text Sign Up. There are many benefits for signing up
-									for an account, including...
-									<ul>
-										<span> - You get nice personalised random greetings when you enter the Home page.</span>
-										<br />
-										<span> - You get more functionality with your website.</span>
-									</ul>
-									If you have an account, you can easily log in from any device to access your
-									data. If you do not have an account, the computer will warn you about that.
-									Remember, make sure to log in!
-								</div>
-								</div>
-							</div>
-							<div class="accordion-item">
-								<h2 class="accordion-header" id="headingThree">
-								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-									Logging Out & Deleting Account
-								</button>
-								</h2>
-								<div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-								<div class="accordion-body">
-									If you want to log out or delete your account, then navigate to your name
-									(on the navbar), then click on it. You will be redirected to a page with a Log
-									Out and a Delete Account button. To log out, press the button, and then click
-									Okay on a confirmation box. You will be logged out.
-									<br>
-									However, if you want to delete your account, you can navigate to the same page as
-									described above, then click Delete Account. You will be prompted to enter your
-									password, and then your account will be deleted, after clicking Okay on the
-									confirmation box.
-								</div>
-								</div>
-							</div>
+			<div
+				class="modal fade"
+				id="staticBackdrop"
+				data-bs-backdrop="static"
+				data-bs-keyboard="false"
+				tabindex="-1"
+				aria-labelledby="staticBackdropLabel"
+				aria-hidden="true"
+			>
+				<div class="modal-dialog modal-dialog-scrollable">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="staticBackdropLabel">Edit Update</h5>
+							<button
+								type="button"
+								class="btn-close"
+								data-bs-dismiss="modal"
+								aria-label="Close"
+							></button>
 						</div>
-					</p>
-					<a href="signUp.html" class="btn btn-secondary">Sign up now!</a>
+						<div class="modal-body">
+							<form class="editUpdate" style="text-align: start">
+								<div class="input-group mb-3">
+									<span class="input-group-text">
+										<i class="bi bi-cloud-arrow-up-fill"></i>
+									</span>
+									<input
+										type="text"
+										class="form-control"
+										id="firebaseId"
+										name="firebaseId"
+										placeholder="Firebase ID..."
+										required
+										readonly
+									/>
+									<span class="input-group-text">
+										<span
+											class="tt"
+											data-bs-placement="bottom"
+											data-bs-html="true"
+											title="Set the Firebase ID. This is used for verification of which update to edit. Please do not modify or delete this field."
+										>
+											<i class="bi bi-question-circle text-muted"></i>
+										</span>
+									</span>
+								</div>
+
+								<div class="input-group mb-3">
+									<span class="input-group-text">
+										<i class="bi bi-hash"></i>
+									</span>
+									<input
+										type="text"
+										class="form-control"
+										id="updateId"
+										name="updateId"
+										placeholder="ID..."
+										required
+										readonly
+									/>
+									<span class="input-group-text">
+										<span
+											class="tt"
+											data-bs-placement="bottom"
+											data-bs-html="true"
+											title="Set the ID for the update. This is used for verification."
+										>
+											<i class="bi bi-question-circle text-muted"></i>
+										</span>
+									</span>
+								</div>
+
+								<div class="input-group mb-5">
+									<span class="input-group-text">
+										<i class="bi bi-sort-numeric-up-alt"></i>
+									</span>
+									<input
+										type="number"
+										class="form-control"
+										id="updateNum"
+										name="updateNum"
+										placeholder="Update number..."
+										required
+										readonly
+									/>
+									<span class="input-group-text">
+										<span
+											class="tt"
+											data-bs-placement="bottom"
+											data-bs-html="true"
+											title="Set the update number of the update."
+										>
+											<i class="bi bi-question-circle text-muted"></i>
+										</span>
+									</span>
+								</div>
+
+								<div class="input-group mb-3">
+									<span class="input-group-text">
+										<i class="bi bi-list-ol"></i>
+									</span>
+									<input
+										type="text"
+										class="form-control"
+										id="version"
+										name="version"
+										placeholder="Version (1.0.0)..."
+										required
+									/>
+									<span class="input-group-text">
+										<span
+											class="tt"
+											data-bs-placement="bottom"
+											data-bs-html="true"
+											title="Set the version of the update."
+										>
+											<i class="bi bi-question-circle text-muted"></i>
+										</span>
+									</span>
+								</div>
+
+								<div class="input-group mb-5">
+									<span class="input-group-text">
+										<i class="bi bi-emoji-smile-fill"></i>
+									</span>
+									<input
+										type="text"
+										class="form-control"
+										id="updateIcon"
+										name="updateIcon"
+										placeholder="Update icon..."
+										required
+									/>
+									<span class="input-group-text">
+										<span
+											class="tt"
+											data-bs-placement="bottom"
+											data-bs-html="true"
+											title="Set the icon for the update. This must be a Bootstrap icon. For available icons, see <u>icons.getbootstrap.com</u>."
+										>
+											<i class="bi bi-question-circle text-muted"></i>
+										</span>
+									</span>
+								</div>
+
+								<div class="form-floating mb-3">
+									<select
+										class="form-select"
+										name="symbol"
+										id="symbol"
+										aria-label="Default select example"
+										required
+									>
+										<option value="bi bi-calendar-fill" selected>
+											Coming Soon
+										</option>
+										<option value="bi bi-arrow-repeat">Pending</option>
+										<option value="bi bi-check-circle-fill">Success</option>
+										<option value="bi bi-clock-history">History</option>
+									</select>
+									<label for="symbol">Symbol (for the progress)...</label>
+								</div>
+
+								<div class="form-floating mb-5">
+									<select
+										class="form-select"
+										name="colour"
+										id="colour"
+										aria-label="Default select example"
+										required
+									>
+										<option value="warning" selected>Warning (coming)</option>
+										<option value="danger">Danger (pending)</option>
+										<option value="success">Success (released)</option>
+										<option value="secondary">Secondary (previous)</option>
+									</select>
+									<label for="colour">Colour (for the progress)...</label>
+								</div>
+
+								<div class="input-group mb-3">
+									<span class="input-group-text">
+										<i class="bi bi-card-heading"></i>
+									</span>
+									<input
+										type="text"
+										class="form-control"
+										id="title"
+										name="title"
+										placeholder="Title..."
+										required
+									/>
+									<span class="input-group-text">
+										<span
+											class="tt"
+											data-bs-placement="bottom"
+											data-bs-html="true"
+											title="The title for the update. Make sure it is short and descriptive!"
+										>
+											<i class="bi bi-question-circle text-muted"></i>
+										</span>
+									</span>
+								</div>
+
+								<div class="form-floating mb-5">
+									<textarea
+										class="form-control"
+										placeholder="Description..."
+										id="description"
+										id="name"
+										style="height: 100px"
+									></textarea>
+									<label for="description">Description (it can be HTML)...</label>
+								</div>
+
+								<div class="input-group mb-3">
+									<span class="input-group-text">
+										<i class="bi bi-slash-lg"></i>
+									</span>
+									<input
+										type="text"
+										class="form-control"
+										id="link"
+										name="link"
+										placeholder="Link..."
+										required
+									/>
+									<span class="input-group-text">
+										<span
+											class="tt"
+											data-bs-placement="bottom"
+											data-bs-html="true"
+											title="The link for the button. Make sure it's correct!"
+										>
+											<i class="bi bi-question-circle text-muted"></i>
+										</span>
+									</span>
+								</div>
+
+								<div class="input-group mb-5">
+									<span class="input-group-text">
+										<i class="bi bi-blockquote-left"></i>
+									</span>
+									<input
+										type="text"
+										class="form-control"
+										id="buttonText"
+										name="buttonText"
+										placeholder="Button text..."
+										required
+									/>
+									<span class="input-group-text">
+										<span
+											class="tt"
+											data-bs-placement="bottom"
+											data-bs-html="true"
+											title="The text for the button link. Make sure it is short!"
+										>
+											<i class="bi bi-question-circle text-muted"></i>
+										</span>
+									</span>
+								</div>
+
+								<div class="form-floating mb-3">
+									<select
+										class="form-select"
+										name="completed"
+										id="completed"
+										aria-label="Default select example"
+										required
+									>
+										<option value="true" selected>True</option>
+										<option value="false">False</option>
+									</select>
+									<label for="colour">Is it completed?</label>
+								</div>
+
+								<div class="input-group mb-3">
+									<span class="input-group-text">
+										<i class="bi bi-calendar-day-fill"></i>
+									</span>
+									<input
+										type="date"
+										class="form-control"
+										id="date"
+										name="date"
+										placeholder="Date (of completion or of expected completion)..."
+										required
+									/>
+									<span class="input-group-text">
+										<span
+											class="tt"
+											data-bs-placement="bottom"
+											data-bs-html="true"
+											title="The date for the update of when it was completed or when it is going to be completed."
+										>
+											<i class="bi bi-question-circle text-muted"></i>
+										</span>
+									</span>
+								</div>
+
+								<button
+									class="btn btn-success mt-2"
+									type="submit"
+									id="edit"
+									disabled
+								>
+									Edit Update
+								</button>
+
+								<div class="editFeedback"></div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+								Close
+							</button>
+						</div>
+					</div>
 				</div>
-				<div class="card-footer text-muted">
-    				Completed at <strong>17/07/2021</strong>.
-  				</div>
 			</div>
 
-			<div class="card shadow mb-5" id="tabs" style="width: 100%;">
-				<div class="card-img-top display-3">
-					<i class="bi bi-segmented-nav"></i>
+			<div class="p-5" id="updates">
+				<div class="spinner">
+					<div class="spinner-grow" role="status">
+						<span class="visually-hidden">Loading...</span>
+					</div>
+					<span class="h2">Getting updates...</span>
 				</div>
-				<div class="card-body">
-					<h5 class="card-title text-secondary">
-						<i class="bi bi-clock-history"></i>
-						Version 1.0.5
-					</h5>
-					<p class="lead card-subtitle">Tabs</p>
-					<p class="card-text">
-						This website had all of the pages on the naviagtion bar, such as search,
-						permissions, etc. You can now navigate fluidly through all of the web pages.
-						<br />
-						Along with this, the new and improved Home Page now have a cleaner look. The Search
-						and Permission sections have been moved to their seperate pages (see the navbar for
-						navigating). The Home page now has Trending news on the website, and also
-						information about the website (which is planned to be on its seperate webpage soon).
-						Trending normally will have new updates, but will also have something else sometimes
-						(like how to use the Smart feature).
-						<br />
-						<strong>At the time of this update</strong>, the navbar has the following links:
-						<ul>
-							<span> - Home</span>
-							<br />
-							<span> - Search</span>
-							<br />
-							<span> - Permissions</span>
-							<br />
-							<span> - Updates</span>
-							<br />
-							<span> - About</span>
-						</ul>
-					</p>
-					<a href="index.html" class="btn btn-secondary">Check it!</a>
-				</div>
-				<div class="card-footer text-muted">
-    				Completed at <strong>14/07/2021</strong>.
-  				</div>
 			</div>
 
-			<div class="card shadow mb-5" id="initial" style="width: 100%;">
-				<div class="card-img-top display-3">
-					<i class="bi bi-laptop"></i>
+			<div class="d-none" id="updateAddition">
+				<div class="text-center">
+					<h2>Add Update</h2>
+					<p class="lead">Add a new update for everyone to see!</p>
 				</div>
-				<div class="card-body">
-					<h5 class="card-title text-secondary">
-						<i class="bi bi-clock-history"></i>
-						Version 1.0.0
-					</h5>
-					<p class="lead card-subtitle">Initial Website</p>
-					<p class="card-text">
-						This was the initial website when it was first launched. It included basic Smart features, a navigation bar, and also parameter options.
-					</p>
-					<a href="index.html" class="btn btn-secondary">Check it out!</a>
+
+				<div class="row justify-content-center my-5">
+					<div class="col-lg-6">
+						<div class="p-3">
+							<form class="addUpdate" style="text-align: start">
+								<div class="input-group mb-3">
+									<span class="input-group-text">
+										<i class="bi bi-hash"></i>
+									</span>
+									<input
+										type="text"
+										class="form-control"
+										id="updateId"
+										name="updateId"
+										placeholder="ID..."
+										required
+									/>
+									<span class="input-group-text">
+										<span
+											class="tt"
+											data-bs-placement="bottom"
+											data-bs-html="true"
+											title="Set the ID for the update. This is used for verification."
+										>
+											<i class="bi bi-question-circle text-muted"></i>
+										</span>
+									</span>
+								</div>
+
+								<div class="input-group mb-5">
+									<span class="input-group-text">
+										<i class="bi bi-sort-numeric-up-alt"></i>
+									</span>
+									<input
+										type="number"
+										class="form-control"
+										id="updateNum"
+										name="updateNum"
+										placeholder="Update number..."
+										required
+									/>
+									<span class="input-group-text">
+										<span
+											class="tt"
+											data-bs-placement="bottom"
+											data-bs-html="true"
+											title="Set the update number of the update."
+										>
+											<i class="bi bi-question-circle text-muted"></i>
+										</span>
+									</span>
+								</div>
+
+								<div class="input-group mb-3">
+									<span class="input-group-text">
+										<i class="bi bi-list-ol"></i>
+									</span>
+									<input
+										type="text"
+										class="form-control"
+										id="version"
+										name="version"
+										placeholder="Version (1.0.0)..."
+										required
+									/>
+									<span class="input-group-text">
+										<span
+											class="tt"
+											data-bs-placement="bottom"
+											data-bs-html="true"
+											title="Set the version of the update."
+										>
+											<i class="bi bi-question-circle text-muted"></i>
+										</span>
+									</span>
+								</div>
+
+								<div class="input-group mb-5">
+									<span class="input-group-text">
+										<i class="bi bi-emoji-smile-fill"></i>
+									</span>
+									<input
+										type="text"
+										class="form-control"
+										id="updateIcon"
+										name="updateIcon"
+										placeholder="Update icon..."
+										required
+									/>
+									<span class="input-group-text">
+										<span
+											class="tt"
+											data-bs-placement="bottom"
+											data-bs-html="true"
+											title="Set the icon for the update. This must be a Bootstrap icon. For available icons, see <u>icons.getbootstrap.com</u>."
+										>
+											<i class="bi bi-question-circle text-muted"></i>
+										</span>
+									</span>
+								</div>
+
+								<div class="form-floating mb-3">
+									<select
+										class="form-select"
+										name="symbol"
+										id="symbol"
+										aria-label="Default select example"
+										required
+									>
+										<option value="bi bi-calendar-fill" selected>
+											Coming Soon
+										</option>
+										<option value="bi bi-arrow-repeat">Pending</option>
+										<option value="bi bi-check-circle-fill">Success</option>
+										<option value="bi bi-clock-history">History</option>
+									</select>
+									<label for="symbol">Symbol (for the progress)...</label>
+								</div>
+
+								<div class="form-floating mb-5">
+									<select
+										class="form-select"
+										name="colour"
+										id="colour"
+										aria-label="Default select example"
+										required
+									>
+										<option value="warning" selected>Warning (coming)</option>
+										<option value="danger">Danger (pending)</option>
+										<option value="success">Success (released)</option>
+										<option value="secondary">Secondary (previous)</option>
+									</select>
+									<label for="colour">Colour (for the progress)...</label>
+								</div>
+
+								<div class="input-group mb-3">
+									<span class="input-group-text">
+										<i class="bi bi-card-heading"></i>
+									</span>
+									<input
+										type="text"
+										class="form-control"
+										id="title"
+										name="title"
+										placeholder="Title..."
+										required
+									/>
+									<span class="input-group-text">
+										<span
+											class="tt"
+											data-bs-placement="bottom"
+											data-bs-html="true"
+											title="The title for the update. Make sure it is short and descriptive!"
+										>
+											<i class="bi bi-question-circle text-muted"></i>
+										</span>
+									</span>
+								</div>
+
+								<div class="form-floating mb-5">
+									<textarea
+										class="form-control"
+										placeholder="Description..."
+										id="description"
+										id="name"
+										style="height: 100px"
+									></textarea>
+									<label for="description">Description (it can be HTML)...</label>
+								</div>
+
+								<div class="input-group mb-3">
+									<span class="input-group-text">
+										<i class="bi bi-slash-lg"></i>
+									</span>
+									<input
+										type="text"
+										class="form-control"
+										id="link"
+										name="link"
+										placeholder="Link..."
+										required
+									/>
+									<span class="input-group-text">
+										<span
+											class="tt"
+											data-bs-placement="bottom"
+											data-bs-html="true"
+											title="The link for the button. Make sure it's correct!"
+										>
+											<i class="bi bi-question-circle text-muted"></i>
+										</span>
+									</span>
+								</div>
+
+								<div class="input-group mb-5">
+									<span class="input-group-text">
+										<i class="bi bi-blockquote-left"></i>
+									</span>
+									<input
+										type="text"
+										class="form-control"
+										id="buttonText"
+										name="buttonText"
+										placeholder="Button text..."
+										required
+									/>
+									<span class="input-group-text">
+										<span
+											class="tt"
+											data-bs-placement="bottom"
+											data-bs-html="true"
+											title="The text for the button link. Make sure it is short!"
+										>
+											<i class="bi bi-question-circle text-muted"></i>
+										</span>
+									</span>
+								</div>
+
+								<div class="form-floating mb-3">
+									<select
+										class="form-select"
+										name="completed"
+										id="completed"
+										aria-label="Default select example"
+										required
+									>
+										<option value="true" selected>True</option>
+										<option value="false">False</option>
+									</select>
+									<label for="colour">Is it completed?</label>
+								</div>
+
+								<div class="input-group mb-3">
+									<span class="input-group-text">
+										<i class="bi bi-calendar-day-fill"></i>
+									</span>
+									<input
+										type="date"
+										class="form-control"
+										id="date"
+										name="date"
+										placeholder="Date (of completion or of expected completion)..."
+										required
+									/>
+									<span class="input-group-text">
+										<span
+											class="tt"
+											data-bs-placement="bottom"
+											data-bs-html="true"
+											title="The date for the update of when it was completed or when it is going to be completed."
+										>
+											<i class="bi bi-question-circle text-muted"></i>
+										</span>
+									</span>
+								</div>
+
+								<button
+									class="btn btn-success mt-2"
+									type="submit"
+									id="add"
+									disabled
+								>
+									Add Update
+								</button>
+
+								<div class="updateFeedback"></div>
+							</form>
+						</div>
+					</div>
 				</div>
-				<div class="card-footer text-muted">
-    				Completed at <strong>11/07/2021</strong>.
-  				</div>
+			</div>
+
+			<div class="container-lg">
+				<button class="btn btn-outline-danger" id="unsub">
+					Unsubscribe from Changes
+
+					<span
+						class="ms-2 tt"
+						data-bs-placement="right"
+						data-bs-html="true"
+						title="Unsubscribe from changes. This means that you will not receive any new changes (until you refresh your page)."
+					>
+						<i class="bi bi-question-circle text-muted"></i>
+					</span>
+				</button>
 			</div>
 		</section>
 
 		<section class="p-5 bg-light" id="usage">
 			<div class="text-center">
 				<h2>Symbols</h2>
-				<p class="lead">What do the symbols and colours mean in front of the updates? Well, the answer is here!</p>
+				<p class="lead">
+					What do the symbols and colours mean in front of the updates? Well, the answer
+					is here!
+				</p>
 			</div>
 
 			<div class="container-lg">
@@ -614,28 +823,40 @@
 							<i class="bi bi-arrow-repeat"></i>
 							Red
 						</td>
-						<td>The update is still pending. You will also likely see a button that is disabled.</td>
+						<td>
+							The update is still pending. You will also likely see a button that is
+							disabled.
+						</td>
 					</tr>
 					<tr class="border">
 						<td class="text-warning">
 							<i class="bi bi-calendar-fill"></i>
 							Yellow
 						</td>
-						<td>The update is going to begin soon. This normally appears when it is going to start pending in a couple of days.</td>
+						<td>
+							The update is going to begin soon. This normally appears when it is
+							going to start pending in a couple of days.
+						</td>
 					</tr>
 					<tr class="border">
 						<td class="text-success">
 							<i class="bi bi-check-circle-fill"></i>
 							Green
 						</td>
-						<td>The update has just successfully completed. This normally stays for a week after launch.</td>
+						<td>
+							The update has just successfully completed. This normally stays for a
+							week after launch.
+						</td>
 					</tr>
 					<tr class="border">
 						<td class="text-secondary">
 							<i class="bi bi-clock-history"></i>
 							Grey
 						</td>
-						<td>It has been more than a week since the update has launched. It is advised not to read the description of these, as they might be outdated.</td>
+						<td>
+							It has been more than a week since the update has launched. It is
+							advised not to read the description of these, as they might be outdated.
+						</td>
 					</tr>
 				</table>
 			</div>
@@ -665,10 +886,30 @@
 		</script>
 
 		<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-			integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+			src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+			integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
 			crossorigin="anonymous"
 		></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+			integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+			crossorigin="anonymous"
+		></script>
+		<script>
+			const tooltips = document.querySelectorAll(".tt");
+			tooltips.forEach((t) => {
+				new bootstrap.Tooltip(t);
+			});
+		</script>
+		<script>
+			let tooltipTriggerList = [].slice.call(
+				document.querySelectorAll('[data-bs-toggle="tooltip"]')
+			);
+			let tooltipList = tooltipTriggerList.map((tooltipTriggerEl) => {
+				return new bootstrap.Tooltip(tooltipTriggerEl);
+			});
+		</script>
+
 		<script src="updates.js"></script>
 	</body>
 </html>
