@@ -71,6 +71,24 @@ auth.onAuthStateChanged((userChange) => {
 		updateAddition.className = "d-none";
 
 		admin = false;
+
+		unsub = db
+			.collection("updates")
+			.orderBy("updateNum", "desc")
+			.onSnapshot((snapshot) => {
+				snapshot.docChanges().forEach((change) => {
+					const doc = change.doc;
+					// console.log(doc);
+
+					if (change.type == "added") {
+						addNewUpdate(doc.data(), doc.id);
+					} else if (change.type == "removed") {
+						deleteUpdate(doc.id);
+					}
+				});
+
+				document.querySelector(".spinner").innerHTML = "";
+			});
 	}
 
 	console.log(auth.currentUser);
