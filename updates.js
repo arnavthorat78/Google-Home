@@ -379,7 +379,7 @@ addUpdate.addEventListener("submit", (e) => {
 editUpdate.addEventListener("submit", (e) => {
 	e.preventDefault();
 
-	updateFeedback.innerHTML = spinner("Editing update...", true);
+	editFeedback.innerHTML = spinner("Editing update...", true);
 
 	const rawDate = editUpdate.date.value.split("-");
 	const date = `${rawDate[2]}/${rawDate[1]}/${rawDate[0]}`;
