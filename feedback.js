@@ -64,28 +64,42 @@ const addFeedback = (feedback, id, uid) => {
 		feedbackLoad.classList.add("d-none");
 	}
 
-	// if (uid == globalUser.uid) {
-	// 	console.log(`${id} is editable!`);
+	if (uid == globalUser.uid) {
+		console.log(`${id} is editable!`);
 
-	// 	editable.push(id);
-	// }
+		editable.push(id);
+	}
 
 	let html = `
 		<div class="card shadow mb-5" data-id="${id}" data-uid="${uid}" style="width: 100%">
 			<div class="card-body">
-				<h2 class="card-title">${feedback.title} ${
-		editable.includes(id)
-			? `<button type="button" class="btn btn-outline-secondary ms-2" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-pencil-fill"></i></button>`
-			: ""
-	}</h2>
+				<h2 class="card-title">${feedback.title}</h2>
 				<p class="card-subtitle text-muted">Posted by ${feedback.author}</p>
 				<p class="card-text" style="font-size: large">${feedback.description}</p>
 			</div>
-			<div class="card-footer text-muted">Posted at ${time}</div>
+			<div class="card-footer text-muted">
+				<span>Posted at ${time}</span>
+				${
+					uid == globalUser.uid
+						? `
+				<br />
+				<div class="btn-group" role="group">
+					<button class="btn btn-danger btn-sm mt-2" id="delete" title="Delete update (${feedback.title})"><i class="bi bi-trash"></i></button>
+				</div>
+				`
+						: ""
+				}
+			</div>
 		</div>
 	`;
 
 	feedbackDiv.innerHTML += html;
+
+	// ${
+	// 	editable.includes(id)
+	// 		? `<button type="button" class="btn btn-outline-secondary ms-2" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-pencil-fill"></i></button>`
+	// 		: ""
+	// }
 
 	// `<button type="button" class="btn btn-outline-secondary ms-2 ${id}" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-pencil-fill"></i></button>`
 
@@ -178,6 +192,30 @@ feedbackForm.addEventListener("submit", (e) => {
 		.catch((error) => {
 			console.error(error);
 		});
+});
+
+feedbackDiv.addEventListener("click", (e) => {
+	if (e.target.id === "delete") {
+		const id = e.path[3].getAttribute("data-id");
+
+		console.log(id);
+
+		if (
+			confirm(
+				"Are you sure you want to delete this feedback? This change cannot be reversed."
+			)
+		) {
+			db.collection("feedback")
+				.doc(id)
+				.delete()
+				.then(() => {
+					console.log("Feedback deleted!");
+				})
+				.catch((err) => {
+					console.log(err);
+				});
+		}
+	}
 });
 
 // editForm.addEventListener("submit", (e) => {
