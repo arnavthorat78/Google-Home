@@ -66,6 +66,7 @@ signUp.addEventListener("submit", (e) => {
 				.collection("users")
 				.doc(credential.user.uid)
 				.set({
+					admin: false, // Admin by default is set to false.
 					email: email,
 					settings: {
 						general: {

@@ -17,13 +17,27 @@ auth.onAuthStateChanged((userChange) => {
 		userLoadSpinner.classList.add("d-none");
 		user.innerHTML = auth.currentUser.displayName;
 
-		info.innerHTML = `
-			<div>You are logged in as <strong>${auth.currentUser.email}</strong> (${auth.currentUser.displayName}).</div>
-		`;
-
 		nameSubmit.disabled = false;
 		signOut.disabled = false;
 		deleteAccount.disabled = false;
+
+		db.collection("users")
+			.doc(userChange.uid)
+			.onSnapshot(
+				(snapshot) => {
+					console.log(snapshot.data().settings.general.searchEngine);
+
+					info.innerHTML = `
+						<div>You are logged in as <strong>${auth.currentUser.email}</strong> (${
+						auth.currentUser.displayName
+					}).</div>
+						<div>Administrator: <strong>${snapshot.data().admin}</strong></div>
+					`;
+				},
+				(err) => {
+					console.log(err.message);
+				}
+			);
 	} else {
 		userLoadSpinner.classList.add("d-none");
 		user.innerHTML = "User";
