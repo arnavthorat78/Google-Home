@@ -21,6 +21,8 @@ const spinner = (message) => {
 let globalUser = {};
 let editable = [];
 
+let admin = false;
+
 // Listen for authentication status changes
 auth.onAuthStateChanged((userChange) => {
 	if (auth.currentUser) {
@@ -29,33 +31,29 @@ auth.onAuthStateChanged((userChange) => {
 
 		globalUser = userChange;
 		submitButton.disabled = false;
+
+		db.collection("users")
+			.doc(userChange.uid)
+			.onSnapshot(
+				(snapshot) => {
+					admin = snapshot.data().admin;
+					console.log(admin);
+				},
+				(err) => {
+					console.log(err.message);
+				}
+			);
 	} else {
 		userLoadSpinner.classList.add("d-none");
 		user.innerHTML = "User";
 
 		submitButton.disabled = true;
+
+		admin = false;
 	}
 
 	console.log(auth.currentUser);
 });
-
-// const initialiseEdit = (button, id, title, description) => {
-// 	console.log(title, id);
-
-// 	button.addEventListener("click", (e) => {
-// 		console.log(e);
-// 	});
-// };
-
-// const copyToClipboard = (ele) => {
-// 	const copyText = ele;
-
-// 	copyText.select();
-// 	copyText.setSelectionRange(0, 99999);
-// 	document.execCommand("copy");
-
-// 	console.log("Copied!");
-// };
 
 const addFeedback = (feedback, id, uid) => {
 	let time = feedback.created_at.toDate();
@@ -95,53 +93,6 @@ const addFeedback = (feedback, id, uid) => {
 	`;
 
 	feedbackDiv.innerHTML += html;
-
-	// ${
-	// 	editable.includes(id)
-	// 		? `<button type="button" class="btn btn-outline-secondary ms-2" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-pencil-fill"></i></button>`
-	// 		: ""
-	// }
-
-	// `<button type="button" class="btn btn-outline-secondary ms-2 ${id}" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-pencil-fill"></i></button>`
-
-	// if (document.querySelector(`.${id}`) == null) {
-	// 	return;
-	// } else if (document.querySelector(`.${id}`) != null) {
-	// 	initialiseEdit(
-	// 		document.querySelector(`.${id}`),
-	// 		document.querySelector(`.${id}`).classList[3],
-	// 		feedback.title,
-	// 		feedback.description
-	// 	);
-
-	// 	// document.querySelector(`.${id}`).addEventListener("click", (e) => {
-	// 	// 	console.log(e);
-	// 	// 	initialiseEdit(document.querySelector(`.${id}`).classList[3]);
-	// 	// });
-	// }
-
-	// 	${
-	// 	editable.includes(id)
-	// 		? `<div class="row justify-content-center my-5">
-	// 				<div class="col-2">
-	// 					<button
-	// 						class="btn btn-outline-danger btn-sm"
-	// 						type="button"
-	// 						data-bs-toggle="collapse"
-	// 						data-bs-target="#collapseExample"
-	// 						aria-expanded="false"
-	// 						aria-controls="collapseExample"
-	// 					>Need to edit? You might need this information!</button>
-	// 					<div class="m-1 collapse" id="collapseExample">
-	// 						<small class="text-muted">ID for editing:
-	// 							<input class="form-control mt-1 mb-1 ${id}" style="width: 225px;" type="text" readonly value="${id}" />
-	// 							<button type="button" class="btn btn-outline-secondary btn-sm" onclick="() => { copyToClipboard(document.querySelector(".${id}")) }"><i class="bi bi-clipboard-plus"></i></button>
-	// 						</small>
-	// 					</div>
-	// 				</div>
-	// 			</div>`
-	// 		: ""
-	// }
 };
 
 const deleteFeedback = (id) => {
@@ -153,17 +104,19 @@ const deleteFeedback = (id) => {
 	});
 };
 
-db.collection("feedback").onSnapshot((snapshot) => {
-	snapshot.docChanges().forEach((change) => {
-		const doc = change.doc;
+db.collection("feedback")
+	.orderBy("created_at", "desc")
+	.onSnapshot((snapshot) => {
+		snapshot.docChanges().forEach((change) => {
+			const doc = change.doc;
 
-		if (change.type === "added") {
-			addFeedback(doc.data(), doc.id, doc.data().uid);
-		} else if (change.type === "removed") {
-			deleteFeedback(doc.id);
-		}
+			if (change.type === "added") {
+				addFeedback(doc.data(), doc.id, doc.data().uid);
+			} else if (change.type === "removed") {
+				deleteFeedback(doc.id);
+			}
+		});
 	});
-});
 
 feedbackForm.addEventListener("submit", (e) => {
 	e.preventDefault();
@@ -200,10 +153,11 @@ editForm.addEventListener("submit", (e) => {
 
 	editResponse.innerHTML = spinner("Editing feedback...");
 
+	const now = new Date();
 	const editObject = {
 		uid: editForm.uid.value,
 		author: editForm.author.value,
-		created_at: editForm.date.value,
+		created_at: firebase.firestore.Timestamp.fromDate(now),
 		title: editForm.title.value,
 		description: editForm.description.value,
 	};
@@ -260,87 +214,3 @@ feedbackDiv.addEventListener("click", (e) => {
 		editForm.description.value = description;
 	}
 });
-
-// editForm.addEventListener("submit", (e) => {
-// 	e.preventDefault();
-
-// 	editResponse.innerHTML = spinner("Editing feedback...");
-
-// 	let title = editForm.title.value.trim();
-// 	let description = editForm.description.value;
-
-// 	console.log(e, title, description);
-// });
-
-// feedbackDiv.addEventListener("click", (e) => {
-// 	if (e.target.className[2] === "spam") {
-// 		const id =
-// 			e.target.parentElement.parentElement.parentElement.parentElement.parentElement.getAttribute(
-// 				"data-id"
-// 			);
-
-// 		console.log(id);
-
-// 		const sure = confirm(
-// 			"Are you sure you want to spam this feedback post? The post will not be visible to anyone."
-// 		);
-
-// 		if (!sure) {
-// 			return;
-// 		} else {
-// 			db.collection("feedback")
-// 				.doc(id)
-// 				.delete()
-// 				.then(() => {
-// 					console.log("Post deleted!");
-// 				})
-// 				.catch((err) => {
-// 					console.log(err);
-// 				});
-// 		}
-// 	}
-
-// 	if (e.target.className === "like") {
-// 		const id = e.target.parentElement.parentElement.getAttribute("data-id");
-// 		let likeDocRef = db.collection("feedback").doc(id);
-
-// 		db.runTransaction((transaction) => {
-// 			return transaction.get(likeDocRef).then((likeDoc) => {
-// 				if (!likeDoc.exists) {
-// 					throw "Document does not exist!";
-// 				}
-
-// 				let newLikes = likeDoc.data().thumbs_up + 1;
-// 				transaction.update(likeDocRef, { thumbs_up: newLikes });
-// 			});
-// 		})
-// 			.then(() => {
-// 				console.log("Added like!");
-// 			})
-// 			.catch((error) => {
-// 				console.log(error);
-// 			});
-// 	}
-
-// 	if (e.target.className === "dislike") {
-// 		const id = e.target.parentElement.parentElement.getAttribute("data-id");
-// 		let dislikeDocRef = db.collection("feedback").doc(id);
-
-// 		db.runTransaction((transaction) => {
-// 			return transaction.get(dislikeDocRef).then((dislikeDoc) => {
-// 				if (!dislikeDoc.exists) {
-// 					throw "Document does not exist!";
-// 				}
-
-// 				let newDislikes = dislikeDoc.data().thumbs_down + 1;
-// 				transaction.update(dislikeDocRef, { thumbs_down: newDislikes });
-// 			});
-// 		})
-// 			.then(() => {
-// 				console.log("Added dislike!");
-// 			})
-// 			.catch((error) => {
-// 				console.log(error);
-// 			});
-// 	}
-// });
