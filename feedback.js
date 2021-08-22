@@ -5,8 +5,8 @@ const response = document.querySelector(".response");
 const feedbackDiv = document.querySelector(".feedback");
 const userLoadSpinner = document.querySelector("#userLoadSpinner");
 const feedbackLoad = document.querySelector(".feedbackWait");
-// const editForm = document.querySelector(".editForm");
-// const editResponse = document.querySelector(".editResponse");
+const editForm = document.querySelector(".editForm");
+const editResponse = document.querySelector(".editResponse");
 
 let allFeedback = [];
 
@@ -74,16 +74,17 @@ const addFeedback = (feedback, id, uid) => {
 		<div class="card shadow mb-5" data-id="${id}" data-uid="${uid}" style="width: 100%">
 			<div class="card-body">
 				<h2 class="card-title">${feedback.title}</h2>
-				<p class="card-subtitle text-muted">Posted by ${feedback.author}</p>
+				<p class="card-subtitle text-muted">${feedback.author}</p>
 				<p class="card-text" style="font-size: large">${feedback.description}</p>
 			</div>
 			<div class="card-footer text-muted">
-				<span>Posted at ${time}</span>
+				<span>${time}</span>
 				${
 					uid == globalUser.uid
 						? `
 				<br />
 				<div class="btn-group" role="group">
+					<button class="btn btn-success btn-sm mt-2" data-bs-toggle="modal" id="edit" data-bs-target="#staticBackdrop" title="Edit update (${feedback.title})"><i class="bi bi-pencil"></i></button>
 					<button class="btn btn-danger btn-sm mt-2" id="delete" title="Delete update (${feedback.title})"><i class="bi bi-trash"></i></button>
 				</div>
 				`
@@ -194,6 +195,32 @@ feedbackForm.addEventListener("submit", (e) => {
 		});
 });
 
+editForm.addEventListener("submit", (e) => {
+	e.preventDefault();
+
+	editResponse.innerHTML = spinner("Editing feedback...");
+
+	const editObject = {
+		uid: editForm.uid.value,
+		author: editForm.author.value,
+		created_at: editForm.date.value,
+		title: editForm.title.value,
+		description: editForm.description.value,
+	};
+
+	db.collection("feedback")
+		.doc(editForm.firebaseId.value)
+		.set(editObject)
+		.then(() => {
+			editResponse.innerHTML = `Feedback '${editObject.title}' has been successfully edited!`;
+		})
+		.catch((err) => {
+			console.log(err);
+
+			editResponse.innerHTML = `An unknown error occured while editing the feedback. Please try again later.`;
+		});
+});
+
 feedbackDiv.addEventListener("click", (e) => {
 	if (e.target.id === "delete") {
 		const id = e.path[3].getAttribute("data-id");
@@ -215,6 +242,22 @@ feedbackDiv.addEventListener("click", (e) => {
 					console.log(err);
 				});
 		}
+	}
+
+	if (e.target.id === "edit") {
+		const firebaseId = e.path[3].getAttribute("data-id");
+		const uid = globalUser.uid;
+		const author = e.path[3].children[0].children[1].innerHTML;
+		const date = e.path[3].children[1].children[0].innerHTML;
+		const title = e.path[3].children[0].children[0].innerHTML;
+		const description = e.path[3].children[0].children[2].innerHTML;
+
+		editForm.firebaseId.value = firebaseId;
+		editForm.uid.value = uid;
+		editForm.author.value = author;
+		editForm.date.value = date;
+		editForm.title.value = title;
+		editForm.description.value = description;
 	}
 });
 
