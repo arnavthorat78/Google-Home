@@ -8,6 +8,8 @@ const userLoadSpinner = document.querySelector("#userLoadSpinner");
 // Getting a random number for later use
 let randNum = Math.ceil(Math.random() * 10);
 
+// const newWindow = open("https://arnavthorat78.github.io/Google-Home/", "", "width=250px;height=250px");
+
 const randGreeting = (status) => {
 	if (status == "account") {
 		// Getting the hours for later use
@@ -93,3 +95,37 @@ scrollUp.addEventListener("click", () => {
 		behavior: "smooth",
 	});
 });
+
+// For information on the key codes, see https://keycode.info/.
+document.onkeyup = (e) => {
+	if (e.ctrlKey && e.altKey && e.key == "h") {
+		open("./index.html", "_self");
+	}
+	if (e.ctrlKey && e.altKey && e.key == "s") {
+		open("./search/search.html", "_self");
+	}
+	if (e.ctrlKey && e.altKey && e.key == "w") {
+		open("./search/weather.html", "_self");
+	}
+	if (e.ctrlKey && e.altKey && e.key == "g") {
+		open("./settings.html", "_self");
+	}
+	if (e.ctrlKey && e.altKey && e.key == "f") {
+		open("./feedback.html", "_self");
+	}
+
+	if (e.ctrlKey && e.altKey && e.key == "t") {
+		window.scroll({
+			top: 0,
+			left: 0,
+			behavior: "smooth",
+		});
+	}
+	if (e.ctrlKey && e.altKey && e.key == "b") {
+		window.scroll({
+			top: window.innerHeight,
+			left: 0,
+			behavior: "smooth",
+		});
+	}
+};
