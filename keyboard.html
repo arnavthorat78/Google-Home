@@ -15,7 +15,7 @@
 			rel="stylesheet"
 			href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
 		/>
-		<title>Google Home - Permissions</title>
+		<title>Google Home - Keyboard Shortcuts</title>
 	</head>
 	<body style="text-align: center">
 		<nav class="navbar navbar-expand-xl navbar-dark bg-dark">
@@ -98,7 +98,7 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" href="permissions.html">
+							<a class="nav-link" href="permissions.html">
 								<i class="bi bi-shield-shaded"></i>
 								Permissions
 							</a>
@@ -110,7 +110,7 @@
 							</a>
 						</li>
 						<li class="nav-item border-end">
-							<a class="nav-link" id="shortcuts" style="cursor: pointer">
+							<a class="nav-link active" id="shortcuts" href="">
 								<i class="bi bi-keyboard"></i>
 								Shortcuts
 							</a>
@@ -150,194 +150,108 @@
 				<div class="row justify-content-center align-items-center">
 					<div class="col-md-5 text-center text-md-start">
 						<h1>
-							<div class="display-2">Permissions</div>
-							<div class="display-5 text-muted">Just for things to work...</div>
+							<div class="display-2">Keyboard Shortcuts</div>
+							<div class="display-6 text-muted">A great way to go quick!</div>
 						</h1>
 						<p class="lead my-4 text-muted">
-							We need access to some permissions for this website to function
-							properly. Please follow the steps below to enable them.
+							See the keyboard shortcuts of this website, to get what you need to get
+							done <i>faster</i>!
 						</p>
 					</div>
 					<div class="col-md-5 text-center d-none d-md-block">
-						<div class="display-1 text-danger">
-							<i class="bi bi-shield-shaded"></i>
+						<div class="display-1 text-success">
+							<i class="bi bi-keyboard-fill"></i>
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<div
-			class="
-				alert alert-primary
-				d-flex
-				justify-content-center
-				ms-5
-				me-5
-				alert-dismissible
-				fade
-				show
-			"
-			role="alert"
-			id="alert"
-		>
-			<div>
-				<div class="display-6"><i class="bi bi-info-circle-fill"></i></div>
-				<br />
-				<h3 class="alert-heading">Unsupported Websites</h3>
-				<p class="lead">Some websites are not supported or are not listed below.</p>
-				<p>
-					<strong>Internet Explorer is not supported of any version.</strong>
-					<br />
-					Safari and Opera's steps, along with some other search engines, are not listed
-					below. We apologise for any inconvenience caused by this.
+		<section class="links p-5">
+			<div class="text-center">
+				<h2>Links</h2>
+				<p class="lead">
+					See the keyboard shortcuts below for quickly navigating through popular links.
 				</p>
-
-				<button
-					type="button"
-					class="btn-close"
-					data-bs-dismiss="alert"
-					aria-label="Close"
-				></button>
 			</div>
-		</div>
 
-		<section class="p-5" id="redirects">
 			<div class="container-lg">
-				<div class="text-center">
-					<h2>Pop-ups & Redirects</h2>
-					<p class="lead">
-						Please follow the steps below to make the site work.
-						<br />
-						In case you were wondering what it is for, it is for searching on the Search
-						page.
-					</p>
-				</div>
+				<table style="width: 100%">
+					<tr class="border">
+						<th>Keyboard Shortcut</th>
+						<th>Definition</th>
+					</tr>
+					<tr class="border">
+						<td class="text-danger py-2">
+							<code>Ctrl + Alt + H</code>
+						</td>
+						<td>Open up the Home page.</td>
+					</tr>
+					<tr class="border bg-light">
+						<td class="text-warning py-2">
+							<code>Ctrl + Alt + S</code>
+						</td>
+						<td>Open up the Search page.</td>
+					</tr>
+					<tr class="border">
+						<td class="text-success py-2">
+							<code>Ctrl + Alt + W</code>
+						</td>
+						<td>Open up the Weather page.</td>
+					</tr>
+					<tr class="border bg-light">
+						<td class="text-secondary py-2">
+							<code>Ctrl + Alt + G</code>
+						</td>
+						<td>Open up the Settings page.</td>
+					</tr>
+					<tr class="border">
+						<td class="text-secondary py-2">
+							<code>Ctrl + Alt + F</code>
+						</td>
+						<td>Open up the Feedback page.</td>
+					</tr>
+				</table>
+			</div>
+		</section>
 
-				<nav class="mt-3">
-					<div class="nav nav-tabs" id="nav-tab" role="tablist">
-						<button
-							class="nav-link active"
-							id="nav-google-tab"
-							data-bs-toggle="tab"
-							data-bs-target="#nav-google"
-							type="button"
-							role="tab"
-							aria-controls="nav-google"
-							aria-selected="true"
-						>
-							Google Chrome
-						</button>
+		<section class="basic p-5">
+			<div class="text-center">
+				<h2>Basic Tasks</h2>
+				<p class="lead">See the basic tasks that you can do!</p>
+			</div>
 
-						<button
-							class="nav-link"
-							id="nav-edge-tab"
-							data-bs-toggle="tab"
-							data-bs-target="#nav-edge"
-							type="button"
-							role="tab"
-							aria-controls="nav-edge"
-							aria-selected="true"
-						>
-							Microsoft Edge
-						</button>
-
-						<button
-							class="nav-link"
-							id="nav-firefox-tab"
-							data-bs-toggle="tab"
-							data-bs-target="#nav-firefox"
-							type="button"
-							role="tab"
-							aria-controls="nav-firefox"
-							aria-selected="true"
-						>
-							Firefox
-						</button>
-					</div>
-				</nav>
-
-				<div class="tab-content" id="nav-tabContent">
-					<div
-						class="tab-pane fade show active p-3"
-						id="nav-google"
-						role="tabpanel"
-						aria-labelledby="nav-google-tab"
-					>
-						<h2>Google Chrome</h2>
-						<ul>
-							<span
-								>1. Navigate to the button next to the URL (site information).</span
-							>
-							<br />
-							<span>2. On the bottom, click <i>Site Settings</i>.</span>
-							<br />
-							<span
-								>3. Scroll to <i>Pop-ups and redirects</i> and click
-								<i>Allow</i>.</span
-							>
-						</ul>
-					</div>
-
-					<div
-						class="tab-pane fade p-3"
-						id="nav-edge"
-						role="tabpanel"
-						aria-labelledby="nav-edge-tab"
-					>
-						<h2>Microsoft Edge</h2>
-						<ul>
-							<span
-								>1. Navigate to the button next to the URL (site information).</span
-							>
-							<br />
-							<span
-								>2. Click <i>Permissions for this site</i> (with a password icon on
-								it).</span
-							>
-							<br />
-							<span
-								>3. Scroll to <i>Pop-ups and redirects</i> and click
-								<i>Allow</i>.</span
-							>
-						</ul>
-					</div>
-
-					<div
-						class="tab-pane fade p-3"
-						id="nav-firefox"
-						role="tabpanel"
-						aria-labelledby="nav-firefox-tab"
-					>
-						<h2>Firefox</h2>
-						<ul>
-							<span>
-								1. Navigate to the three horizontal lines (on the right side of the
-								toolbar), and click <i>Settings</i>.
-							</span>
-							<br />
-							<span>
-								2. Navigate to <i>Privacy and Security</i> on the left-hand side
-								toolbar.
-							</span>
-							<br />
-							<span>
-								3. Scroll down to <i>Permissions</i>, and next to
-								<i>Block pop-up windows</i>, click <i>Exceptions...</i>.
-							</span>
-							<br />
-							<span>
-								4. Type in the URL of the website to allow (which is
-								<u class="website"></u>). Then click <i>Allow</i>.
-							</span>
-						</ul>
-					</div>
-				</div>
-
-				<small class="text-muted"
-					>Internet Explorer is not supported. Safari, Opera, and other search engines'
-					steps could not be received. Sorry for the inconvenience.</small
-				>
+			<div class="container-lg">
+				<table style="width: 100%">
+					<tr class="border">
+						<th>Keyboard Shortcut</th>
+						<th>Definition</th>
+					</tr>
+					<tr class="border">
+						<td class="text-danger py-2">
+							<code>Ctrl + Alt + T</code>
+						</td>
+						<td>
+							Naviagte to the top of the current page. This feature will not do
+							anything if you are already at the top.
+						</td>
+					</tr>
+					<tr class="border bg-light">
+						<td class="text-warning py-2">
+							<code>Ctrl + Alt + B</code>
+						</td>
+						<td>
+							Naviagte to the bottom of the current page. This feature will not do
+							anything if you are already at the bottom.
+						</td>
+					</tr>
+					<tr class="border">
+						<td class="text-danger py-2">
+							<code>Ctrl + Alt + M</code>
+						</td>
+						<td>Naviagte to the middle of the current page.</td>
+					</tr>
+				</table>
 			</div>
 		</section>
 
@@ -369,6 +283,6 @@
 			integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 			crossorigin="anonymous"
 		></script>
-		<script src="permissions.js"></script>
+		<script src="404.js"></script>
 	</body>
 </html>

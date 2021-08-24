@@ -5,6 +5,11 @@ const greeting = document.querySelector(".greeting");
 const scrollUp = document.querySelector(".scrollUp");
 const userLoadSpinner = document.querySelector("#userLoadSpinner");
 
+const shortcuts = document.querySelector("#shortcuts");
+shortcuts.addEventListener("click", () => {
+	open("./keyboard.html", "", "width=250px;height=250px");
+});
+
 // Getting a random number for later use
 let randNum = Math.ceil(Math.random() * 10);
 
@@ -81,23 +86,9 @@ auth.onAuthStateChanged((userChange) => {
 	console.log(auth.currentUser);
 });
 
-// Time since
-// TODO Get a better formula
-// let updateTime = new Date("August 6, 2021 17:00:00").getHours();
-// let now = new Date().getHours();
-// hours.innerHTML = `${24 - updateTime + now} hours ago`;
-
-// Making the window scroll to the top when button clicked
-scrollUp.addEventListener("click", () => {
-	window.scroll({
-		top: 0,
-		left: 0,
-		behavior: "smooth",
-	});
-});
-
+// Adding keyboard shortcut listeners, and reacting to them depending on the stroke.
 // For information on the key codes, see https://keycode.info/.
-document.onkeyup = (e) => {
+document.onkeydown = (e) => {
 	if (e.ctrlKey && e.altKey && e.key == "h") {
 		open("./index.html", "_self");
 	}
@@ -128,4 +119,26 @@ document.onkeyup = (e) => {
 			behavior: "smooth",
 		});
 	}
+	if (e.ctrlKey && e.altKey && e.key == "m") {
+		window.scroll({
+			top: window.innerHeight / 2,
+			left: 0,
+			behavior: "smooth",
+		});
+	}
 };
+
+// Time since
+// TODO Get a better formula
+// let updateTime = new Date("August 6, 2021 17:00:00").getHours();
+// let now = new Date().getHours();
+// hours.innerHTML = `${24 - updateTime + now} hours ago`;
+
+// Making the window scroll to the top when button clicked
+scrollUp.addEventListener("click", () => {
+	window.scroll({
+		top: 0,
+		left: 0,
+		behavior: "smooth",
+	});
+});
