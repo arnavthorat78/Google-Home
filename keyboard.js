@@ -1,22 +1,28 @@
-const user = document.querySelector(".user");
-const userLoadSpinner = document.querySelector("#userLoadSpinner");
+// const user = document.querySelector(".user");
+// const userLoadSpinner = document.querySelector("#userLoadSpinner");
 
-const shortcuts = document.querySelector("#shortcuts");
-shortcuts.addEventListener("click", () => {
-	open("./keyboard.html", "", "width=250px;height=250px");
-});
+const closeWindow = document.querySelector("#closeWindow");
+
+// const shortcuts = document.querySelector("#shortcuts");
+// shortcuts.addEventListener("click", () => {
+// 	open("./keyboard.html", "", "width=250px;height=250px");
+// });
 
 // Listen for authentication status changes
 auth.onAuthStateChanged((userChange) => {
-	if (auth.currentUser) {
-		userLoadSpinner.classList.add("d-none");
-		user.innerHTML = auth.currentUser.displayName;
-	} else {
-		userLoadSpinner.classList.add("d-none");
-		user.innerHTML = "User";
-	}
+	// if (auth.currentUser) {
+	// 	userLoadSpinner.classList.add("d-none");
+	// 	user.innerHTML = auth.currentUser.displayName;
+	// } else {
+	// 	userLoadSpinner.classList.add("d-none");
+	// 	user.innerHTML = "User";
+	// }
 
 	console.log(auth.currentUser);
+});
+
+closeWindow.addEventListener("click", (e) => {
+	window.close();
 });
 
 // Adding keyboard shortcut listeners, and reacting to them depending on the stroke.
@@ -58,5 +64,8 @@ document.onkeydown = (e) => {
 			left: 0,
 			behavior: "smooth",
 		});
+	}
+	if (e.ctrlKey && e.altKey && e.key == "c") {
+		window.close();
 	}
 };

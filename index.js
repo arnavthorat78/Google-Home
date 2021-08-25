@@ -13,8 +13,6 @@ shortcuts.addEventListener("click", () => {
 // Getting a random number for later use
 let randNum = Math.ceil(Math.random() * 10);
 
-// const newWindow = open("https://arnavthorat78.github.io/Google-Home/", "", "width=250px;height=250px");
-
 const randGreeting = (status) => {
 	if (status == "account") {
 		// Getting the hours for later use

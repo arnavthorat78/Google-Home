@@ -202,7 +202,9 @@ const addNewUpdate = (update, id) => {
 				<p class="card-text">
 					${update["description"]}
 				</p>
-				<a href="${update["link"]}" class="btn btn-${update["colour"]}">${update["buttonText"]}</a>
+				<a href="${update["link"]}" class="btn btn-${update["colour"]} ${
+		update["completed"] ? "" : "disabled"
+	}">${update["buttonText"]}</a>
 			</div>
 			<div class="card-footer text-muted">
 				<div class="d-none">${update["completed"]}</div>
@@ -319,9 +321,9 @@ const addUpdateTemplate = (data, docRef, reset = false, append = true) => {
                         <p class="card-text">
                             ${value["description"]}
                         </p>
-                        <a href="${value["link"]}" class="btn btn-${value["colour"]}">${
-				value["buttonText"]
-			}</a>
+                        <a href="${value["link"]}" class="btn btn-${value["colour"]} ${
+				update["completed"] ? "" : "disabled"
+			}">${value["buttonText"]}</a>
                     </div>
                     <div class="card-footer text-muted">
 						<div class="d-none">${value["completed"]}</div>
