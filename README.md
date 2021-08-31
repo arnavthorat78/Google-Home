@@ -1,7 +1,5 @@
 # Google-Home
 
-![Google-Home](./img/Google.png)
-
 This website is all about Google Home!
 
 See the following URL for the online version of this website: https://arnavthorat78.github.io/Google-Home/.
