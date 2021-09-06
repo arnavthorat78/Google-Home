@@ -6,7 +6,7 @@ const userLoadSpinner = document.querySelector("#userLoadSpinner");
 
 const shortcuts = document.querySelector("#shortcuts");
 shortcuts.addEventListener("click", () => {
-	open("./keyboard.html", "", "width=250px;height=250px");
+	open("../keyboard.html", "", "width=250px;height=250px");
 });
 
 let tempUnits = "";

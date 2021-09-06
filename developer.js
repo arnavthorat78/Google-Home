@@ -3,7 +3,7 @@ const userLoadSpinner = document.querySelector("#userLoadSpinner");
 
 const shortcuts = document.querySelector("#shortcuts");
 shortcuts.addEventListener("click", () => {
-	open("../keyboard.html", "", "width=250px;height=250px");
+	open("./keyboard.html", "", "width=250px;height=250px");
 });
 
 // Listen for authentication status changes
@@ -23,19 +23,19 @@ auth.onAuthStateChanged((userChange) => {
 // For information on the key codes, see https://keycode.info/.
 document.onkeydown = (e) => {
 	if (e.ctrlKey && e.altKey && e.key == "h") {
-		open("../index.html", "_self");
+		open("./index.html", "_self");
 	}
 	if (e.ctrlKey && e.altKey && e.key == "s") {
-		open("./search.html", "_self");
+		open("./search/search.html", "_self");
 	}
 	if (e.ctrlKey && e.altKey && e.key == "w") {
-		open("./weather.html", "_self");
+		open("./search/weather.html", "_self");
 	}
 	if (e.ctrlKey && e.altKey && e.key == "g") {
-		open("../settings.html", "_self");
+		open("./settings.html", "_self");
 	}
 	if (e.ctrlKey && e.altKey && e.key == "f") {
-		open("../feedback.html", "_self");
+		open("./feedback.html", "_self");
 	}
 
 	if (e.ctrlKey && e.altKey && e.key == "t") {

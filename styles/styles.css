@@ -1,0 +1,31 @@
+/* Coding styles for the Developer page */
+.code {
+	font-family: monospace;
+}
+.default {
+	color: #f8f8f2;
+}
+.comment {
+	color: #229977;
+}
+.red {
+	color: #f92672;
+}
+.orange {
+	color: #fd971f;
+}
+.light-yellow {
+	color: #e69f66;
+}
+.yellow {
+	color: #e6db74;
+}
+.green {
+	color: #a6e22e;
+}
+.blue {
+	color: #66d9ef;
+}
+.purple {
+	color: #ae81ff;
+}
