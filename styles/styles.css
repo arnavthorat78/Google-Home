@@ -1,6 +1,7 @@
 /* Coding styles for the Developer page */
 .code {
 	font-family: monospace;
+	word-wrap: break-word;
 }
 .default {
 	color: #f8f8f2;

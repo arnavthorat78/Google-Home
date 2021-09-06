@@ -197,6 +197,45 @@
 						>
 							Introduction
 						</button>
+
+						<button
+							class="nav-link"
+							id="nav-variable-tab"
+							data-bs-toggle="tab"
+							data-bs-target="#nav-variable"
+							type="button"
+							role="tab"
+							aria-controls="nav-variable"
+							aria-selected="true"
+						>
+							Variables
+						</button>
+
+						<button
+							class="nav-link"
+							id="nav-method-tab"
+							data-bs-toggle="tab"
+							data-bs-target="#nav-method"
+							type="button"
+							role="tab"
+							aria-controls="nav-method"
+							aria-selected="true"
+						>
+							Methods
+						</button>
+
+						<button
+							class="nav-link"
+							id="nav-class-tab"
+							data-bs-toggle="tab"
+							data-bs-target="#nav-class"
+							type="button"
+							role="tab"
+							aria-controls="nav-class"
+							aria-selected="true"
+						>
+							Classes
+						</button>
 					</div>
 				</nav>
 
@@ -208,33 +247,145 @@
 						aria-labelledby="nav-intro-tab"
 					>
 						<h2>Introduction</h2>
+						<img
+							src="https://img.shields.io/npm/v/google-home-module?color=red&label=npm&logo=version&logoColor=grey"
+							alt="npm"
+							draggable="false"
+						/>
+						<br /><br />
+						<p>
+							Are you a NodeJS developer and want to add some Google Home features to
+							your project? Well, now you can!
+							<br />
+							The Google Home module features many exciting features, such as the
+							<code>User</code> class, the <code>randomGreeting</code> method, and
+							much more!
+						</p>
+
+						<h4>Installation</h4>
+
+						<p>Just type this into your terminal!</p>
+						<div
+							class="rounded-2 shadow-sm bg-dark px-4 py-2 m-3"
+							style="text-align: left"
+						>
+							<div class="code">
+								<span class="default"
+									>&dollar;&nbsp;npm install google-home-module</span
+								>
+							</div>
+						</div>
+
+						<p>The output should be something like this...</p>
+						<div
+							class="rounded-2 shadow-sm bg-dark px-4 py-2 m-3"
+							style="text-align: left"
+						>
+							<div class="code">
+								<span class="default"
+									>&plus;&nbsp;google-home-module&commat;1.0.0</span
+								>
+							</div>
+						</div>
+
+						<p>
+							Hooray! That means that you have successfully installed the module on
+							your computer! By the way, please note that the version will be
+							different for you. See the Shield below the Introduction title to see
+							the actual version.
+						</p>
+
+						<hr />
+
+						<h4>In NodeJS!</h4>
+						<p>
+							Once you have installed the <code>google-home-module</code> and have the
+							<code>node_modules</code> folder in your directory (unless you ran the
+							command with the <code>-g</code> flag), you of course need to
+							<code>require</code> it in your project! <br /><br />
+							Do this by simply running this command:
+						</p>
+
 						<div
 							class="rounded-2 shadow-sm bg-dark px-4 py-2 m-3"
 							style="text-align: left"
 						>
 							<div class="code">
 								<span class="blue">const</span>&nbsp;<span class="default"
-									>shortcuts</span
-								>&nbsp;<span class="red">=</span>&nbsp;<span class="default"
-									>document</span
-								><span class="red">&period;</span
-								><span class="green">querySelector</span
+									>googleHome</span
+								>&nbsp;<span class="red">=</span>&nbsp;<span class="green"
+									>require</span
 								><span class="default">&lbbrk;</span
-								><span class="yellow">&quot;&num;shortcuts&quot;</span
+								><span class="yellow">&quot;google-home-module&quot;</span
 								><span class="default">&rbbrk;&semi;</span>
 							</div>
 						</div>
+
+						<p>
+							Or, if you have access to the <code>import</code> statement, you can run
+							this command:
+						</p>
+						<div
+							class="rounded-2 shadow-sm bg-dark px-4 py-2 m-3"
+							style="text-align: left"
+						>
+							<div class="code">
+								<span class="red">import</span>&nbsp;<span class="purple"
+									>&ast;</span
+								>&nbsp;<span class="red">as</span>&nbsp;<span class="default"
+									>googleHome</span
+								>&nbsp;<span class="red">from</span>&nbsp;<span class="yellow"
+									>&quot;google-home-module&quot;</span
+								><span class="default">&semi;</span>
+							</div>
+						</div>
+
+						<p>
+							If you want to get specific commands, you can use curly bracket notation
+							and specify the variables, methods, or classes you would like to import.
+						</p>
+
+						<p>
+							That is basically <i>it</i> for importing the
+							<code>google-home-module</code>! See the tabs above to find out if you
+							want to search for variables, methods, or classes!
+						</p>
+					</div>
+
+					<div
+						class="tab-pane fade p-3"
+						id="nav-variable"
+						role="tabpanel"
+						aria-labelledby="nav-variable-tab"
+					>
+						<h2>Variables</h2>
+						<p>Please wait... we're still gathering data!</p>
+					</div>
+
+					<div
+						class="tab-pane fade p-3"
+						id="nav-method"
+						role="tabpanel"
+						aria-labelledby="nav-method-tab"
+					>
+						<h2>Methods</h2>
+						<p>Please wait... we're still gathering data!</p>
+					</div>
+
+					<div
+						class="tab-pane fade p-3"
+						id="nav-class"
+						role="tabpanel"
+						aria-labelledby="nav-class-tab"
+					>
+						<h2>Classes</h2>
+						<p>Please wait... we're still gathering data!</p>
 					</div>
 				</div>
 
 				<small class="text-muted">
-					Not clear? Hard to understand? Get in touch with me by emailing
-					<a
-						class="text-decoration-none"
-						target="_blank"
-						href="mailto:arnavthorat78@gmail.com"
-						>me at this address</a
-					>.
+					Not clear? Hard to understand? You can easily say what you like in the
+					<a class="text-decoration-none" href="feedback.html">Feedback page</a>!
 				</small>
 			</div>
 		</section>
