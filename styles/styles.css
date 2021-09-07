@@ -1,8 +1,23 @@
 /* Coding styles for the Developer page */
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@400&display=swap");
+
+.hoverLink {
+	color: lightblue;
+	cursor: pointer;
+}
+.hoverLink:hover {
+	color: blue;
+}
+
+.indent {
+	text-indent: 50px;
+}
+
 .code {
-	font-family: monospace;
+	font-family: "Inconsolata", monospace;
 	word-wrap: break-word;
 }
+
 .default {
 	color: #f8f8f2;
 }
@@ -29,4 +44,11 @@
 }
 .purple {
 	color: #ae81ff;
+}
+
+.bright-yellow {
+	color: #ffec44;
+}
+.grey {
+	color: #6e6e6e;
 }

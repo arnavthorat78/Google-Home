@@ -180,7 +180,7 @@
 		</section>
 
 		<section class="p-5" id="docs">
-			<!-- To see HTML character codes, see https://www.toptal.com/designers/htmlarrows/punctuation/semicolon/. -->
+			<!-- To see HTML character codes, see https://www.toptal.com/designers/htmlarrows/. -->
 
 			<div class="container-lg">
 				<nav class="mt-3">
@@ -264,19 +264,20 @@
 
 						<h4>Installation</h4>
 
-						<p>Just type this into your terminal!</p>
+						<span>Just type this into your terminal!</span>
 						<div
 							class="rounded-2 shadow-sm bg-dark px-4 py-2 m-3"
 							style="text-align: left"
 						>
 							<div class="code">
 								<span class="default"
-									>&dollar;&nbsp;npm install google-home-module</span
+									>&gt;&nbsp;<span class="bright-yellow">npm</span> install
+									google-home-module</span
 								>
 							</div>
 						</div>
 
-						<p>The output should be something like this...</p>
+						<span>The output should be something like this...</span>
 						<div
 							class="rounded-2 shadow-sm bg-dark px-4 py-2 m-3"
 							style="text-align: left"
@@ -302,10 +303,10 @@
 							Once you have installed the <code>google-home-module</code> and have the
 							<code>node_modules</code> folder in your directory (unless you ran the
 							command with the <code>-g</code> flag), you of course need to
-							<code>require</code> it in your project! <br /><br />
-							Do this by simply running this command:
+							<code>require</code> it in your project!
 						</p>
 
+						<span>Do this by simply running this command:</span>
 						<div
 							class="rounded-2 shadow-sm bg-dark px-4 py-2 m-3"
 							style="text-align: left"
@@ -321,10 +322,10 @@
 							</div>
 						</div>
 
-						<p>
+						<span>
 							Or, if you have access to the <code>import</code> statement, you can run
 							this command:
-						</p>
+						</span>
 						<div
 							class="rounded-2 shadow-sm bg-dark px-4 py-2 m-3"
 							style="text-align: left"
@@ -359,7 +360,125 @@
 						aria-labelledby="nav-variable-tab"
 					>
 						<h2>Variables</h2>
-						<p>Please wait... we're still gathering data!</p>
+						<p>
+							Variables are used for storing simple data. Use them in the Google Home
+							module!
+						</p>
+
+						<h4>Quick Links</h4>
+						<div class="indent">
+							<a class="text-decoration-none" href="developer.html#websiteVersion"
+								><code>websiteVersion</code></a
+							>
+							<br />
+							<a class="text-decoration-none" href="developer.html#version"
+								><code>version</code></a
+							>
+						</div>
+
+						<hr />
+
+						<h4 id="websiteVersion">
+							<a
+								class="hoverLink text-decoration-none"
+								href="developer.html#websiteVersion"
+								>#</a
+							>
+							<code>websiteVersion</code>
+						</h4>
+						<p>
+							Get the website version of the Google Home website!
+							<br />
+							This is right now a static variable, which may not be accurate. We are
+							hoping to make a dynamic variable (or function) soon.
+						</p>
+
+						<span>Example:</span>
+						<div
+							class="rounded-2 shadow-sm bg-dark px-4 py-2 m-3"
+							style="text-align: left"
+						>
+							<div class="code">
+								<span class="blue">const</span>&nbsp;<span class="default"
+									>googleHome</span
+								>&nbsp;<span class="red">=</span>&nbsp;<span class="green"
+									>require</span
+								><span class="default">&lbbrk;</span
+								><span class="yellow">&quot;google-home-module&quot;</span
+								><span class="default">&rbbrk;&semi;</span>
+
+								<br /><br />
+
+								<span class="default">console</span><span class="red">&period;</span
+								><span class="green">log</span
+								><span class="default">&lbbrk;googleHome</span
+								><span class="red">&period;</span
+								><span class="orange">websiteVersion</span
+								><span class="default">&rbbrk;&semi;</span>
+							</div>
+						</div>
+
+						<span>This will output something like the following.</span>
+						<div
+							class="rounded-2 shadow-sm bg-dark px-4 py-2 m-3"
+							style="text-align: left"
+						>
+							<div class="code">
+								<span class="default">2.1.0</span>
+							</div>
+						</div>
+
+						<p>
+							Please note that the version number will be different. This version was
+							chosen since it was the version when the documentation arrived.
+						</p>
+
+						<hr />
+
+						<h4 id="version">
+							<a class="hoverLink text-decoration-none" href="developer.html#version"
+								>#</a
+							>
+							<code>version</code>
+						</h4>
+						<p>Get the version of the NPM module for Google Home.</p>
+
+						<span>Example:</span>
+						<div
+							class="rounded-2 shadow-sm bg-dark px-4 py-2 m-3"
+							style="text-align: left"
+						>
+							<div class="code">
+								<span class="blue">const</span>&nbsp;<span class="default"
+									>googleHome</span
+								>&nbsp;<span class="red">=</span>&nbsp;<span class="green"
+									>require</span
+								><span class="default">&lbbrk;</span
+								><span class="yellow">&quot;google-home-module&quot;</span
+								><span class="default">&rbbrk;&semi;</span>
+
+								<br /><br />
+
+								<span class="default">console</span><span class="red">&period;</span
+								><span class="green">log</span
+								><span class="default">&lbbrk;googleHome</span
+								><span class="red">&period;</span><span class="orange">version</span
+								><span class="default">&rbbrk;&semi;</span>
+							</div>
+						</div>
+
+						<span
+							>This will output something like this, depending on the version you are
+							running on.</span
+						>
+						<div
+							class="rounded-2 shadow-sm bg-dark px-4 py-2 m-3"
+							style="text-align: left"
+						>
+							<div class="code">
+								<span class="default">1.0.0</span>
+							</div>
+						</div>
 					</div>
 
 					<div
@@ -369,7 +488,135 @@
 						aria-labelledby="nav-method-tab"
 					>
 						<h2>Methods</h2>
-						<p>Please wait... we're still gathering data!</p>
+						<p>
+							Methods are used for completing complex tasks! These are used to make
+							the most of your coding experience!
+						</p>
+
+						<h4>Quick Links</h4>
+						<div class="indent">
+							<a class="text-decoration-none" href="developer.html#randomGreeting"
+								><code>randomGreeting</code></a
+							>
+						</div>
+
+						<hr />
+
+						<h4 id="randomGreeting">
+							<a
+								class="hoverLink text-decoration-none"
+								href="developer.html#randomGreeting"
+								>#</a
+							>
+							<code>randomGreeting</code>
+						</h4>
+						<p>
+							Get a random greeting for the user.
+							<br /><br />
+							If the user is signed in, then the user will get a random greeting, with
+							their username. Sometimes, the function will greet the user depending on
+							their local time (e.g. Good morning!). When the user is signed in, the
+							username parameter must be filled. If not, a <code>TypeError</code> will
+							be thrown.
+							<br />
+							If no error occurs, the function will return the greeting it chose. If
+							the user isn't signed in, it will simply return, "Welcome!".
+							<br /><br />
+							This function will get updates along with its website, such as more
+							greetings, or if this function gets an update that the website already
+							has, such as Settings.
+						</p>
+
+						<span>See an error example first, then a proper example:</span>
+						<div
+							class="rounded-2 shadow-sm bg-dark px-4 py-2 m-3"
+							style="text-align: left"
+						>
+							<div class="code">
+								<span class="blue">const</span>&nbsp;<span class="default"
+									>googleHome</span
+								>&nbsp;<span class="red">=</span>&nbsp;<span class="green"
+									>require</span
+								><span class="default">&lbbrk;</span
+								><span class="yellow">&quot;google-home-module&quot;</span
+								><span class="default">&rbbrk;&semi;</span>
+
+								<br /><br />
+
+								<span class="default">console</span><span class="red">&period;</span
+								><span class="green">log</span
+								><span class="default">&lbbrk;googleHome</span
+								><span class="red">&period;</span
+								><span class="green">randomGreeting</span
+								><span class="default">&lbbrk;</span><span class="purple">true</span
+								><span class="default">&rbbrk;</span
+								><span class="default">&rbbrk;&semi;</span>
+							</div>
+						</div>
+
+						<span>With this, we should see a quite unfortunate result.</span>
+						<div
+							class="rounded-2 shadow-sm bg-dark px-4 py-2 m-3"
+							style="text-align: left"
+						>
+							<div class="code">
+								<span class="default fw-bold"
+									>TypeError: Parameters 'signedIn' was true while 'username' was
+									false. Expected a value for 'username' while 'signedIn' was
+									true, but got true for 'signedIn' and false for
+									'username'.</span
+								>
+								<div class="indent">
+									<span class="default"
+										>at Object.randomGreeting
+										(C:\Users\Someone\Google-Home\node_modules\google-home-module\src\index.js:29:9)</span
+									>
+								</div>
+								<div class="indent">
+									<span class="default"
+										>at Object.&lt;anonymous&gt;
+										(C:\Users\Someone\Google-Home\sandbox.js:10:24)</span
+									>
+								</div>
+								<div class="indent">
+									<span class="grey"
+										>at Module._compile
+										(internal/modules/cjs/loader.js:1063:30)</span
+									>
+								</div>
+								<div class="indent">
+									<span class="grey"
+										>at Object.Module._extensions..js
+										(internal/modules/cjs/loader.js:1092:10)</span
+									>
+								</div>
+								<div class="indent">
+									<span class="grey"
+										>at Module.load
+										(internal/modules/cjs/loader.js:928:32)</span
+									>
+								</div>
+								<div class="indent">
+									<span class="grey"
+										>at Function.Module._load
+										(internal/modules/cjs/loader.js:769:14)</span
+									>
+								</div>
+								<div class="indent">
+									<span class="grey"
+										>at Function.executeUserEntryPoint [as runMain]
+										(internal/modules/run_main.js:72:12)</span
+									>
+								</div>
+								<div class="indent">
+									<span class="grey"
+										>at internal/main/run_main_module.js:17:47</span
+									>
+								</div>
+							</div>
+						</div>
+
+						<p><i>We're adding more information... coming very soon!</i></p>
 					</div>
 
 					<div

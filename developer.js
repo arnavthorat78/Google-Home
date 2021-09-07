@@ -60,5 +60,3 @@ document.onkeydown = (e) => {
 		});
 	}
 };
-
-// import * as googleHome from "google-home-module";
