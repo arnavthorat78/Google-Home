@@ -99,12 +99,6 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="permissions.html">
-								<i class="bi bi-shield-shaded"></i>
-								Permissions
-							</a>
-						</li>
-						<li class="nav-item">
 							<a class="nav-link active" href="developer.html">
 								<i class="bi bi-code-slash"></i>
 								Developers
@@ -267,7 +261,7 @@
 						<span>Just type this into your terminal!</span>
 						<div
 							class="rounded-2 shadow-sm bg-dark px-4 py-2 m-3"
-							style="text-align: left"
+							style="text-align: left; background-color: #1c1c1c"
 						>
 							<div class="code">
 								<span class="default"
@@ -280,7 +274,7 @@
 						<span>The output should be something like this...</span>
 						<div
 							class="rounded-2 shadow-sm bg-dark px-4 py-2 m-3"
-							style="text-align: left"
+							style="text-align: left; background-color: #1c1c1c"
 						>
 							<div class="code">
 								<span class="default"
@@ -309,7 +303,7 @@
 						<span>Do this by simply running this command:</span>
 						<div
 							class="rounded-2 shadow-sm bg-dark px-4 py-2 m-3"
-							style="text-align: left"
+							style="text-align: left; background-color: #1c1c1c"
 						>
 							<div class="code">
 								<span class="blue">const</span>&nbsp;<span class="default"
@@ -328,7 +322,7 @@
 						</span>
 						<div
 							class="rounded-2 shadow-sm bg-dark px-4 py-2 m-3"
-							style="text-align: left"
+							style="text-align: left; background-color: #1c1c1c"
 						>
 							<div class="code">
 								<span class="red">import</span>&nbsp;<span class="purple"
@@ -366,72 +360,13 @@
 						</p>
 
 						<h4>Quick Links</h4>
-						<div class="indent">
-							<a class="text-decoration-none" href="developer.html#websiteVersion"
-								><code>websiteVersion</code></a
-							>
-							<br />
-							<a class="text-decoration-none" href="developer.html#version"
-								><code>version</code></a
-							>
-						</div>
-
-						<hr />
-
-						<h4 id="websiteVersion">
-							<a
-								class="hoverLink text-decoration-none"
-								href="developer.html#websiteVersion"
-								>#</a
-							>
-							<code>websiteVersion</code>
-						</h4>
-						<p>
-							Get the website version of the Google Home website!
-							<br />
-							This is right now a static variable, which may not be accurate. We are
-							hoping to make a dynamic variable (or function) soon.
-						</p>
-
-						<span>Example:</span>
-						<div
-							class="rounded-2 shadow-sm bg-dark px-4 py-2 m-3"
-							style="text-align: left"
+						<a class="text-decoration-none" href="developer.html#version"
+							><code>version</code></a
 						>
-							<div class="code">
-								<span class="blue">const</span>&nbsp;<span class="default"
-									>googleHome</span
-								>&nbsp;<span class="red">=</span>&nbsp;<span class="green"
-									>require</span
-								><span class="default">&lbbrk;</span
-								><span class="yellow">&quot;google-home-module&quot;</span
-								><span class="default">&rbbrk;&semi;</span>
-
-								<br /><br />
-
-								<span class="default">console</span><span class="red">&period;</span
-								><span class="green">log</span
-								><span class="default">&lbbrk;googleHome</span
-								><span class="red">&period;</span
-								><span class="orange">websiteVersion</span
-								><span class="default">&rbbrk;&semi;</span>
-							</div>
-						</div>
-
-						<span>This will output something like the following.</span>
-						<div
-							class="rounded-2 shadow-sm bg-dark px-4 py-2 m-3"
-							style="text-align: left"
+						<br />
+						<a class="text-decoration-none" href="developer.html#websiteVersion"
+							><code>websiteVersion</code></a
 						>
-							<div class="code">
-								<span class="default">2.1.0</span>
-							</div>
-						</div>
-
-						<p>
-							Please note that the version number will be different. This version was
-							chosen since it was the version when the documentation arrived.
-						</p>
 
 						<hr />
 
@@ -446,7 +381,7 @@
 						<span>Example:</span>
 						<div
 							class="rounded-2 shadow-sm bg-dark px-4 py-2 m-3"
-							style="text-align: left"
+							style="text-align: left; background-color: #1c1c1c"
 						>
 							<div class="code">
 								<span class="blue">const</span>&nbsp;<span class="default"
@@ -473,12 +408,69 @@
 						>
 						<div
 							class="rounded-2 shadow-sm bg-dark px-4 py-2 m-3"
-							style="text-align: left"
+							style="text-align: left; background-color: #1c1c1c"
 						>
 							<div class="code">
 								<span class="default">1.0.0</span>
 							</div>
 						</div>
+
+						<hr />
+
+						<h4 id="websiteVersion">
+							<a
+								class="hoverLink text-decoration-none"
+								href="developer.html#websiteVersion"
+								>#</a
+							>
+							<code>websiteVersion</code>
+						</h4>
+						<p>
+							Get the website version of the Google Home website!
+							<br />
+							This is right now a static variable, which may not be accurate. We are
+							hoping to make a dynamic variable (or function) soon.
+						</p>
+
+						<span>Example:</span>
+						<div
+							class="rounded-2 shadow-sm bg-dark px-4 py-2 m-3"
+							style="text-align: left; background-color: #1c1c1c"
+						>
+							<div class="code">
+								<span class="blue">const</span>&nbsp;<span class="default"
+									>googleHome</span
+								>&nbsp;<span class="red">=</span>&nbsp;<span class="green"
+									>require</span
+								><span class="default">&lbbrk;</span
+								><span class="yellow">&quot;google-home-module&quot;</span
+								><span class="default">&rbbrk;&semi;</span>
+
+								<br /><br />
+
+								<span class="default">console</span><span class="red">&period;</span
+								><span class="green">log</span
+								><span class="default">&lbbrk;googleHome</span
+								><span class="red">&period;</span
+								><span class="orange">websiteVersion</span
+								><span class="default">&rbbrk;&semi;</span>
+							</div>
+						</div>
+
+						<span>This will output something like the following.</span>
+						<div
+							class="rounded-2 shadow-sm bg-dark px-4 py-2 m-3"
+							style="text-align: left; background-color: #1c1c1c"
+						>
+							<div class="code">
+								<span class="default">2.1.0</span>
+							</div>
+						</div>
+
+						<p>
+							Please note that the version number will be different. This version was
+							chosen since it was the version when the documentation arrived.
+						</p>
 					</div>
 
 					<div
@@ -494,11 +486,9 @@
 						</p>
 
 						<h4>Quick Links</h4>
-						<div class="indent">
-							<a class="text-decoration-none" href="developer.html#randomGreeting"
-								><code>randomGreeting</code></a
-							>
-						</div>
+						<a class="text-decoration-none" href="developer.html#randomGreeting"
+							><code>randomGreeting</code></a
+						>
 
 						<hr />
 
@@ -530,7 +520,7 @@
 						<span>See an error example first, then a proper example:</span>
 						<div
 							class="rounded-2 shadow-sm bg-dark px-4 py-2 m-3"
-							style="text-align: left"
+							style="text-align: left; background-color: #1c1c1c"
 						>
 							<div class="code">
 								<span class="blue">const</span>&nbsp;<span class="default"
@@ -557,9 +547,25 @@
 						<span>With this, we should see a quite unfortunate result.</span>
 						<div
 							class="rounded-2 shadow-sm bg-dark px-4 py-2 m-3"
-							style="text-align: left"
+							style="text-align: left; background-color: #1c1c1c"
 						>
 							<div class="code">
+								<span class="default"
+									>C:\Users\Someone\Google-Home\node_modules\google-home-module\src\index.js:29</span
+								>
+								<div class="indent">
+									<div class="indent">
+										<span class="default">throw new TypeError(</span>
+									</div>
+								</div>
+								<div class="indent">
+									<div class="indent">
+										<span class="default">^</span>
+									</div>
+								</div>
+
+								<br />
+
 								<span class="default fw-bold"
 									>TypeError: Parameters 'signedIn' was true while 'username' was
 									false. Expected a value for 'username' while 'signedIn' was
@@ -575,7 +581,7 @@
 								<div class="indent">
 									<span class="default"
 										>at Object.&lt;anonymous&gt;
-										(C:\Users\Someone\Google-Home\sandbox.js:10:24)</span
+										(C:\Users\Someone\Google-Home\sandbox.js:3:24)</span
 									>
 								</div>
 								<div class="indent">
@@ -616,7 +622,120 @@
 							</div>
 						</div>
 
-						<p><i>We're adding more information... coming very soon!</i></p>
+						<p>
+							We can see that the bolded part says that a
+							<code>TypeError</code> exception was thrown. Why? <br />
+							Well, because we said that the user is signed in, but they don't have a
+							username, the function could not compile the username, since there
+							wasn't anything. The reason there was an error was because if the user
+							is signed in, then the method will choose a random greeting with their
+							username in it.
+						</p>
+
+						<p>
+							Great! Now that we know what <i>not</i> to do, let's see what to do to
+							make the method work correctly.
+						</p>
+
+						<p>
+							First, let's see some code. All of the code will be typed together, but
+							we will output the code one by one for easier understanding.
+						</p>
+
+						<div
+							class="rounded-2 shadow-sm bg-dark px-4 py-2 m-3"
+							style="text-align: left; background-color: #1c1c1c"
+						>
+							<div class="code">
+								<span class="blue">const</span>&nbsp;<span class="default"
+									>googleHome</span
+								>&nbsp;<span class="red">=</span>&nbsp;<span class="green"
+									>require</span
+								><span class="default">&lbbrk;</span
+								><span class="yellow">&quot;google-home-module&quot;</span
+								><span class="default">&rbbrk;&semi;</span>
+
+								<br /><br />
+
+								<span class="default">console</span><span class="red">&period;</span
+								><span class="green">log</span
+								><span class="default">&lbbrk;googleHome</span
+								><span class="red">&period;</span
+								><span class="green">randomGreeting</span
+								><span class="default">&lbbrk;</span
+								><span class="purple">false</span
+								><span class="default">&rbbrk;</span
+								><span class="default">&rbbrk;&semi;</span
+								><span class="comment"
+									>&nbsp;&nbsp;&frasl;&frasl;&nbsp;Example 1</span
+								>
+
+								<br />
+
+								<span class="default">console</span><span class="red">&period;</span
+								><span class="green">log</span
+								><span class="default">&lbbrk;googleHome</span
+								><span class="red">&period;</span
+								><span class="green">randomGreeting</span
+								><span class="default">&lbbrk;</span><span class="purple">true</span
+								><span class="red">&comma;</span
+								><span class="yellow">&nbsp;&quot;Someone&quot;</span
+								><span class="default">&rbbrk;</span
+								><span class="default">&rbbrk;&semi;</span
+								><span class="comment"
+									>&nbsp;&nbsp;&frasl;&frasl;&nbsp;Example 2</span
+								>
+							</div>
+						</div>
+
+						<p>So, first, let's go slowly and understand Example 1.</p>
+
+						<p>
+							We can see that the first parameter was set to <code>false</code>, which
+							means that the user is not signed in. We can also see that since we said
+							that the user isn't signed in, we can leave the username field empty.
+							Now, let's run it, and see what happens.
+						</p>
+
+						<div
+							class="rounded-2 shadow-sm bg-dark px-4 py-2 m-3"
+							style="text-align: left; background-color: #1c1c1c"
+						>
+							<div class="code">
+								<span class="default">Welcome!</span>
+							</div>
+						</div>
+
+						<p>
+							We see that there is no error, since the method knows that the user
+							isn't signed in, but we see text saying 'Welcome!'. This will not be
+							random and keep showing this as long as <code>signedIn</code> is
+							<code>false</code>.
+						</p>
+
+						<p>
+							Great! Now that we know what happens when <code>signedIn</code> is
+							<code>true</code> <i>and</i> the username is passed. We are going to run
+							it two times to show you some differences.
+						</p>
+
+						<div
+							class="rounded-2 shadow-sm bg-dark px-4 py-2 m-3"
+							style="text-align: left; background-color: #1c1c1c"
+						>
+							<div class="code">
+								<span class="default">Good afternoon, Someone!</span>
+								<br />
+								<span class="default">Welcome, Someone!</span>
+							</div>
+						</div>
+
+						<p>
+							We see that the outputs both contain the username <i>Someone</i>, but
+							they are different greetings. One says 'Good afternoon, Someone!', and
+							the other says 'Welcome, someone!'. Sometimes, the function can choose a
+							random greeting, or a greeting relating to the user's local time.
+						</p>
 					</div>
 
 					<div
@@ -626,7 +745,7 @@
 						aria-labelledby="nav-class-tab"
 					>
 						<h2>Classes</h2>
-						<p>Please wait... we're still gathering data!</p>
+						<p>We're still adding documentation... please wait!</p>
 					</div>
 				</div>
 

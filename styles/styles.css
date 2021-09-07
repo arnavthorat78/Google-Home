@@ -1,5 +1,6 @@
 /* Coding styles for the Developer page */
-@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@400&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@400&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wdth,wght@110,400&display=swap");
 
 .hoverLink {
 	color: lightblue;
@@ -19,31 +20,34 @@
 }
 
 .default {
-	color: #f8f8f2;
+	color: #cccccc;
 }
 .comment {
-	color: #229977;
+	color: #20836c;
 }
 .red {
-	color: #f92672;
+	color: #d51e1c;
 }
 .orange {
-	color: #fd971f;
+	color: #ef901e;
 }
 .light-yellow {
-	color: #e69f66;
+	color: #e69f66; /* Change */
 }
 .yellow {
-	color: #e6db74;
+	color: #e6db74; /* Change */
 }
 .green {
-	color: #a6e22e;
+	color: #8fec38;
+}
+.dark-green {
+	color: #27b66e;
 }
 .blue {
-	color: #66d9ef;
+	color: #2fd4fd;
 }
 .purple {
-	color: #ae81ff;
+	color: #a181f1;
 }
 
 .bright-yellow {
