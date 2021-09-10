@@ -50,9 +50,12 @@
 	color: #a181f1;
 }
 
-.bright-yellow {
+.terminal-yellow {
 	color: #ffec44;
 }
-.grey {
+.terminal-grey {
 	color: #6e6e6e;
+}
+.terminal-green {
+	color: #0f9f68;
 }

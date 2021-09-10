@@ -265,7 +265,7 @@
 						>
 							<div class="code">
 								<span class="default"
-									>&gt;&nbsp;<span class="bright-yellow">npm</span> install
+									>&gt;&nbsp;<span class="terminal-yellow">npm</span> install
 									google-home-module</span
 								>
 							</div>
@@ -369,13 +369,27 @@
 
 						<hr />
 
-						<h4 id="version">
+						<h4 class="mb-3" id="version">
 							<a class="hoverLink text-decoration-none" href="developer.html#version"
 								>#</a
 							>
 							<code>version</code>
 						</h4>
-						<p>Get the version of the NPM module for Google Home.</p>
+
+						<span
+							class="rounded-2 shadow-sm bg-dark px-4 py-2 m-3"
+							style="text-align: left; background-color: #1c1c1c"
+						>
+							<span class="code">
+								<span class="dark-green">const</span>&nbsp;<span class="default"
+									>version</span
+								><span class="red">:&nbsp;</span
+								><span class="dark-green">string</span
+								><span class="default">;</span>
+							</span>
+						</span>
+
+						<p class="mt-3">Get the version of the NPM module for Google Home.</p>
 
 						<span>Example:</span>
 						<div
@@ -415,7 +429,7 @@
 
 						<hr />
 
-						<h4 id="websiteVersion">
+						<h4 class="mb-3" id="websiteVersion">
 							<a
 								class="hoverLink text-decoration-none"
 								href="developer.html#websiteVersion"
@@ -424,7 +438,20 @@
 							<code>websiteVersion</code>
 						</h4>
 
-						<p>
+						<span
+							class="rounded-2 shadow-sm bg-dark px-4 py-2 m-3"
+							style="text-align: left; background-color: #1c1c1c"
+						>
+							<span class="code">
+								<span class="dark-green">const</span>&nbsp;<span class="default"
+									>websiteVersion</span
+								><span class="red">:&nbsp;</span
+								><span class="dark-green">string</span
+								><span class="default">;</span>
+							</span>
+						</span>
+
+						<p class="mt-3">
 							Get the website version of the Google Home website!
 							<br />
 							This is right now a static variable, which may not be accurate. We are
@@ -490,7 +517,7 @@
 
 						<hr />
 
-						<h4 id="randomGreeting">
+						<h4 class="mb-3" id="randomGreeting">
 							<a
 								class="hoverLink text-decoration-none"
 								href="developer.html#randomGreeting"
@@ -498,7 +525,27 @@
 							>
 							<code>randomGreeting</code>
 						</h4>
-						<p>
+
+						<span
+							class="rounded-2 shadow-sm bg-dark px-4 py-2 m-3"
+							style="text-align: left; background-color: #1c1c1c"
+						>
+							<span class="code">
+								<span class="dark-green">const</span>&nbsp;<span class="green"
+									>randomGreeting</span
+								><span class="red">:&nbsp;</span><span class="default">(</span
+								><span class="orange">signedIn</span><span class="red">:&nbsp;</span
+								><span class="dark-green">boolean</span
+								><span class="red">,&nbsp;</span><span class="orange">username</span
+								><span class="red">?:&nbsp;</span
+								><span class="dark-green">string</span><span class="default">)</span
+								><span class="red">&nbsp;=>&nbsp;</span
+								><span class="dark-green">string</span
+								><span class="default">;</span>
+							</span>
+						</span>
+
+						<p class="mt-3">
 							Get a random greeting for the user.
 							<br /><br />
 							If the user is signed in, then the user will get a random greeting, with
@@ -581,37 +628,37 @@
 									>
 								</div>
 								<div class="indent">
-									<span class="grey"
+									<span class="terminal-grey"
 										>at Module._compile
 										(internal/modules/cjs/loader.js:1063:30)</span
 									>
 								</div>
 								<div class="indent">
-									<span class="grey"
+									<span class="terminal-grey"
 										>at Object.Module._extensions..js
 										(internal/modules/cjs/loader.js:1092:10)</span
 									>
 								</div>
 								<div class="indent">
-									<span class="grey"
+									<span class="terminal-grey"
 										>at Module.load
 										(internal/modules/cjs/loader.js:928:32)</span
 									>
 								</div>
 								<div class="indent">
-									<span class="grey"
+									<span class="terminal-grey"
 										>at Function.Module._load
 										(internal/modules/cjs/loader.js:769:14)</span
 									>
 								</div>
 								<div class="indent">
-									<span class="grey"
+									<span class="terminal-grey"
 										>at Function.executeUserEntryPoint [as runMain]
 										(internal/modules/run_main.js:72:12)</span
 									>
 								</div>
 								<div class="indent">
-									<span class="grey"
+									<span class="terminal-grey"
 										>at internal/main/run_main_module.js:17:47</span
 									>
 								</div>
@@ -749,7 +796,7 @@
 						<hr />
 						<hr />
 
-						<h4 id="basicSearch">
+						<h4 class="mb-3" id="basicSearch">
 							<a
 								class="hoverLink text-decoration-none"
 								href="developer.html#basicSearch"
@@ -757,7 +804,27 @@
 							>
 							<code>BasicSearch</code>
 						</h4>
-						<p>
+
+						<span
+							class="rounded-2 shadow-sm bg-dark px-4 py-2 m-3"
+							style="text-align: left; background-color: #1c1c1c"
+						>
+							<span class="code">
+								<span class="dark-green">constructor</span>&nbsp;<span class="green"
+									>BasicSearch</span
+								><span class="default">(</span><span class="orange">query</span
+								><span class="red">:&nbsp;</span
+								><span class="dark-green">string</span
+								><span class="red">,&nbsp;</span
+								><span class="orange">searchEngine</span
+								><span class="red">?:&nbsp;</span
+								><span class="dark-green">string</span><span class="default">)</span
+								><span class="red">:&nbsp;</span
+								><span class="default">BasicSearch;</span>
+							</span>
+						</span>
+
+						<p class="mt-3">
 							Makes a new <code>BasicSearch</code>, in which the user can search in
 							(not actually search, but we are actually hoping to implement that
 							functionality soon).
@@ -907,7 +974,7 @@
 
 						<hr />
 
-						<h4 id="basicSearchFormatQuery">
+						<h4 class="mb-3" id="basicSearchFormatQuery">
 							<a
 								class="hoverLink text-decoration-none"
 								href="developer.html#basicSearchFormatQuery"
@@ -915,7 +982,24 @@
 							>
 							<code>formatQuery</code>
 						</h4>
-						<p>Format the query of the user's search.</p>
+
+						<span
+							class="rounded-2 shadow-sm bg-dark px-4 py-2 m-3"
+							style="text-align: left; background-color: #1c1c1c"
+						>
+							<span class="code">
+								<span class="default">BasicSearch</span><span class="red">.</span
+								><span class="green">formatQuery</span><span class="default">(</span
+								><span class="orange">username</span
+								><span class="red">?:&nbsp;</span
+								><span class="dark-green">string</span><span class="default">)</span
+								><span class="red">:&nbsp;</span
+								><span class="dark-green">string</span
+								><span class="default">;</span>
+							</span>
+						</span>
+
+						<p class="mt-3">Format the query of the user's search.</p>
 
 						<p>
 							If we want to show the user what their query is, we can use the
