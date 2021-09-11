@@ -360,12 +360,18 @@
 
 						<h4>Quick Links</h4>
 						<a class="text-decoration-none" href="developer.html#version"
-							><code>version</code></a
-						>
+							><code>version</code>&nbsp;<span
+								class="text-warning"
+								title="Soon to be deprecated"
+								><i class="bi bi-exclamation-triangle-fill"></i></span
+						></a>
 						<br />
 						<a class="text-decoration-none" href="developer.html#websiteVersion"
-							><code>websiteVersion</code></a
-						>
+							><code>websiteVersion</code>&nbsp;<span
+								class="text-warning"
+								title="Soon to be deprecated"
+								><i class="bi bi-exclamation-triangle-fill"></i></span
+						></a>
 
 						<hr />
 
@@ -374,6 +380,9 @@
 								>#</a
 							>
 							<code>version</code>
+							<span class="text-warning" title="Soon to be deprecated"
+								><i class="bi bi-exclamation-triangle-fill"></i
+							></span>
 						</h4>
 
 						<span
@@ -389,7 +398,25 @@
 							</span>
 						</span>
 
-						<p class="mt-3">Get the version of the NPM module for Google Home.</p>
+						<div
+							class="alert alert-warning d-flex justify-content-center mx-5 my-3"
+							role="alert"
+							id="alert"
+						>
+							<div>
+								<div class="display-6">
+									<i class="bi bi-exclamation-triangle-fill"></i>
+								</div>
+								<h3 class="alert-heading mt-3">Deprecation Warning</h3>
+								<p class="lead">This variable is soon to be deprecated!</p>
+								<p>
+									This variable is going to be deprecated. Support may be
+									completely be discarded in a later version.
+								</p>
+							</div>
+						</div>
+
+						<p>Get the version of the NPM module for Google Home.</p>
 
 						<span>Example:</span>
 						<div
@@ -436,6 +463,9 @@
 								>#</a
 							>
 							<code>websiteVersion</code>
+							<span class="text-warning" title="Soon to be deprecated"
+								><i class="bi bi-exclamation-triangle-fill"></i
+							></span>
 						</h4>
 
 						<span
@@ -451,7 +481,25 @@
 							</span>
 						</span>
 
-						<p class="mt-3">
+						<div
+							class="alert alert-warning d-flex justify-content-center mx-5 my-3"
+							role="alert"
+							id="alert"
+						>
+							<div>
+								<div class="display-6">
+									<i class="bi bi-exclamation-triangle-fill"></i>
+								</div>
+								<h3 class="alert-heading mt-3">Deprecation Warning</h3>
+								<p class="lead">This variable is soon to be deprecated!</p>
+								<p>
+									This variable is going to be deprecated. Support may be
+									completely be discarded in a later version.
+								</p>
+							</div>
+						</div>
+
+						<p>
 							Get the website version of the Google Home website!
 							<br />
 							This is right now a static variable, which may not be accurate. We are
@@ -1076,7 +1124,183 @@
 
 						<hr />
 
-						<p><i>Please wait... this part is still a work-in-progress!</i></p>
+						<h4 class="mb-3" id="basicSearchSearch">
+							<a
+								class="hoverLink text-decoration-none"
+								href="developer.html#basicSearchSearch"
+								>#</a
+							>
+							<code>search</code>
+						</h4>
+
+						<span
+							class="rounded-2 shadow-sm bg-dark px-4 py-2 m-3"
+							style="text-align: left; background-color: #1c1c1c"
+						>
+							<span class="code">
+								<span class="default">BasicSearch</span><span class="red">.</span
+								><span class="green">search</span><span class="default">(</span
+								><span class="orange">target</span><span class="red">:&nbsp;</span
+								><span class="dark-green">string</span><span class="default">)</span
+								><span class="red">:&nbsp;</span
+								><span class="default">{&nbsp;url</span
+								><span class="red">:&nbsp;</span
+								><span class="dark-green">string</span
+								><span class="red">,&nbsp;</span><span class="default">target</span
+								><span class="red">:&nbsp;</span
+								><span class="dark-green">string</span
+								><span class="default">&nbsp;};</span>
+							</span>
+						</span>
+
+						<p class="mt-3">
+							Search for user's query with the search engine and the user's query.
+						</p>
+
+						<p>
+							Unfortunately, this method does not actually search, but we are hoping
+							to implement that feature soon.
+						</p>
+
+						<span
+							>The usage is very simple. The search query and search engine are
+							already provided when you make a new <code>BasicSearch</code>, so all
+							the method does is make it into a usable URL, depending on the search
+							engine.</span
+						>
+						<div
+							class="rounded-2 shadow-sm bg-dark px-4 py-2 m-3"
+							style="text-align: left; background-color: #1c1c1c"
+						>
+							<div class="code">
+								<span class="blue">const</span>&nbsp;<span class="default"
+									>googleHome</span
+								>&nbsp;<span class="red">=</span>&nbsp;<span class="green"
+									>require</span
+								><span class="default">(</span
+								><span class="yellow">"google-home-module"</span
+								><span class="default">);</span>
+
+								<br /><br />
+
+								<span class="blue">const</span>&nbsp;<span class="default"
+									>search</span
+								>&nbsp;<span class="red">=</span>&nbsp;<span class="red">new</span
+								>&nbsp;<span class="default">googleHome</span
+								><span class="red">.</span><span class="green">BasicSearch</span
+								><span class="default">(</span><span class="yellow">"Google"</span
+								><span class="default">);</span>
+
+								<br />
+
+								<span class="default">console</span><span class="red">.</span
+								><span class="green">log</span><span class="default">(search</span
+								><span class="red">.</span><span class="green">search</span
+								><span class="default">(</span><span class="yellow">"_blank"</span
+								><span class="default">));</span>
+							</div>
+						</div>
+
+						<span
+							>The output should a an object with two keys; <code>url</code> and
+							<code>target</code>. You can see the output from the code above
+							below.</span
+						>
+						<div
+							class="rounded-2 shadow-sm bg-dark px-4 py-2 m-3"
+							style="text-align: left; background-color: #1c1c1c"
+						>
+							<div class="code">
+								<span class="default">{&nbsp;url:&nbsp;</span
+								><span class="terminal-green"
+									>'https://www.google.com/search?q=Google'</span
+								><span class="default">,&nbsp;target:&nbsp;</span
+								><span class="terminal-green">'_blank'</span
+								><span class="default">&nbsp;}</span>
+							</div>
+						</div>
+
+						<p>There you go! That is how you use the <code>search</code> method.</p>
+
+						<hr />
+						<hr />
+
+						<h4 class="mb-3" id="user">
+							<a class="hoverLink text-decoration-none" href="developer.html#user"
+								>#</a
+							>
+							<code>User</code>
+						</h4>
+
+						<span
+							class="rounded-2 shadow-sm bg-dark px-4 py-2 m-3"
+							style="text-align: left; background-color: #1c1c1c"
+						>
+							<span class="code">
+								<span class="dark-green">constructor</span>&nbsp;<span class="green"
+									>User</span
+								><span class="default">(</span
+								><span class="orange">displayName</span
+								><span class="red">:&nbsp;</span
+								><span class="dark-green">string</span
+								><span class="red">,&nbsp;</span><span class="orange">email</span
+								><span class="red">:&nbsp;</span
+								><span class="dark-green">string</span
+								><span class="red">,&nbsp;</span><span class="orange">password</span
+								><span class="red">:&nbsp;</span
+								><span class="dark-green">string</span
+								><span class="red">,&nbsp;</span><span class="orange">exists</span
+								><span class="red">?:&nbsp;</span
+								><span class="dark-green">boolean</span
+								><span class="red">,&nbsp;</span><span class="orange">admin</span
+								><span class="red">?:&nbsp;</span
+								><span class="dark-green">boolean</span
+								><span class="red">,&nbsp;</span
+								><span class="orange">signedOut</span
+								><span class="red">?:&nbsp;</span
+								><span class="dark-green">boolean</span
+								><span class="default">)</span><span class="red">:&nbsp;</span
+								><span class="default">User;</span>
+							</span>
+						</span>
+
+						<p class="mt-3">
+							Makes a new <code>User</code>, in which you can use to store users, as
+							well as preform some tasks with their data.
+						</p>
+
+						<h4>Quick Links for <code>User</code></h4>
+						<a class="text-decoration-none" href="developer.html#userChangePassword"
+							><code>changePassword</code></a
+						>
+						<br />
+						<a class="text-decoration-none" href="developer.html#userGetEmailDomain"
+							><code>getEmailDomain</code></a
+						>
+						<br />
+						<a class="text-decoration-none" href="developer.html#userToggleAdminStatus"
+							><code>toggleAdminStatus</code></a
+						>
+						<br />
+						<a class="text-decoration-none" href="developer.html#userToggleExistsStatus"
+							><code>toggleExistsStatus</code></a
+						>
+						<br />
+						<a
+							class="text-decoration-none"
+							href="developer.html#userToggleSignedOutStatus"
+							><code>toggleSignedOutStatus</code></a
+						>
+						<br />
+						<a class="text-decoration-none" href="developer.html#userValidateEmail"
+							><code>validateEmail</code></a
+						>
+						<br />
+						<a class="text-decoration-none" href="developer.html#userValidatePassword"
+							><code>validatePassword</code></a
+						>
+
+						<p><i>Please wait... we're still adding some more documentation!</i></p>
 					</div>
 				</div>
 
